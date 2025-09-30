@@ -1,5 +1,6 @@
 <!-- markdownlint-disable-next-line -->
-# <img src="https://cdn.bfldr.com/B686QPH3/at/w5hnjzb32k5wcrcxnwcx4ckg/Dynatrace_signet_RGB_HTML.svg?auto=webp&format=pngg" alt="DT logo" width="30"> Enablement Codespaces Template 
+
+# <img src="https://cdn.bfldr.com/B686QPH3/at/w5hnjzb32k5wcrcxnwcx4ckg/Dynatrace_signet_RGB_HTML.svg?auto=webp&format=pngg" alt="DT logo" width="30"> Dynatrace Data Access & Partitioning
 
 [![dt-badge](https://img.shields.io/badge/powered_by-DT_enablement-8A2BE2?logo=dynatrace)](https://github.com/dynatrace-wwse/enablement-codespaces-template)
 [![Downloads](https://img.shields.io/docker/pulls/shinojosa/dt-enablement?logo=docker)](https://hub.docker.com/r/shinojosa/dt-enablement)
@@ -9,16 +10,10 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?color=green)](https://github.com/dynatrace-wwse/enablement-codespaces-template/blob/main/LICENSE)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-green)](https://dynatrace-wwse.github.io/enablement-codespaces-template/)
 
-___
+---
 
-This is a template so you as a professor can create fun and interesting enablements in no time.
+The goal of this lab is to show you the best practices for configuring data access & partitioning in Dynatrace.
 
-In this README you should add a brief description of the project. What will the student learn, which technologies and/or solutions. 
+To spin up the environment with GitHub codespaces, go to Codespaces and then select 'New with options' or directly by [clicking here](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=1028024094&skip_quickstart=true)
 
-<p align="center">
-<img src="docs/img/dt_professors.png" alt="Alt text" width="400"/>
-</p>
-
-Ready to learn how to create an enablement using codespaces? 
-## [👨‍🏫 Learn how to create enablements in Codespaces!](https://dynatrace-wwse.github.io/enablement-codespaces-template)
-
+## [🧳🐞 Start the bug finding adventure here!](https://dynatrace-ace.github.io/data-access-and-partitioning-codespaces/)
