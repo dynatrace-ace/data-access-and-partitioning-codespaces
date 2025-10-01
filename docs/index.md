@@ -13,7 +13,8 @@ The customer has a Kubernetes cluster running two applications:
 
 These apps are deployed across different namespaces and environments, and your mission is to help the customer modernize their observability strategy using Gen 3 capabilities.
 
-What to Expect?
+### What to Expect?
+
 Throughout the labs, you’ll take on the role of a Dynatrace expert working directly with the customer. Each lab represents a critical phase of the migration journey, and by completing them, you’ll gain hands-on experience with:
 
 - Extracting and enriching metadata

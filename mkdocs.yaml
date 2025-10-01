@@ -6,10 +6,12 @@ nav:
   - "1. About": index.md
   - "2. Getting started": 2-getting-started.md
   - "3. Codespaces": 3-codespaces.md
-  - "4. Content": 4-content.md
-  - "5. Cleanup": cleanup.md
-  - "6. Resources": resources.md
-  - "7. What's next?": whats-next.md
+  - "4. Slice And Dice": 4-slice-and-dice.md
+  - "5. Metadata enrichment": 5-metadata-enrichment.md
+  - "6. Data Access": 6-data-access.md
+  - "7. Data segmentation": 7-data-segmentation.md
+  - "8. Data partitioning and Cost allocation": 8-data-partitioning-and-cost-allocation.md
+  - "9. Cleanup": cleanup.md
 theme:
   name: material
   custom_dir: docs/overrides
