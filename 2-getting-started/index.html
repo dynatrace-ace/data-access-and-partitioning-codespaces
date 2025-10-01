@@ -600,15 +600,17 @@
 <h2 id="1-prerequisites-before-launching-the-codespace">1. Prerequisites before launching the Codespace<a class="headerlink" href="#1-prerequisites-before-launching-the-codespace" title="Permanent link">#</a></h2>
 <p>You will need to provide the following variables during the configuration of the codespace:</p>
 <ul>
-<li>DT_TENANT (https://abc123.live.dynatrace.com or sprint -&gt; https://abc123.sprint.dynatracelabs.com no apps in the URL)</li>
-<li>MONACO_TOKEN</li>
+<li>
+<p>DT_TENANT : https://abc123.live.dynatrace.com or sprint -&gt; https://abc123.sprint.dynatracelabs.com no apps in the URL</p>
+</li>
+<li>
+<p>MONACO_TOKEN</p>
+</li>
 <li>CLIENT_ID</li>
-<li>
-<p>CLIENT_SECRET</p>
-</li>
-<li>
+<li>CLIENT_SECRET</li>
+</ul>
 <p>Prepare the API token (TENANT_TOKEN) with permissions</p>
-</li>
+<ul>
 <li><em>CaptureRequestData</em></li>
 <li><em>credentialVault.read</em></li>
 <li><em>credentialVault.write</em></li>
@@ -622,7 +624,9 @@
 <li><em>events.ingest</em></li>
 <li><em>slo.read</em></li>
 <li><em>slo.write</em></li>
-<li>Prepare OAuthClient (CLIENT_SECRET)</li>
+</ul>
+<p>Prepare OAuthClient (CLIENT_SECRET)</p>
+<ul>
 <li><em>app-engine:apps:run</em></li>
 <li><em>app-engine:apps:install</em></li>
 <li><em>automation:calendars:read</em></li>
