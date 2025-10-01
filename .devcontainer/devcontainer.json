@@ -68,3 +68,4 @@
       "description": "Dynatrace Oauth client secret. See required permission list on https://dynatrace-ace.github.io/data-access-and-partitioning-codespaces/2-getting-started/"
     }
   }
+}

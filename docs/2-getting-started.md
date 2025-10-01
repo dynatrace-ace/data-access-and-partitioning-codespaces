@@ -5,38 +5,42 @@
 
 You will need to provide the following variables during the configuration of the codespace:
 
-- DT_TENANT (https://abc123.live.dynatrace.com or sprint -> https://abc123.sprint.dynatracelabs.com no apps in the URL)
+- DT_TENANT : https://abc123.live.dynatrace.com or sprint -> https://abc123.sprint.dynatracelabs.com no apps in the URL
+
 - MONACO_TOKEN
 - CLIENT_ID
 - CLIENT_SECRET
 
-- Prepare the API token (TENANT_TOKEN) with permissions
-  - _CaptureRequestData_
-  - _credentialVault.read_
-  - _credentialVault.write_
-  - _DataExport_
-  - _DataPrivacy_
-  - _ReadConfig_
-  - _settings.read_
-  - _settings.write_
-  - _WriteConfig_
-  - _ExternalSyntheticIntegration_
-  - _events.ingest_
-  - _slo.read_
-  - _slo.write_
-- Prepare OAuthClient (CLIENT_SECRET)
-  - _app-engine:apps:run_
-  - _app-engine:apps:install_
-  - _automation:calendars:read_
-  - _automation:calendars:write_
-  - _automation:rules:write_
-  - _automation:rules:read_
-  - _automation:workflows:run_
-  - _automation:workflows:write_
-  - _automation:workflows:read_
-  - _settings:schemas:read_
-  - _settings:objects:write_
-  - _settings:objects:read_
+Prepare the API token (TENANT_TOKEN) with permissions
+
+- _CaptureRequestData_
+- _credentialVault.read_
+- _credentialVault.write_
+- _DataExport_
+- _DataPrivacy_
+- _ReadConfig_
+- _settings.read_
+- _settings.write_
+- _WriteConfig_
+- _ExternalSyntheticIntegration_
+- _events.ingest_
+- _slo.read_
+- _slo.write_
+
+Prepare OAuthClient (CLIENT_SECRET)
+
+- _app-engine:apps:run_
+- _app-engine:apps:install_
+- _automation:calendars:read_
+- _automation:calendars:write_
+- _automation:rules:write_
+- _automation:rules:read_
+- _automation:workflows:run_
+- _automation:workflows:write_
+- _automation:workflows:read_
+- _settings:schemas:read_
+- _settings:objects:write_
+- _settings:objects:read_
 
 ## 2. Create Dynatrace API Tokens for Kubernetes Observability
 

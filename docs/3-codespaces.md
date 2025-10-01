@@ -4,6 +4,8 @@
 
 ## 1. Codespaces configuration
 
+Click here to start configuring your codespace
+
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dynatrace-ace/data-access-and-partitioning-codespaces?quickstart=1&machine=basicLinux32gb){target="\_blank"}
 
 ## 2. While the Codespace is set-up for you, learn powerful usecases with Dynatrace
