@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../2-getting-started/">
+        <link rel="prev" href="../4-slice-and-dice/">
       
       
-        <link rel="next" href="../4-slice-and-dice/">
+        <link rel="next" href="../6-data-access/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>3. Codespaces - Dynatrace Data Access & Partitioning</title>
+        <title>5. Metadata enrichment - Dynatrace Data Access & Partitioning</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-codespaces-configuration" class="md-skip">
+        <a href="#metadata-enrichment" class="md-skip">
           Skip to content
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3. Codespaces
+              5. Metadata enrichment
             
           </span>
         </div>
@@ -308,28 +308,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    3. Codespaces
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../3-codespaces/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -338,99 +320,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-codespaces-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Codespaces configuration
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-while-the-codespace-is-set-up-for-you-learn-powerful-usecases-with-dynatrace" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. While the Codespace is set-up for you, learn powerful usecases with Dynatrace
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-explore-what-has-been-deployed" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Explore what has been deployed
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-tips-tricks" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Tips &amp; Tricks
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Tips & Tricks">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#navigating-in-your-local-kubernetes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Navigating in your local Kubernetes
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Troubleshooting
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#showing-open-ports-in-the-container" class="md-nav__link">
-    <span class="md-ellipsis">
-      Showing open ports in the container
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -459,10 +348,28 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../5-metadata-enrichment/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    5. Metadata enrichment
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -471,6 +378,99 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#metadata-enrichment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Enrichment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata Enrichment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Objectives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Objectives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-understand-why-metadata-enrichment-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Understand Why Metadata Enrichment Matters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-explore-enrichment-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Explore Enrichment Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary Table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-try-it-out" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Try It Out
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -580,46 +580,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-codespaces-configuration" class="md-nav__link">
+  <a href="#metadata-enrichment" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Codespaces configuration
+      Metadata Enrichment
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-while-the-codespace-is-set-up-for-you-learn-powerful-usecases-with-dynatrace" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. While the Codespace is set-up for you, learn powerful usecases with Dynatrace
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-explore-what-has-been-deployed" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Explore what has been deployed
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-tips-tricks" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Tips &amp; Tricks
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Tips & Tricks">
+    <nav class="md-nav" aria-label="Metadata Enrichment">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#navigating-in-your-local-kubernetes" class="md-nav__link">
+  <a href="#objectives" class="md-nav__link">
     <span class="md-ellipsis">
-      Navigating in your local Kubernetes
+      🎯 Objectives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Objectives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-understand-why-metadata-enrichment-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Understand Why Metadata Enrichment Matters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-explore-enrichment-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Explore Enrichment Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary Table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-try-it-out" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Try It Out
     </span>
   </a>
   
@@ -629,21 +639,11 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#5-troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Troubleshooting
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Troubleshooting">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#showing-open-ports-in-the-container" class="md-nav__link">
+  <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
-      Showing open ports in the container
+      Resources
     </span>
   </a>
   
@@ -672,59 +672,293 @@
   
 
 
-  <h1>3. Codespaces</h1>
+  <h1>5. Metadata enrichment</h1>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  dynatrace.sendBizEvent('page_load', {"page": "3. Codespaces"});
-});
-</script>
-
-<details class="example">
-<summary><a href="https://dynatrace-wwse.github.io/codespaces-synchronizer"><img alt="dt-badge" src="https://img.shields.io/badge/powered_by-DT_enablement-8A2BE2?logo=dynatrace" /></a></summary>
-<p>This codespace is powered by the Dynatrace Enablement Framework, this means that this codespace:</p>
+<h2 id="metadata-enrichment">Metadata Enrichment<a class="headerlink" href="#metadata-enrichment" title="Permanent link">#</a></h2>
+<h3 id="objectives">🎯 Objectives<a class="headerlink" href="#objectives" title="Permanent link">#</a></h3>
+<p>All participants will enrich observability data (entities, metrics, events, logs, etc.) with metadata fields such as:</p>
 <ul>
-<li>can run in github codespaces, as a remote container or locally as docker container</li>
-<li>is crosscompiled for AMD and ARM architectures</li>
-<li>follows a set of standards and best practices for enhancing the user experience</li>
+<li><code>dt.security_context</code></li>
+<li><code>dt.cost.costcenter</code></li>
+<li><code>dt.cost.product</code><blockquote>
+<p>The idea is to explore different enrichment strategies using Kubernetes and understand trade offs between approaches.
+If your cluster hasn't been activated yet for the new Kubernetes app, please do that manually.</p>
+</blockquote>
+</li>
 </ul>
-<p>Want to learn more about it? We invite you to read <a href="https://dynatrace-wwse.github.io/codespaces-synchronizer">this documentation</a></p>
+<h4 id="step-1-understand-why-metadata-enrichment-matters">Step 1: Understand Why Metadata Enrichment Matters<a class="headerlink" href="#step-1-understand-why-metadata-enrichment-matters" title="Permanent link">#</a></h4>
+<p>💡 Enrichment helps with access control, cost allocation, segmentation, and governance. We are trying to make sure that observability data is tagged with meaningful context.</p>
+<p><strong>Key Enrichment Targets</strong>:</p>
+<ul>
+<li>Entities (e.g., services, workloads)</li>
+<li>Metrics</li>
+<li>Events</li>
+<li>Logs</li>
+<li>Traces</li>
+</ul>
+<p><strong>Questions to consider</strong>:</p>
+<ul>
+<li>What metadata do you need to enrich your data with?</li>
+<li>What level of granularity is required - namespace or workload?</li>
+<li>Do you want enrichment to be automatic, declarative, or manual?</li>
+<li>How will this metadata be used for IAM, cost control, and segmentation?</li>
+</ul>
+<h4 id="step-2-explore-enrichment-strategies">Step 2: Explore Enrichment Strategies<a class="headerlink" href="#step-2-explore-enrichment-strategies" title="Permanent link">#</a></h4>
+<p>Use the guide: <a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes">Enrichment Kubernetes</a></p>
+<p>✅ <strong>Option 1</strong>: Rely on Primary Grail Fields:</p>
+<ul>
+<li><code>k8s.namespace.name</code></li>
+<li><code>k8s.cluster.name</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Pros</th>
+<th>Cons</th>
+<th>Use when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Out-of-the-box (OOTB)</td>
+<td>Limited granularity</td>
+<td>Quick setup is needed</td>
+</tr>
+<tr>
+<td>No configuration needed</td>
+<td>Only namespace-level</td>
+<td>Simple IAM and segmentation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>🟡 <strong>Option 2</strong>: Use <a href="https://docs.dynatrace.com/docs/ingest-from/setup-on-k8s/guides/metadata-automation/k8s-metadata-telemetry-enrichment">Namespace Annotations &amp; Labels</a></p>
+<p>How it works? Dynatrace Operator converts namespace-level metadata into enrichment fields.</p>
+<table>
+<thead>
+<tr>
+<th>Pros</th>
+<th>Cons</th>
+<th>Use when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Declarative</td>
+<td>Only applies at namespace level</td>
+<td>Customer follows cloud-native tagging practices</td>
+</tr>
+<tr>
+<td>Moderate effort</td>
+<td>Requires Dynatrace configuration</td>
+<td>Needs more flexibility than OOTB fields</td>
+</tr>
+<tr>
+<td>Supports custom Primary Grail Tags</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>🔴 <strong>Option 3</strong>: Set Manual Pod Annotations</p>
+<p><strong>How it works?</strong> Manually add annotations to pod definitions (e.g., in deployment YAML)</p>
+<table>
+<thead>
+<tr>
+<th>Pros</th>
+<th>Cons</th>
+<th>Use when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maximum granularity (workload-level)</td>
+<td>Requires code changes</td>
+<td>Need to segregate access or cost at workload level</td>
+</tr>
+<tr>
+<td>Full control over enrichment</td>
+<td>Higher effort</td>
+<td>Namespace-level granularity is not enough</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="summary-table">Summary Table<a class="headerlink" href="#summary-table" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Effort</th>
+<th>Granularity</th>
+<th>Flexibility</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary Grail Fields</td>
+<td>🟢 Low</td>
+<td>Namespace</td>
+<td>🔴 Limited</td>
+<td>Quick IAM &amp; Segments setup</td>
+</tr>
+<tr>
+<td>Namespace Annotations/Labels</td>
+<td>🟡 Medium</td>
+<td>Namespace</td>
+<td>🟡 Moderate</td>
+<td>Declarative tagging, cloud-native orgs</td>
+</tr>
+<tr>
+<td>Manual Pod Annotations</td>
+<td>🔴 High</td>
+<td>Workload</td>
+<td>🟢 Maximum</td>
+<td>Fine-grained control, cost partitioning</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="step-3-try-it-out">Step 3: Try It Out<a class="headerlink" href="#step-3-try-it-out" title="Permanent link">#</a></h4>
+<p>Complete enrichment using all strategies.</p>
+<p>In Dynatrace, you can set up policy boundaries for fine-grained restrictions on the data level with the help of <strong>Primary Fields</strong>. By default, you can use <code>k8s.namespace.name</code> and <code>k8s.cluster.name</code>, but sometimes this is not enough and you need a more fine grained way to set up your boundaries. <strong>Primary Grail Tags</strong> will help you with this.</p>
+<p><strong>Primary Grail tags are a small set of important, customer selected tags such as Kubernetes labels, AWS/Azure tags, or key organizational attributes that Dynatrace automatically attaches to all raw telemetry data at ingest, using the <code>primary_tags.*</code> prefix. This enrichment enables fast, consistent filtering, grouping, and permission management across all data, without complex joins or proprietary tagging rules. Primary Grail tags are centrally configured and ensure that cloud-native and business-relevant metadata is always available for queries, dashboards, and access control.</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Primary Grail Field</th>
+<th>Primary Grail Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What are they?</td>
+<td>Well defined OOTB fields for specific technologies</td>
+<td>A new tag on all telemetry data</td>
+</tr>
+<tr>
+<td>Purpose</td>
+<td>Data level access, here to auto enrich all signals and entities OOTB</td>
+<td>Enrichment of all signals including smartscape Nodes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Task 1: Automatic Enrichment via Kubernetes Metadata</strong></p>
+<p>So, as we said, Dynatrace automatically enriches telemetry data as well as entities with Kubernetes metadata such as:</p>
+<ul>
+<li><code>k8s.cluster.name</code></li>
+<li><code>k8s.namespace.name</code></li>
+</ul>
+<p><strong>Explore your customer's tenant to see how this works. Write down your analysis.</strong></p>
+<p>Can you fetch entities and filter them by their <code>k8s.cluster.name</code> or <code>k8s.namespace.name</code>? *<strong>*****</strong>__*<strong>*****</strong></p>
+<p>Can you fetch all logs and filter them by their <code>k8s.cluster.name</code> or <code>k8s.namespace.name</code>? *<strong>*****</strong>__*<strong>*****</strong></p>
+<blockquote>
+<p>💡 Tip: This is useful for OOTB IAM and Segment configurations.</p>
+</blockquote>
+<p>Now, think about a use case where a customer doesn't want to use these default <strong>Primary Grail Fields</strong> for whatever reason - they might not be granular or flexible enough. <strong>What would you do?</strong></p>
+<p>If this is not enough and you'd like to go further and you require more configuration possibilities. Let's explore the enrichment strategy at source. You can enrich data by adding custom labels and annotations to your Kubernetes manifests. Dynatrace will pick these up and use them for tagging and filtering.</p>
+<hr />
+<p><strong>Task 2: Automatic Enrichment via Kubernetes Metadata at Source</strong></p>
+<p>You should ultimately enrich your deployment with:</p>
+<ul>
+<li><code>dt.security_context</code></li>
+<li><code>dt.cost.costcenter</code></li>
+<li><code>dt.cost.product</code></li>
+</ul>
+<p>How to do that you might ask? Well... Let's look at how customers manage modern cloud environments. In modern cloud-native environments, cloud tags, Kubernetes labels and namespaces classify systems using various aspects, like cost allocation, access control, application, and owner. In such environments, configuration-as-code principles are well established, including defining such tags as part of the system configuration.</p>
+<p>In K8s, annotations and labels are both key-value pairs used to attach metadata to objects like Pods, Services, and Deployments. Customers following cloud-native tagging best practices will define their partitioning with labels &amp; annotations, as follows:</p>
+<p><img alt="" src="../img/content/labels-annotations.png" /></p>
+<blockquote>
+<p>Note that this is still very basic and limited. We'll add more as we go through this lab.</p>
+</blockquote>
+<p>You can use the K8s Enrichment settings to transform labels &amp; annotations into <code>dt.security_context</code>, <code>dt.cost.costcenter</code>, <code>dt.cost.product</code>.</p>
+<ol>
+<li>Go to Settings &gt; Topology Model &gt; Grail security context for monitored entities</li>
+<li>Filter by <code>dt.entity.cloud_application_namespace</code></li>
+<li>Change destination property from Management Zone to <code>dt.security_context</code></li>
+</ol>
+<blockquote>
+<p>This is needed in order for the enrichment to work. If you're wondering how come we already have the labels extracted, you can go to <code>Settings &gt; Cloud and Virtualization &gt; Kubernetes telemetry enrichment</code> and check the rule there. That rule is allowing us to propagate the label to <code>dt.security_context</code>, however, Grail doesn't know about it until we point the topology rule to it.</p>
+</blockquote>
+<!-- 4. Go to your Kubernetes cluster > Settings > Telemetry Enrichment
+5. Add a rule:
+  - Metatadata type = Label
+  - Source = kubernetes.io/metadata.name
+  - Primary grail tag = false
+  - Target = `dt.security_context`
+
+All of these steps are required in order to add additional topology enrichment for K8s. In order for the rule to work, we need to keep in mind 2 things:
+- After creating or modifying rules, allow up to 45 minutes for the changes to take effect
+- Once this time has passed, restart your pods
+
+Please SSH into your VM and restart all pods. You can use this command - `kubectl rollout restart deployment -n easytrade` -->
+
+<p><img alt="" src="../img/content/labels-annotations-settings.png" /></p>
+<blockquote>
+<p>💡 How it works? The Dynatrace Operator will take care of the enrichment when mutating the pod definition</p>
+</blockquote>
+<p><img alt="" src="../img/content/labels-annotations-in-action.png" /></p>
+<details>
+  <summary>DQL</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">fetch</span><span class="w"> </span><span class="n">spans</span>
+<span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">k8s</span><span class="p">.</span><span class="n">workload</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">&quot;loginservice&quot;</span>
+<span class="o">|</span><span class="w"> </span><span class="n">fields</span><span class="w"> </span><span class="n">start_time</span><span class="p">,</span><span class="w"> </span><span class="n">span</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">k8s</span><span class="p">.</span><span class="n">workload</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">k8s</span><span class="p">.</span><span class="n">namespace</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">.</span><span class="n">security_context</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">.</span><span class="n">cost</span><span class="p">.</span><span class="n">costcenter</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">.</span><span class="n">cost</span><span class="p">.</span><span class="n">product</span>
+<span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="n">start_time</span><span class="w"> </span><span class="k">DESC</span>
+<span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">15</span>
+</code></pre></div>
+
 </details>
-<h2 id="1-codespaces-configuration">1. Codespaces configuration<a class="headerlink" href="#1-codespaces-configuration" title="Permanent link">#</a></h2>
-<p>!!! tip "Branch, Machine sizing &amp; secrets" - Branch - select the <strong>main</strong> branch - Machine sizing - As a machine type select <strong>2-core</strong> - Secrets (enter your credentials within the following variables) - DT_TENANT - DT_OPERATOR_TOKEN - DT_INGEST_TOKEN</p>
-<p><a href="https://codespaces.new/dynatrace-ace/data-access-and-partitioning-codespaces?quickstart=1&amp;machine=basicLinux32gb" target="_blank"><img alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg" /></a></p>
-<h2 id="2-while-the-codespace-is-set-up-for-you-learn-powerful-usecases-with-dynatrace">2. While the Codespace is set-up for you, learn powerful usecases with Dynatrace<a class="headerlink" href="#2-while-the-codespace-is-set-up-for-you-learn-powerful-usecases-with-dynatrace" title="Permanent link">#</a></h2>
-<p>We know your time is very valuable. This codespace takes around 6 minutes to be fully operational. A local Kubernetes (<a href="https://kind.sigs.k8s.io/" target="_blank">kind</a>) cluster monitored by Dynatrace will be configured and in it a sample application, the TODO app will be deployed. To make your experience best, we are also installing and configuring tools like:</p>
-<p><strong>k9s kubectl helm node jq python3 gh</strong></p>
-<p><img alt="Codespaces installing" src="../img/codespaces_installing.png" /></p>
-<h2 id="3-explore-what-has-been-deployed">3. Explore what has been deployed<a class="headerlink" href="#3-explore-what-has-been-deployed" title="Permanent link">#</a></h2>
-<p>Your Codespace has now deployed the following resources:</p>
+
+<hr />
+<p><strong>Task 3: Manual Pod Annotation for Granularity</strong></p>
+<p>If you need workload-level granularity, manual annotations are required. For example, you want to be more specific on the product and cost center for the loginservice.<!--Check the picture below where our accountservice doesn't have the proper enrichment.--></p>
+<blockquote>
+<p>💡Note that:</p>
 <ul>
-<li>
-<p>A local Kubernetes (<a href="https://kind.sigs.k8s.io/" target="_blank">kind</a>) cluster monitored by Dynatrace, with some pre-deployed apps
-  that will be used later in the demo.</p>
-</li>
-<li>
-<p>After a couple of minutes, you'll see this screen in your codespaces terminal. It contains the links to the local expose labguide and the UI of the application which we will be doing our Hands-On training.
-  <img alt="Codespaces finish" src="../img/codespaces_finish.png" /></p>
-</li>
+<li>Manually set metadata.dynatrace.com pod annotations take precedence over metadata enrichment configurations</li>
 </ul>
-<h2 id="4-tips-tricks">4. Tips &amp; Tricks<a class="headerlink" href="#4-tips-tricks" title="Permanent link">#</a></h2>
-<h3 id="navigating-in-your-local-kubernetes">Navigating in your local Kubernetes<a class="headerlink" href="#navigating-in-your-local-kubernetes" title="Permanent link">#</a></h3>
-<p>The client <code>kubectl</code> and <code>k9s</code>are configured so you can navigate in your local Kubernetes like butter.
-<img alt="k9s" src="../img/k9s.png" /></p>
-<h2 id="5-troubleshooting">5. Troubleshooting<a class="headerlink" href="#5-troubleshooting" title="Permanent link">#</a></h2>
-<h3 id="showing-open-ports-in-the-container">Showing open ports in the container<a class="headerlink" href="#showing-open-ports-in-the-container" title="Permanent link">#</a></h3>
-<p>There is a helper function loaded in the shell to see the open ports in the dev.container.</p>
-<div class="highlight"><pre><span></span><code>showOpenPorts<span class="o">(){</span>
-<span class="w">  </span>sudo<span class="w"> </span>netstat<span class="w"> </span>-tulnp
-<span class="o">}</span>
+</blockquote>
+<!--![](img/content/before-manual-pod-enrichment.png)-->
+
+<p>Update your deployment manifest by following instructions below:</p>
+<ol>
+<li>SSH into your VM</li>
+<li>Run <code>kubectl edit deployment &lt;deploymentname&gt; -n easytrade</code> and add the annotations under <code>spec &gt; template &gt; metadata</code>. The pod will automatically be restarted and after a few minutes you will see a new one appear in your cluster as well as in the Dynatrace UI.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>metadata:
+  annotations:
+    metadata.dynatrace.com/dt.security_context: &quot;easytrade&quot;
+    metadata.dynatrace.com/dt.cost.costcenter: &quot;platform&quot;
+    metadata.dynatrace.com/dt.cost.product: &quot;loginservice&quot;
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>dynatrace
-</code></pre></div>
+<!--![](img/content/after-manual-pod-enrichment-1.png)-->
+
+<blockquote>
+<p>Result:</p>
+</blockquote>
+<p><img alt="" src="../img/content/after-manual-pod-enrichment.png" />
+<img alt="" src="../img/content/after-manual-pod-enrichment-1.png" /></p>
+<blockquote>
+<p>⚠️ Notes</p>
+<ul>
+<li>Namespace-level enrichment is easier but less granular.</li>
+<li>Workload-level enrichment gives full control but requires manual effort.</li>
+<li>Without proper annotations, filtering and cost allocation may be limited.</li>
+</ul>
+</blockquote>
+<h3 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1246757730/2.+Metadata+Enrichment">Metadata Enrichment</a></li>
+<li>Keep an eye on the part that talks about Primary Grail Fields and Primary Grail Tags</li>
+<li><a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes">Metadata Enrichment - K8s</a></li>
+</ul>
 <div class="grid cards">
 <ul>
-<li><a href="../4-slice-and-dice/">Let's start our enablement<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+<li><a href="../6-data-access/">Let's continue<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
 </ul>
 </div>
 

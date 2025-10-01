@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../6-data-access/">
+      
+      
+        <link rel="next" href="../8-data-partitioning-and-cost-allocation/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Resources - Dynatrace Data Access & Partitioning</title>
+        <title>7. Data segmentation - Dynatrace Data Access & Partitioning</title>
       
     
     
@@ -78,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#get-your-dynatrace-environment" class="md-skip">
+        <a href="#data-segmentation" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Resources
+              7. Data segmentation
             
           </span>
         </div>
@@ -384,10 +388,28 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../7-data-segmentation/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    7. Data segmentation
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -396,6 +418,126 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Segmentation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Segmentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Learning Objectives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Learning Objectives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-understand-host-group-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Understand Host Group Dimensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-compare-management-zones-with-segments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Compare Management Zones with Segments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-create-an-app-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Create an App Segment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-create-a-stage-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: Create a Stage Segment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-validate-segments-with-smartscape-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 5: Validate Segments with Smartscape entities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-validate-segments-with-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 6: Validate Segments with Logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-7-validate-segments-with-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 7: Validate Segments with Traces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-8-validate-segments-with-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 8: Validate Segments with Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -465,29 +607,104 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#get-your-dynatrace-environment" class="md-nav__link">
+  <a href="#data-segmentation" class="md-nav__link">
     <span class="md-ellipsis">
-      Get your Dynatrace environment
+      Data Segmentation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Segmentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Learning Objectives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Learning Objectives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-understand-host-group-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Understand Host Group Dimensions
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#documentation" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-compare-management-zones-with-segments" class="md-nav__link">
     <span class="md-ellipsis">
-      Documentation
+      Exercise 2: Compare Management Zones with Segments
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#dynatrace-news" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-create-an-app-segment" class="md-nav__link">
     <span class="md-ellipsis">
-      Dynatrace news
+      Exercise 3: Create an App Segment
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-create-a-stage-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: Create a Stage Segment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-validate-segments-with-smartscape-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 5: Validate Segments with Smartscape entities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-validate-segments-with-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 6: Validate Segments with Logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-7-validate-segments-with-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 7: Validate Segments with Traces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-8-validate-segments-with-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 8: Validate Segments with Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -509,29 +726,164 @@
   
 
 
-  <h1>Resources</h1>
+  <h1>7. Data segmentation</h1>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  dynatrace.sendBizEvent('page_load', {"page": "6. Resources"});
+  dynatrace.sendBizEvent('page_load', {"page": "7. Data segmentation"});
 });
 </script>
 
-<h3 id="get-your-dynatrace-environment">Get your Dynatrace environment<a class="headerlink" href="#get-your-dynatrace-environment" title="Permanent link">#</a></h3>
+<h2 id="data-segmentation">Data Segmentation<a class="headerlink" href="#data-segmentation" title="Permanent link">#</a></h2>
+<p><strong>Moving from Management Zones to Segments</strong></p>
+<p>As Easytrade continues to scale, their observability data grows exponentially. Teams are struggling to filter logs, metrics, and traces efficiently. While Management Zones helped in the past, we don't want them in the future ;) .</p>
+<p>Now, Easytrade is adopting Segments. They are a powerful new way to filter all types of data (not just entities) using dimensions like platform, app, and stage. These dimensions are already embedded in their Host Group definitions, and Segments will allow teams to slice data with precision, reduce noise, and improve performance.</p>
+<p>Your goal in this lab is to help Easytrade build Segments based on their Host Group naming convention and validate their effectiveness across logs, traces, metrics, and dashboards.</p>
+<h3 id="learning-objectives">🎯 Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">#</a></h3>
 <ul>
-<li><a href="https://www.dynatrace.com/signup/" target="_blank">Create a Free Trial in Dynatrace</a></li>
+<li>Understand what Segments are and how they differ from Management Zones.</li>
+<li>Learn how to extract dimensions from Host Group names.</li>
+<li>Create Segments for platform, app, and stage.</li>
+<li>Apply Segments to filter logs, traces, metrics, and dashboards.</li>
 </ul>
-<h3 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">#</a></h3>
+<h4 id="exercise-1-understand-host-group-dimensions">Exercise 1: Understand Host Group Dimensions<a class="headerlink" href="#exercise-1-understand-host-group-dimensions" title="Permanent link">#</a></h4>
+<p>Host Groups often encode key dimensions used for filtering. Let's get some context.</p>
+<p>Easytrade uses the Host Group naming convention:
+<code>k8s_multi_prod</code></p>
+<p>This encodes:</p>
 <ul>
-<li><a href="https://docs.dynatrace.com" target="_blank">Dynatrace documentation</a></li>
+<li>platform → k8s</li>
+<li>app → multi</li>
+<li>stage → prod</li>
 </ul>
-<h3 id="dynatrace-news">Dynatrace news<a class="headerlink" href="#dynatrace-news" title="Permanent link">#</a></h3>
+<p><img alt="" src="../img/content/host-group-definition.png" /></p>
+<blockquote>
+<p>Host Group definition</p>
+</blockquote>
+<h4 id="exercise-2-compare-management-zones-with-segments">Exercise 2: Compare Management Zones with Segments<a class="headerlink" href="#exercise-2-compare-management-zones-with-segments" title="Permanent link">#</a></h4>
+<p>Management Zones filter entities. Segments filter everything. Let's have a look at both.</p>
+<ol>
+<li>Open Dynatrace and view all hosts.</li>
+<li>Apply a Management Zone filter.</li>
+<li>Observe how only entities are filtered.</li>
+</ol>
+<p><img alt="" src="../img/content/all-hosts-view.png" /></p>
+<blockquote>
+<p>All hosts within the environment</p>
+</blockquote>
+<p><img alt="" src="../img/content/management-zone-filter.png" /></p>
+<blockquote>
+<p>Filtered by Management Zone</p>
+</blockquote>
+<h4 id="exercise-3-create-an-app-segment">Exercise 3: Create an App Segment<a class="headerlink" href="#exercise-3-create-an-app-segment" title="Permanent link">#</a></h4>
+<p>While management zones have been used widely in Dynatrace to define access to data and filter data on a global level, in the latest Dynatrace they have been replaced by three new concepts, each tailored to satisfy the respective requirements of Enterprise environments:</p>
 <ul>
-<li><a href="https://www.dynatrace.com/news/blog/" target="_blank">Dynatrace Blog</a></li>
+<li>Data Partitioning (lab 5): Organize data logically and address performance and retention requirements.</li>
+<li>Data Access (lab 3): Stay flexible and meet compliance and security demands by defining fine-grained access to data and Dynatrace platform capabilities based on a user's context.</li>
+<li>Data Segmentation (lab 4): Provide real-time filtering on huge data sets without the need to define thousands of individual rules.</li>
 </ul>
+<p>In exercise 3 and all subsequent exercises, we will focus on exploring <strong>Segments</strong>.</p>
+<p>Let's start by creating a segment that will filter out all data connected to one of our applications - Easytrade.</p>
+<ol>
+<li>Navigate to <code>Settings &gt; Environment Segmentation &gt; Segments</code></li>
+<li>Create a new Segment</li>
+<li>Instructions are provided below</li>
+</ol>
+<p>Variable DQL query for App</p>
+<div class="highlight"><pre><span></span><code><span class="k">fetch</span><span class="w"> </span><span class="n">dt</span><span class="p">.</span><span class="n">entity</span><span class="p">.</span><span class="n">cloud_application_namespace</span>
+<span class="o">|</span><span class="w"> </span><span class="n">fields</span><span class="w"> </span><span class="n">application_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entity</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">concat</span><span class="p">(</span><span class="ss">&quot;app:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">entity</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<p>Segment Filters</p>
+<p>App: <code>k8s.namespace.name = $application_name OR tag = $tag</code></p>
+<p><img alt="" src="../img/content/lab4-ex3-app-segment-variable.png" /></p>
+<blockquote>
+<p>Variable configuration for App segment</p>
+</blockquote>
+<p><img alt="" src="../img/content/lab4-ex3-app-segment-configuration.png" /></p>
+<blockquote>
+<p>App segment configuration preview</p>
+</blockquote>
+<h4 id="exercise-4-create-a-stage-segment">Exercise 4: Create a Stage Segment<a class="headerlink" href="#exercise-4-create-a-stage-segment" title="Permanent link">#</a></h4>
+<p>Extract stage from Host Group names and use it to filter all data.</p>
+<ol>
+<li>Go to Settings &gt; Environment Segmentation &gt; Segments</li>
+<li>Create a Platform Segment with provided instructions.</li>
+<li>Extract all possible values for Stage using the below DQL<ul>
+<li><code>fetch dt.entity.host_group| parse `entity.name`, """LD:platform '_' LD:app '_' LD:stage"""| dedup platform| fields platform</code></li>
+</ul>
+</li>
+<li>Use <code>dt.host_group.id = *$stage</code> to filter all datapoints within the Host-Group</li>
+</ol>
+<p><img alt="" src="../img/content/lab4-ex4-stage-segment-variable.png" /></p>
+<blockquote>
+<p>Variable configuration for Stage segment</p>
+</blockquote>
+<p><img alt="" src="../img/content/lab4-ex4-stage-segment-configuration.png" /></p>
+<blockquote>
+<p>Stage segment configuration preview</p>
+</blockquote>
+<p>Please note that filters such as <code>dt.host_group.id = *$stage</code> do not work for classic entities. You might get the following error if you try to apply the same filter to a <code>dt.entity.host</code> entity type - <strong>"Wildcard "*" resulting in a "startsWith" operator not allowed, please change it in "dt.host_group.id" filter value definition.</strong>". Please see below.</p>
+<p><img alt="" src="../img/content/lab4-ex4-classic-entity-segment-error.png" /></p>
+<p>Nevertheless, this should work for smartscape 2.0 entities in their respective screens. Segments preview doesn't work at the moment for any entity but k8s entities should automatically be visible within the Kubernetes app. More information on how different classic and smartscape on grail entities are can be found <a href="https://docs.dynatrace.com/docs/discover-dynatrace/platform/grail/smartscape-on-grail#differences-between-classic-entities-and-smartscape-on-grail">here</a>.</p>
+<h4 id="exercise-5-validate-segments-with-smartscape-entities">Exercise 5: Validate Segments with Smartscape entities<a class="headerlink" href="#exercise-5-validate-segments-with-smartscape-entities" title="Permanent link">#</a></h4>
+<p>Use the K8s app to prove that App segment works with K8s entities.</p>
+<ol>
+<li>Opent the Kubernetes App</li>
+<li>Go to the Namespaces tab</li>
+<li>Apply the Application segment</li>
+</ol>
+<p><img alt="" src="../img/content/lab4-ex5-smartscape-k8s-entity-filter.png" /></p>
+<blockquote>
+<p>Kubernetes entities in Grail</p>
+</blockquote>
+<h4 id="exercise-6-validate-segments-with-logs">Exercise 6: Validate Segments with Logs<a class="headerlink" href="#exercise-6-validate-segments-with-logs" title="Permanent link">#</a></h4>
+<p>Use Segments to reduce noise in log queries.</p>
+<ol>
+<li>Query logs without any Segment = more than 10k+ records.</li>
+<li>Apply App Segment for easytrade.</li>
+<li>Observe reduction in results.</li>
+</ol>
+<p><img alt="" src="../img/content/lab4-ex6-log-without-segment.png" /></p>
+<blockquote>
+<p>Logs without Segment</p>
+</blockquote>
+<p><img alt="" src="../img/content/lab4-ex6-log-with-app-segment.png" /></p>
+<blockquote>
+<p>Logs with App Segment</p>
+</blockquote>
+<h4 id="exercise-7-validate-segments-with-traces">Exercise 7: Validate Segments with Traces<a class="headerlink" href="#exercise-7-validate-segments-with-traces" title="Permanent link">#</a></h4>
+<p>Filter Distributed Traces using Segments.</p>
+<ol>
+<li>Open Distributed Traces and filter for failed requests.</li>
+<li>Apply App segment (easytrade).</li>
+<li>Observe filtered trace results.</li>
+</ol>
+<p><img alt="" src="../img/content/lab4-ex7-failed-requests.png" /></p>
+<blockquote>
+<p>Failed requests</p>
+</blockquote>
+<p><img alt="" src="../img/content/lab4-ex7-filtered-traces.png" /></p>
+<blockquote>
+<p>Filtered traces</p>
+</blockquote>
+<h4 id="exercise-8-validate-segments-with-metrics">Exercise 8: Validate Segments with Metrics<a class="headerlink" href="#exercise-8-validate-segments-with-metrics" title="Permanent link">#</a></h4>
+<p>Use Segments to scope dashboard tiles.</p>
+<ol>
+<li>Create a tile for k8s container CPU usage across workloads.</li>
+<li>Apply App segment (easytrade) to the tile.</li>
+<li>Observe scoped metric results.</li>
+</ol>
+<p><img alt="" src="../img/content/lab4-ex8-notebook-segment.png" /></p>
+<blockquote>
+<p>Global notebook segment applied</p>
+</blockquote>
+<p><img alt="" src="../img/content/lab4-ex8-final-notebook-view.png" /></p>
+<blockquote>
+<p>Final dashboard view</p>
+</blockquote>
 <div class="grid cards">
 <ul>
-<li><a href="../whats-next/">What's Next? <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+<li><a href="../8-data-partitioning-and-cost-allocation/">Let's continue<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
 </ul>
 </div>
 

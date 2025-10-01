@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../7-data-segmentation/">
+      
+      
+        <link rel="next" href="../cleanup/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Resources - Dynatrace Data Access & Partitioning</title>
+        <title>8. Data partitioning and Cost allocation - Dynatrace Data Access & Partitioning</title>
       
     
     
@@ -78,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#get-your-dynatrace-environment" class="md-skip">
+        <a href="#data-partitioning-and-cost-allocation" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Resources
+              8. Data partitioning and Cost allocation
             
           </span>
         </div>
@@ -404,10 +408,28 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../8-data-partitioning-and-cost-allocation/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    8. Data partitioning and Cost allocation
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -416,6 +438,108 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-partitioning-and-cost-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Partitioning and Cost Allocation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Partitioning and Cost Allocation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-partitioning-bucket-strategy-for-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Partitioning – Bucket Strategy for Logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Partitioning – Bucket Strategy for Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-analyze-ingestion-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Analyze Ingestion Volume
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-design-bucket-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Design Bucket Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-connect-buckets-to-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Connect Buckets to Access Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-cost-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: Cost Allocation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -465,29 +589,86 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#get-your-dynatrace-environment" class="md-nav__link">
+  <a href="#data-partitioning-and-cost-allocation" class="md-nav__link">
     <span class="md-ellipsis">
-      Get your Dynatrace environment
+      Data Partitioning and Cost Allocation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Partitioning and Cost Allocation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Learning Objectives
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#documentation" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#data-partitioning-bucket-strategy-for-logs" class="md-nav__link">
     <span class="md-ellipsis">
-      Documentation
+      Data Partitioning – Bucket Strategy for Logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Partitioning – Bucket Strategy for Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#dynatrace-news" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-analyze-ingestion-volume" class="md-nav__link">
     <span class="md-ellipsis">
-      Dynatrace news
+      Exercise 1: Analyze Ingestion Volume
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-design-bucket-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Design Bucket Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-connect-buckets-to-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Connect Buckets to Access Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-cost-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: Cost Allocation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -509,29 +690,94 @@
   
 
 
-  <h1>Resources</h1>
+  <h1>8. Data partitioning and Cost allocation</h1>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  dynatrace.sendBizEvent('page_load', {"page": "6. Resources"});
-});
-</script>
-
-<h3 id="get-your-dynatrace-environment">Get your Dynatrace environment<a class="headerlink" href="#get-your-dynatrace-environment" title="Permanent link">#</a></h3>
+<h2 id="data-partitioning-and-cost-allocation">Data Partitioning and Cost Allocation<a class="headerlink" href="#data-partitioning-and-cost-allocation" title="Permanent link">#</a></h2>
+<p>Since easytrade is growing fast and multiple teams are accessing logs and metrics across environments, performance and cost are becoming critical concerns.
+To stay ahead, Easytrade engineers need to implement a bucket strategy to optimize log storage and query performance. At the same time, they’re introducing cost allocation tagging to track usage across teams and applications.
+This lab will guide you through designing a log bucket strategy and applying cost allocation metadata to a VM — helping Easytrade scale smart, not just fast.</p>
+<h3 id="learning-objectives">🎯 Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">#</a></h3>
 <ul>
-<li><a href="https://www.dynatrace.com/signup/" target="_blank">Create a Free Trial in Dynatrace</a></li>
+<li>Understand how buckets impact data retention, query performance, and cost.</li>
+<li>Design a log bucket strategy based on ingestion volume and dimensions.</li>
+<li>Learn how to apply cost allocation metadata using <code>dt.security_context</code>, <code>dt.cost.product</code>, and <code>dt.cost.costcenter</code>.</li>
 </ul>
-<h3 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">#</a></h3>
+<h3 id="data-partitioning-bucket-strategy-for-logs">Data Partitioning – Bucket Strategy for Logs<a class="headerlink" href="#data-partitioning-bucket-strategy-for-logs" title="Permanent link">#</a></h3>
+<p>Why do buckets matter?</p>
 <ul>
-<li><a href="https://docs.dynatrace.com" target="_blank">Dynatrace documentation</a></li>
+<li>Data Retention: Controls how long logs are stored - main use!</li>
+<li>Query Performance: Targeted buckets reduce scan time.</li>
+<li>Cost Efficiency: Less scan = lower DQL costs.</li>
 </ul>
-<h3 id="dynatrace-news">Dynatrace news<a class="headerlink" href="#dynatrace-news" title="Permanent link">#</a></h3>
+<p>You could technically rely on the default buckets, without creating custom ones. The advantage would be a reduced configuration management, but the drawback would be a decreased performance &amp; costs. That’s the trade-off when desiging your bucket strategy.</p>
+<p>Keep that in mind especially for small accounts, you don’t want to overcomplicate the solution. But for Enterprise accounts, a bucket strategy is required.</p>
+<p><img alt="" src="../img/content/ingest-volume-buckets.png" /></p>
+<h4 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h4>
+<p><strong>Small scale customer ( &lt; 2TB/day )</strong></p>
+<p>If your customer has a low ingestion volume (e.g., less than 2 TB/day), they’ll likely operate within the default limit of 80 buckets per environment. In this case:</p>
 <ul>
-<li><a href="https://www.dynatrace.com/news/blog/" target="_blank">Dynatrace Blog</a></li>
+<li>Avoid creating too many buckets — especially at the team level.</li>
+<li>Instead, consider using record-level permissions within a few shared buckets.</li>
+<li>Focus on functional separation — split logs based on their purpose (e.g., infrastructure vs. application logs), rather than ownership.</li>
 </ul>
+<p>This approach keeps configuration simple and avoids unnecessary overhead.</p>
+<p><strong>Large scale customer (250-1000 buckets)</strong></p>
+<p>For enterprise customers with higher ingestion volumes and extended bucket limits:</p>
+<ul>
+<li>A multi-bucket strategy becomes essential.</li>
+<li>Buckets should be designed to support:</li>
+<li>Data retention policies</li>
+<li>Query performance optimization</li>
+<li>Cost control</li>
+<li>Access control per team or business unit</li>
+</ul>
+<p>Use meaningful dimensions like <code>app</code>, <code>business_unit</code>, or <code>stage</code> to partition logs.</p>
+<blockquote>
+<p>💡 Remember: Custom buckets are primarily designed for data retention, but they also play a key role in access control and cost efficiency.</p>
+</blockquote>
+<h4 id="exercise-1-analyze-ingestion-volume">Exercise 1: Analyze Ingestion Volume<a class="headerlink" href="#exercise-1-analyze-ingestion-volume" title="Permanent link">#</a></h4>
+<p>Use dimensions like app, stage, or team to estimate log volume.</p>
+<p>Review the customer’s log ingestion volume per app. You can do that by fetching all logs for your k8s cluster and then applying any of the created segments that will lower the result size as well as improve the performance.</p>
+<p><strong>Think about how you would approach a customer with this kind of scenario. How would you split the logs? Would your customer want a standardized bucket approach per team? Or do they work more in a "purpose" fashion where logs are stored in different buckets based on their use/purpose? Or even solely based on the amount of data stored?</strong></p>
+<h4 id="exercise-2-design-bucket-strategy">Exercise 2: Design Bucket Strategy<a class="headerlink" href="#exercise-2-design-bucket-strategy" title="Permanent link">#</a></h4>
+<p>Choose the right dimension to partition logs - in this case, we can go with the namespace name.</p>
+<ol>
+<li>Go to Settings &gt; Storage Management</li>
+<li>Click on "+Bucket"</li>
+<li>Create a new custom bucket for easytrade logs and choose your retention</li>
+<li>Go to Settings &gt; Process and Contextualize &gt; Logs</li>
+<li>Add a new dynamic routing rule with a route = <code>k8s.namespace.name == "easytrade"</code></li>
+<li>Add a new pipeline and in the last stage of the pipeline, add the bucket asignment rule.</li>
+<li>Fetch the logs again and check that your rule works.</li>
+</ol>
+<blockquote>
+<p>Please note - this is not an official recommendation for every customer scenario. Handling large buckets based on a namespace in a customer environment of many k8s clusters is most likely not a good idea if you're trying to accomplish a scalable approach. Think of using k8s cluster level if needed.</p>
+</blockquote>
+<h4 id="exercise-3-connect-buckets-to-access-control">Exercise 3: Connect Buckets to Access Control<a class="headerlink" href="#exercise-3-connect-buckets-to-access-control" title="Permanent link">#</a></h4>
+<p>Use IAM to restrict log access by bucket.</p>
+<h4 id="exercise-4-cost-allocation">Exercise 4: Cost Allocation<a class="headerlink" href="#exercise-4-cost-allocation" title="Permanent link">#</a></h4>
+<p>Dynatrace provides full-stack observability, which means cost allocation must account for:</p>
+<ul>
+<li>Host monitoring</li>
+<li>Signals tied to the host (e.g., Kubernetes cluster metrics, Logs etc.)</li>
+</ul>
+<blockquote>
+<p>This exercise focuses on configuring cost allocation for Full-Stack monitoring as well as for new Log Ingest &amp; Process cost allocation feature introduced in Dynatrace SaaS 1.324.</p>
+</blockquote>
+<p><strong>Cost Allocation Overview</strong>
+<img alt="" src="../img/content/lab5-ex4-cost-allocation.png" /></p>
+<p>Step-by-Step Instructions:</p>
+<ol>
+<li>To ensure only relevant entities are included in cost allocation follow the <a href="https://docs.dynatrace.com/docs/license/cost-allocation#cost-allocation-allowlist">official documentation</a> to configure the allow list.</li>
+<li>Tagging hosts is essential for accurate cost attribution. You’ll <a href="https://docs.dynatrace.com/docs/license/cost-allocation#big-steps--auto--1--Configure-Cost-Allocation-on-the-host">configure host properties remotely on OneAgents</a>.</li>
+<li>No manual configuration is needed for logs in this lab. Telemetry enrichment has already been set up and will automatically apply the necessary tagging for log ingest cost allocation for our <code>loginservice</code>.</li>
+<li>There is a difference between something that is possible to be cross-charged and something that is officially available within our Cost Allocation feature. <code>Log Management - Ingest &amp; Process</code> is available as of <code>1.324</code> which means that the Cost Allocation attributes <code>dt.cost.costcenter</code> and <code>dt.cost.product</code> will be on all Log Ingest Billing Usage Events (fetch dt.system.events). Therefore, this is officially supported by our Cost Allocation feature and will show up in Account Management.</li>
+<li><img alt="" src="../img/content/lab5-ex4-cost-allocation-log-ingest.png" /></li>
+<li>To verify your configuration - go to <a href="https://guu84124.apps.dynatrace.com/ui/apps/dynatrace.launcher/">demo.live</a> &gt; Dashboards &gt; All Dashboards &gt; Download the dashboard "DPS Cost Allocation - Usage &amp; Costs v1.3". Upload it to your personal Dynatrace tenant. This dashboard will display cost allocation details based on your tagging and enrichment setup.</li>
+</ol>
 <div class="grid cards">
 <ul>
-<li><a href="../whats-next/">What's Next? <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+<li><a href="../cleanup/">Let's continue<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
 </ul>
 </div>
 
