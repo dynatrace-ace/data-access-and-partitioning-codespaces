@@ -14,6 +14,7 @@
 
 The goal of this lab is to show you the best practices for configuring data access & partitioning in Dynatrace.
 
-To spin up the environment with GitHub codespaces, go to Codespaces and then select 'New with options' or directly by [clicking here](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=1028024094&skip_quickstart=true)
+To spin up the environment with GitHub codespaces, go to Codespaces and then select 'New with options' or directly by [![clicking here](https://github.com/codespaces/badge.svg)](https://codespaces.new/dynatrace-ace/data-access-and-partitioning-codespaces?quickstart=1&machine=basicLinux32gb){target="\_blank"}.
+Check the configuration requirements in the docs below
 
-## [🧳🐞 Start the bug finding adventure here!](https://dynatrace-ace.github.io/data-access-and-partitioning-codespaces/)
+## [🧳 Start your journey here!](https://dynatrace-ace.github.io/data-access-and-partitioning-codespaces/)

@@ -11,7 +11,7 @@ The customer has a Kubernetes cluster running two applications:
 - Easytrade – a trading platform with multiple microservices
 - Hipstershop – a demo e-commerce app used for observability testing
 
-These apps are deployed across different namespaces and environments, and your mission is to help the customer modernize their observability strategy using Gen 3 capabilities.
+These apps are deployed across different namespaces and environments, and your mission is to help the customer modernize their observability strategy using Dynatrace Gen 3 capabilities.
 
 ### What to Expect?
 
