@@ -13,7 +13,6 @@ installK9s
 
 installMkdocs
 
-
 # Dynatrace Operator can be deployed automatically
 dynatraceDeployOperator
 

@@ -654,7 +654,8 @@ deployCloudNative() {
     printInfo "Log capturing will be handled by the Host agent."
     
     # we wait for the AG to be scheduled
-    waitForPod dynatrace activegate
+    #TODO: Fix this part once active gate is working again
+    #waitForPod dynatrace activegate
     
     waitForAllReadyPods dynatrace
   else

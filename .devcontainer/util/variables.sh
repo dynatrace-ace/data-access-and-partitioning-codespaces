@@ -8,10 +8,10 @@
 
 # VARIABLES DECLARATION
 # Active Gate Version - https://gallery.ecr.aws/dynatrace/dynatrace-activegate
-AG_IMAGE="public.ecr.aws/dynatrace/dynatrace-activegate:1.319.40.20250825-155600"
+AG_IMAGE="public.ecr.aws/dynatrace/dynatrace-activegate:1.323.23.20250920-023800"
 export AG_IMAGE=$AG_IMAGE
 # OneAgent Version - https://gallery.ecr.aws/dynatrace/dynatrace-oneagent
-OA_IMAGE="public.ecr.aws/dynatrace/dynatrace-oneagent:1.319.68.20250813-080958"
+OA_IMAGE="public.ecr.aws/dynatrace/dynatrace-oneagent:1.323.41.20251001-132006"
 export OA_IMAGE=$OA_IMAGE
 
 ENDPOINT_CODESPACES_TRACKER=https://codespaces-tracker.whydevslovedynatrace.com/api/receive
