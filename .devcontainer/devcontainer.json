@@ -66,6 +66,9 @@
     },
     "CLIENT_SECRET": {
       "description": "Dynatrace Oauth client secret. See required permission list on https://dynatrace-ace.github.io/data-access-and-partitioning-codespaces/2-getting-started/"
+    },
+    "SSO_ENDPOINT": {
+      "description": "Dynatrace Oauth endpoint. For production https://sso.dynatrace.com/sso/oauth2/token or sprint environments https://sso-sprint.dynatracelabs.com/sso/oauth2/token"
     }
   }
 }

@@ -1,0 +1,24 @@
+manifestVersion: 1.0
+projects:
+  - name: workshop
+    path: ./workshop
+environmentGroups:
+  - name: workshop-environment-group
+    environments:
+      - name: workshop-environment
+        url:
+          type: environment
+          value: TENANT_URL
+        auth:
+          token:
+            type: environment
+            name: MONACO_TOKEN
+          oAuth:
+            clientId:
+              type: environment
+              name: CLIENT_ID
+            clientSecret:
+              type: environment
+              name: CLIENT_SECRET
+            tokenEndpoint:
+              value: SSO_ENDPOINT

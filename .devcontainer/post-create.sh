@@ -26,6 +26,7 @@ deployCloudNative
 #deployTodoApp
 deployEasyTrade
 deployHipsterShop
+deployDynatraceConfig
 # The Astroshop keeping changes of demo.live needs certmanagerdocker
 #certmanagerInstall
 #certmanagerEnable
