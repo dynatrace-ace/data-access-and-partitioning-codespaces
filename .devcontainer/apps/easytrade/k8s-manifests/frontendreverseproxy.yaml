@@ -15,30 +15,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: contentcreator
+  name: frontendreverseproxy
   labels:
-    app: contentcreator
+    app: frontendreverseproxy
 spec:
   selector:
     matchLabels:
-      app: contentcreator
+      app: frontendreverseproxy
   template:
     metadata:
       labels:
-        app: contentcreator
+        app: frontendreverseproxy
     spec:
       containers:
-        - name: contentcreator
-          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/contentcreator:4d5adb3
-          env:
-            - name: MSSQL_CONNECTIONSTRING
-              valueFrom:
-                configMapKeyRef:
-                  name: connection-strings
-                  key: JAVA_CONNECTION_STRING
+        - name: frontendreverseproxy
+          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/frontendreverseproxy:4d5adb3
+          ports:
+            - containerPort: 80
+          env: []
           resources:
             requests:
-              cpu: 10m
-              memory: 300Mi
+              cpu: 50m
+              memory: 75Mi
             limits:
-              memory: 300Mi
+              memory: 75Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontendreverseproxy-easytrade
+spec:
+  type: LoadBalancer
+  selector:
+    app: frontendreverseproxy
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80

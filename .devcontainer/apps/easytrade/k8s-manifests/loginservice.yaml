@@ -15,30 +15,48 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: contentcreator
+  name: loginservice
   labels:
-    app: contentcreator
+    app: loginservice
 spec:
   selector:
     matchLabels:
-      app: contentcreator
+      app: loginservice
   template:
     metadata:
       labels:
-        app: contentcreator
+        app: loginservice
     spec:
       containers:
-        - name: contentcreator
-          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/contentcreator:4d5adb3
+        - name: loginservice
+          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/loginservice:4d5adb3
+          ports:
+            - containerPort: 8080
           env:
+            - name: PROXY_PREFIX
+              value: "loginservice"
             - name: MSSQL_CONNECTIONSTRING
               valueFrom:
                 configMapKeyRef:
                   name: connection-strings
-                  key: JAVA_CONNECTION_STRING
+                  key: DOTNET_CONNECTION_STRING
           resources:
             requests:
-              cpu: 10m
+              cpu: 20m
               memory: 300Mi
             limits:
               memory: 300Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loginservice
+spec:
+  type: ClusterIP
+  selector:
+    app: loginservice
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+

@@ -15,30 +15,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: contentcreator
+  name: db
   labels:
-    app: contentcreator
+    app: db
 spec:
   selector:
     matchLabels:
-      app: contentcreator
+      app: db
   template:
     metadata:
       labels:
-        app: contentcreator
+        app: db
     spec:
       containers:
-        - name: contentcreator
-          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/contentcreator:4d5adb3
+        - name: db
+          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/db:4d5adb3
+          ports:
+            - containerPort: 1433
           env:
-            - name: MSSQL_CONNECTIONSTRING
-              valueFrom:
-                configMapKeyRef:
-                  name: connection-strings
-                  key: JAVA_CONNECTION_STRING
+            - name: SA_PASSWORD
+              value: "yourStrong(!)Password"
           resources:
             requests:
-              cpu: 10m
-              memory: 300Mi
+              cpu: 40m
+              memory: 1.25Gi
             limits:
-              memory: 300Mi
+              memory: 1.25Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+spec:
+  type: ClusterIP
+  selector:
+    app: db
+  ports:
+    - name: mssql
+      port: 1433
+      targetPort: 1433

@@ -12,33 +12,41 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aggregator-service-envs
+  labels:
+    app: aggregator-service
+data:
+  OFFER_SERVICE_PROTOCOL: "http"
+  OFFER_SERVICE_HOST: "offerservice"
+  OFFER_SERVICE_PORT: "8080"
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: contentcreator
-  labels:
-    app: contentcreator
+  name: aggregator-service
 spec:
   selector:
     matchLabels:
-      app: contentcreator
+      app: aggregator-service
   template:
     metadata:
       labels:
-        app: contentcreator
+        app: aggregator-service
     spec:
       containers:
-        - name: contentcreator
-          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/contentcreator:4d5adb3
-          env:
-            - name: MSSQL_CONNECTIONSTRING
-              valueFrom:
-                configMapKeyRef:
-                  name: connection-strings
-                  key: JAVA_CONNECTION_STRING
+        - name: aggregator-service
+          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/aggregator-service:4d5adb3
+          env: []
+          envFrom:
+            - configMapRef:
+                name: aggregator-service-envs
           resources:
             requests:
               cpu: 10m
-              memory: 300Mi
+              memory: 30Mi
             limits:
-              memory: 300Mi
+              memory: 30Mi
+

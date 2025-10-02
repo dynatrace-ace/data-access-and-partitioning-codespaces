@@ -1099,7 +1099,7 @@ deployEasyTrade() {
   # Deploy easytrade manifests
   printInfo "Deploying easytrade manifests"
 
-  kubectl apply -f $REPO_PATH/.devcontainer/apps/easytrade/manifests -n easytrade
+  kubectl apply -f $REPO_PATH/.devcontainer/apps/easytrade/k8s-manifests -n easytrade
 
   # Validate pods are running
   printInfo "Waiting for all pods to start"

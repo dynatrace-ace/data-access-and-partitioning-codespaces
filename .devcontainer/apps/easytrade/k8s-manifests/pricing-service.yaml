@@ -15,30 +15,51 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: contentcreator
+  name: pricing-service
   labels:
-    app: contentcreator
+    app: pricing-service
 spec:
   selector:
     matchLabels:
-      app: contentcreator
+      app: pricing-service
   template:
     metadata:
       labels:
-        app: contentcreator
+        app: pricing-service
     spec:
       containers:
-        - name: contentcreator
-          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/contentcreator:4d5adb3
+        - name: pricing-service
+          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/pricing-service:4d5adb3
+          ports:
+            - containerPort: 8080
           env:
+            - name: PROXY_PREFIX
+              value: "pricing-service"
             - name: MSSQL_CONNECTIONSTRING
               valueFrom:
                 configMapKeyRef:
                   name: connection-strings
-                  key: JAVA_CONNECTION_STRING
+                  key: GO_CONNECTION_STRING
+          envFrom:
+            - configMapRef:
+                name: rabbitmq-vars
           resources:
             requests:
-              cpu: 10m
-              memory: 300Mi
+              cpu: 20m
+              memory: 50Mi
             limits:
-              memory: 300Mi
+              memory: 50Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pricing-service
+spec:
+  type: ClusterIP
+  selector:
+    app: pricing-service
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+

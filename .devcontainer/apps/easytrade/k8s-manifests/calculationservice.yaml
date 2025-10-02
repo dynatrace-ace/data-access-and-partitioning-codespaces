@@ -15,30 +15,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: contentcreator
+  name: calculationservice
   labels:
-    app: contentcreator
+    app: calculationservice
 spec:
   selector:
     matchLabels:
-      app: contentcreator
+      app: calculationservice
   template:
     metadata:
       labels:
-        app: contentcreator
+        app: calculationservice
     spec:
       containers:
-        - name: contentcreator
-          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/contentcreator:4d5adb3
-          env:
-            - name: MSSQL_CONNECTIONSTRING
-              valueFrom:
-                configMapKeyRef:
-                  name: connection-strings
-                  key: JAVA_CONNECTION_STRING
+        - name: calculationservice
+          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/calculationservice:4d5adb3
+          env: []
+          envFrom:
+            - configMapRef:
+                name: rabbitmq-vars
           resources:
             requests:
               cpu: 10m
-              memory: 300Mi
+              memory: 25Mi
             limits:
-              memory: 300Mi
+              memory: 25Mi
+

@@ -15,30 +15,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: contentcreator
+  name: frontend
   labels:
-    app: contentcreator
+    app: frontend
 spec:
   selector:
     matchLabels:
-      app: contentcreator
+      app: frontend
   template:
     metadata:
       labels:
-        app: contentcreator
+        app: frontend
     spec:
       containers:
-        - name: contentcreator
-          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/contentcreator:4d5adb3
-          env:
-            - name: MSSQL_CONNECTIONSTRING
-              valueFrom:
-                configMapKeyRef:
-                  name: connection-strings
-                  key: JAVA_CONNECTION_STRING
+        - name: frontend
+          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/frontend:4d5adb3
+          ports:
+            - containerPort: 3000
+          env: []
           resources:
             requests:
               cpu: 10m
-              memory: 300Mi
+              memory: 75Mi
             limits:
-              memory: 300Mi
+              memory: 75Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: ClusterIP
+  selector:
+    app: frontend
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000

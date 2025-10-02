@@ -15,30 +15,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: contentcreator
   labels:
-    app: contentcreator
+    app: loadgen
+  name: loadgen
 spec:
   selector:
     matchLabels:
-      app: contentcreator
+      app: loadgen
   template:
     metadata:
       labels:
-        app: contentcreator
+        app: loadgen
     spec:
       containers:
-        - name: contentcreator
-          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/contentcreator:4d5adb3
+        - name: loadgen
+          image: europe-docker.pkg.dev/dynatrace-demoability/docker/easytrade/loadgen:4d5adb3
           env:
-            - name: MSSQL_CONNECTIONSTRING
-              valueFrom:
-                configMapKeyRef:
-                  name: connection-strings
-                  key: JAVA_CONNECTION_STRING
+            - name: EASYTRADE_URL
+              value: "http://frontendreverseproxy-easytrade"
+            - name: RARE_VISITS_INTERVAL_MINUTES
+              value: "60"
           resources:
             requests:
-              cpu: 10m
-              memory: 300Mi
+              cpu: "1"
+              memory: 2Gi
             limits:
-              memory: 300Mi
+              memory: 2Gi
+
