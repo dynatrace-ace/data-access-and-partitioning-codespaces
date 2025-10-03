@@ -45,7 +45,7 @@
   },
   // minimal CPU when running DT components and apps.
   "hostRequirements": {
-    "cpus": 2
+    "cpus": 4
   },
   //Add recommended secrets 
   "secrets": {
