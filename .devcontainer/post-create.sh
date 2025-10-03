@@ -24,7 +24,7 @@ deployCloudNative
 # The TODO App will be deployed as a sample
 #deployTodoApp
 deployEasyTrade
-deployHipsterShop
+
 deployDynatraceConfig
 # The Astroshop keeping changes of demo.live needs certmanagerdocker
 #certmanagerInstall
