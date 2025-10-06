@@ -20,3 +20,39 @@ To spin up the environment with GitHub codespaces, go to Codespaces and then sel
 Check the configuration requirements in the docs below.
 
 ## [🧳 Start your journey here!](https://dynatrace-ace.github.io/data-access-and-partitioning-codespaces/)
+
+
+## Start
+
+cd .devcontainer 
+source ./makefile.sh && start
+
+## Delete
+
+When you are finished with your codespace, you can comfortably delete it by typing in the Terminal:
+`deleteCodespace`
+
+## Running in Local
+
+### Mac
+
+We need colima (or multipass) to run easytrade
+
+```
+Your Mac (arm64)
+└─ Colima VM (x86_64 Linux)  <-- Docker daemon lives here (context: colima)
+   ├─ dt-enablement (your dev container)
+   └─ kind-control-plane (your K8s node)
+```
+
+1. Install colima
+
+```
+brew update
+brew install lima colima lima-additional-guestagents
+brew upgrade lima colima || true
+colima delete -f || true
+colima start --arch x86_64 --memory 16 --cpu 8
+docker context use colima
+docker info | grep -E 'Context|Architecture'   # should show context: colima, Architecture: x86_64 
+```
