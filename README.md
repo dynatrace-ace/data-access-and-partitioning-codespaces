@@ -65,28 +65,3 @@ docker run hello-world
 ```
 
 4. sudo chown -R 1000:1000 ~/data-access-and-partitioning-codespaces
-
-## Running in Local
-
-### Mac
-
-We need colima (or multipass) to run easytrade
-
-```
-Your Mac (arm64)
-└─ Colima VM (x86_64 Linux)  <-- Docker daemon lives here (context: colima)
-   ├─ dt-enablement (your dev container)
-   └─ kind-control-plane (your K8s node)
-```
-
-1. Install colima
-
-```
-brew update
-brew install lima colima lima-additional-guestagents
-brew upgrade lima colima || true
-colima delete -f || true
-colima start --arch x86_64 --memory 16 --cpu 8
-docker context use colima
-docker info | grep -E 'Context|Architecture'   # should show context: colima, Architecture: x86_64 
-```
