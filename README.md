@@ -24,13 +24,47 @@ Check the configuration requirements in the docs below.
 
 ## Start
 
-cd .devcontainer 
+cd ~/data-access-and-partitioning-codespaces/.devcontainer
 source ./makefile.sh && start
 
 ## Delete
 
 When you are finished with your codespace, you can comfortably delete it by typing in the Terminal:
 `deleteCodespace`
+
+## Running in cloud
+
+1. deploy empty ace-box
+2. add ~/data-access-and-partitioning-codespaces/.devcontainer/runlocal/.env file with variables
+3. install docker
+
+```BASH
+# Requisitos
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl gnupg
+
+# Repo oficial de Docker
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" \
+| sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Iniciar y habilitar el servicio
+sudo systemctl enable --now docker
+
+# (Opcional) Usar docker sin sudo
+sudo usermod -aG docker $USER
+newgrp docker
+
+docker run hello-world
+```
+
+4. sudo chown -R 1000:1000 ~/data-access-and-partitioning-codespaces
 
 ## Running in Local
 
