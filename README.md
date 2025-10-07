@@ -40,6 +40,8 @@ It will be the easiest way to setup, but consider the following:
 
 ### Ubuntu VM
 
+#### Deploy
+
 1. Clone repo
 
 ```bash
@@ -88,20 +90,46 @@ newgrp docker
 
 ![](./docs/img/recognized_dev_container.png)
 
-5. Reopen in container
+6. Reopen in container
 
 ![](./docs/img/reopen_in_container.png)
 
-6. To exit
+7. Well done, now you're within the devcontainer and you can start your lab
+
+![](./docs/img/inside_dev_container.png)
+
+#### Exit devcontainer
+
+6. To exit devcontainer and go back to your VM, click on the bottom left green label
 
 ![](./docs/img/green_ssh_bottom_left.png)
 
-Reopen folder in SSH
+7. Reopen folder in SSH
 
 ![](./docs/img/reopen_in_ssh.png)
 
-7. Add sudo permissions?
-sudo chown -R 1000:1000 ~/data-access-and-partitioning-codespaces
+8. Check your devcontainers from the outside with docker ps
+
+![](./docs/img/devcontainer_processes.png)
+
+#### Enter existing devcontainer
+
+9. Attach running container
+
+![](./docs/img/attach_running_container.png)
+
+10. Select data-access-partitioning container
+
+![](./docs/img/dap_container.png)
+
+#### Destroy
+
+11. Check existing docker ps running
+docker ps
+
+12. Docker stop <ps>
+
+> Note: to deploy again, remember step "Reopen in container"
 
 ### Local Mac (not recommended)
 
