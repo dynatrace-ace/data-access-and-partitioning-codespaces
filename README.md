@@ -22,7 +22,7 @@ You can run the lab in different ways:
 It will be the easiest way to setup, but consider the following:
 - GitHub Free (personal accounts): 120 core hours per month (≈ 60 hours on a 2-core machine), 15 GB storage per month
 - By default, a codespace stops after 30 minutes of inactivity.
-- What Happens When You Hit the Limit? You cannot create or open new codespaces unless you set up a spending limit and payment method, Quotas reset monthly
+- What Happens When You Hit the Limit? You cannot create or open new codespaces unless you set up a spending limit and payment method, Quotas reset monthly.
 
 **Important** After finishing your lab, we recommend you to delete the codespace, so you don't run out of quotas and you can try it again if you need to!
 
@@ -40,10 +40,21 @@ It will be the easiest way to setup, but consider the following:
 
 ### Ubuntu VM
 
-1. add ~/data-access-and-partitioning-codespaces/.devcontainer/runlocal/.env file with variables
+1. Clone repo
 
-2. For local, modify devcontainer.json to 
+```bash
+git clone git clone https://github.com/dynatrace-ace/data-access-and-partitioning-codespaces.git
+```
 
+2. add `.env` file within `/runlocal` folder
+
+```bash
+~/data-access-and-partitioning-codespaces/.devcontainer/runlocal/.env
+```
+
+3. For local, modify devcontainer.json to 
+
+```json
 "runArgs": [
     "--init",
     "--privileged",
@@ -51,14 +62,37 @@ It will be the easiest way to setup, but consider the following:
     "--env-file",
     ".devcontainer/runlocal/.env"
   ],
+```
 
 > Note: don't push the changes, github codespaces doesn't need "--env-file" and ".devcontainer/runlocal/.env". This is just when you're running local
 
-3. Reopen in container
+4. Install docker
+
+```bash
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" \
+| sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl enable --now docker
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+5. `cd ~/data-access-and-partitioning-codespaces`, then run `code .`. This will open a separate tab and recognize the Dev Container
+
+![](./docs/img/recognized_dev_container.png)
+
+5. Reopen in container
 
 ![](./docs/img/reopen_in_container.png)
 
-4. To exit
+6. To exit
 
 ![](./docs/img/green_ssh_bottom_left.png)
 
@@ -66,35 +100,7 @@ Reopen folder in SSH
 
 ![](./docs/img/reopen_in_ssh.png)
 
-install docker?
-
-```BASH
-# Requisitos
-sudo apt-get update
-sudo apt-get install -y ca-certificates curl gnupg
-
-# Repo oficial de Docker
-sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
-  https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" \
-| sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
-
-sudo apt-get update
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-# Iniciar y habilitar el servicio
-sudo systemctl enable --now docker
-
-# (Opcional) Usar docker sin sudo
-sudo usermod -aG docker $USER
-newgrp docker
-
-docker run hello-world
-```
-
-4. Add sudo permissions?
+7. Add sudo permissions?
 sudo chown -R 1000:1000 ~/data-access-and-partitioning-codespaces
 
 ### Local Mac (not recommended)
