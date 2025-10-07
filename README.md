@@ -158,16 +158,6 @@ git clone https://github.com/dynatrace-ace/data-access-and-partitioning-codespac
 
 6. Run Dev Container
 
+### Deploy Monaco
 
-
-### Temp
-
-## Start
-
-cd ~/data-access-and-partitioning-codespaces/.devcontainer
-source ./makefile.sh && start
-
-## Delete
-
-When you are finished with your codespace, you can comfortably delete it by typing in the Terminal:
-`deleteCodespace`
+/workspaces/data-access-and-partitioning-codespaces && .devcontainer/monaco.sh
