@@ -73,7 +73,7 @@ spec:
     # Enables cloud-native fullstack monitoring and changes its settings
     # Cannot be used in conjunction with classic fullstack monitoring, application-only monitoring or host monitoring
     #
-    hostGroup: CLUSTERNAME
+    hostGroup: k8s_multi_prod
     
     MONITORINGMODE:
       env:
@@ -127,8 +127,9 @@ spec:
       #
       # args: []
       
-      #args:
-      #  - --set-host-group=CLUSTERNAME
+      args:
+        - "--set-host-group=k8s_multi_prod"
+        - "--set-host-tag=k8s_multi_prod"
 
       # Optional: Enables or disables automatic updates of OneAgent pods
       # By default, if a new version is available, the OneAgent pods are restart to apply the update
@@ -211,7 +212,7 @@ spec:
     # Optional: Sets the activation group for ActiveGate instances
     #
     # group: ""
-    group: CLUSTERNAME
+    # group: CLUSTERNAME
 
     # Optional: Defines a custom properties file providing either as a value or as a reference to a secret
     # If a reference to a secret is used, the key to the data must be 'customProperties'

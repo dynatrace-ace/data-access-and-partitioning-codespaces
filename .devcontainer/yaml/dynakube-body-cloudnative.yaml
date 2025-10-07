@@ -59,8 +59,9 @@
       #
       # args: []
       
-      #args:
-      #  - --set-host-group=CLUSTERNAME
+      args:
+        - "--set-host-group=k8s_multi_prod"
+        - "--set-host-tag=k8s_multi_prod"
 
       # Optional: Enables or disables automatic updates of OneAgent pods
       # By default, if a new version is available, the OneAgent pods are restart to apply the update
