@@ -5,7 +5,7 @@
     # Enables cloud-native fullstack monitoring and changes its settings
     # Cannot be used in conjunction with classic fullstack monitoring, application-only monitoring or host monitoring
     #
-    hostGroup: CLUSTERNAME
+    hostGroup: k8s_multi_prod
     
     cloudNativeFullStack:
       env:
