@@ -1,42 +1,72 @@
 <!-- markdownlint-disable-next-line -->
 
-# <img src="https://cdn.bfldr.com/B686QPH3/at/w5hnjzb32k5wcrcxnwcx4ckg/Dynatrace_signet_RGB_HTML.svg?auto=webp&format=pngg" alt="DT logo" width="30"> Dynatrace Data Access & Partitioning
-
-[![dt-badge](https://img.shields.io/badge/powered_by-DT_enablement-8A2BE2?logo=dynatrace)](https://github.com/dynatrace-wwse/enablement-codespaces-template)
-[![Downloads](https://img.shields.io/docker/pulls/shinojosa/dt-enablement?logo=docker)](https://hub.docker.com/r/shinojosa/dt-enablement)
-![Integration tests](https://github.com/dynatrace-wwse/enablement-codespaces-template/actions/workflows/integration-tests.yaml/badge.svg)
-[![Version](https://img.shields.io/github/v/release/dynatrace-wwse/enablement-codespaces-template?color=blueviolet)](https://github.com/dynatrace-wwse/enablement-codespaces-template/releases)
-[![Commits](https://img.shields.io/github/commits-since/dynatrace-wwse/enablement-codespaces-template/latest?color=ff69b4&include_prereleases)](https://github.com/dynatrace-wwse/enablement-codespaces-template/graphs/commit-activity)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?color=green)](https://github.com/dynatrace-wwse/enablement-codespaces-template/blob/main/LICENSE)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-green)](https://dynatrace-wwse.github.io/enablement-codespaces-template/)
-
----
+# <img src="https://cdn.bfldr.com/B686QPH3/at/w5hnjzb32k5wcrcxnwcx4ckg/Dynatrace_signet_RGB_HTML.svg?auto=webp&format=pngg" alt="DT logo" width="30"> Data Access & Partitioning - Dynatrace Lab
 
 The goal of this lab is to show you the best practices for configuring data access & partitioning in Dynatrace.
 
-To spin up the environment with GitHub codespaces, go to Codespaces and then select 'New with options' or directly by:
-[![clicking here](https://github.com/codespaces/badge.svg)](https://codespaces.new/dynatrace-ace/data-access-and-partitioning-codespaces?quickstart=1&machine=basicLinux32gb)
-
-Check the configuration requirements in the docs below.
-
 ## [🧳 Start your journey here!](https://dynatrace-ace.github.io/data-access-and-partitioning-codespaces/)
 
+## Get Started
 
-## Start
+### Requirements
+- 4 cores
+- 16 GB RAM
 
-cd ~/data-access-and-partitioning-codespaces/.devcontainer
-source ./makefile.sh && start
+You can run the lab in different ways:
+1. [Codespaces](#codespaces)
+2. [Ubuntu VM](#ubuntu-vm)
+3. [Local Mac](#local-mac-not-recommended)
 
-## Delete
+### Codespaces
 
-When you are finished with your codespace, you can comfortably delete it by typing in the Terminal:
-`deleteCodespace`
+It will be the easiest way to setup, but consider the following:
+- GitHub Free (personal accounts): 120 core hours per month (≈ 60 hours on a 2-core machine), 15 GB storage per month
+- By default, a codespace stops after 30 minutes of inactivity.
+- What Happens When You Hit the Limit? You cannot create or open new codespaces unless you set up a spending limit and payment method, Quotas reset monthly
 
-## Running in cloud
+**Important** After finishing your lab, we recommend you to delete the codespace, so you don't run out of quotas and you can try it again if you need to!
 
-1. deploy empty ace-box
-2. add ~/data-access-and-partitioning-codespaces/.devcontainer/runlocal/.env file with variables
-3. install docker
+1. Increase the idle time to 120 minutes, just to ensure your lab doesn't get deleted
+
+![](./docs/img/idle_codespace_setting.png)
+
+2. Create codespaces with options
+
+![](./docs/img/codespace_with_options.png)
+
+3. Configure and run
+
+4. Delete codespace to save quotas
+
+### Ubuntu VM
+
+1. add ~/data-access-and-partitioning-codespaces/.devcontainer/runlocal/.env file with variables
+
+2. For local, modify devcontainer.json to 
+
+"runArgs": [
+    "--init",
+    "--privileged",
+    "--network=host",
+    "--env-file",
+    ".devcontainer/runlocal/.env"
+  ],
+
+> Note: don't push the changes, github codespaces doesn't need "--env-file" and ".devcontainer/runlocal/.env". This is just when you're running local
+
+3. Reopen in container
+
+![](./docs/img/reopen_in_container.png)
+
+4. To exit
+
+![](./docs/img/green_ssh_bottom_left.png)
+
+Reopen folder in SSH
+
+![](./docs/img/reopen_in_ssh.png)
+
+install docker?
 
 ```BASH
 # Requisitos
@@ -64,29 +94,46 @@ newgrp docker
 docker run hello-world
 ```
 
-4. sudo chown -R 1000:1000 ~/data-access-and-partitioning-codespaces
+4. Add sudo permissions?
+sudo chown -R 1000:1000 ~/data-access-and-partitioning-codespaces
 
-## Running in Local
+### Local Mac (not recommended)
 
-### Mac
+**Due to the resources needed for the lab to run, it is recommended to use codespaces or a separate VM**
 
-We need colima (or multipass) to run easytrade
+Multipass is a good alternative if you want to run the Codespaces Framework in a lightweight VM instead of using Docker directly on macOS
 
-```
-Your Mac (arm64)
-└─ Colima VM (x86_64 Linux)  <-- Docker daemon lives here (context: colima)
-   ├─ dt-enablement (your dev container)
-   └─ kind-control-plane (your K8s node)
-```
+✅ Why Multipass?
+- It creates Ubuntu VMs easily on macOS.
+- Useful if you want an environment closer to Linux (like Codespaces).
+- Avoids conflicts with macOS dependencies.
 
-1. Install colima
+1. Install Multipass
+brew install --cask multipass
 
-```
-brew update
-brew install lima colima lima-additional-guestagents
-brew upgrade lima colima || true
-colima delete -f || true
-colima start --arch x86_64 --memory 16 --cpu 8
-docker context use colima
-docker info | grep -E 'Context|Architecture'   # should show context: colima, Architecture: x86_64 
-```
+2. Launch a VM
+multipass launch --name codespaces --memory 4G --disk 20G
+
+3. Access the VM
+multipass shell codespaces
+
+4. Install Docker & Git inside VM
+
+5. Clone the repo
+git clone https://github.com/dynatrace-ace/data-access-and-partitioning-codespaces.git
+
+6. Run Dev Container
+
+
+
+### Temp
+
+## Start
+
+cd ~/data-access-and-partitioning-codespaces/.devcontainer
+source ./makefile.sh && start
+
+## Delete
+
+When you are finished with your codespace, you can comfortably delete it by typing in the Terminal:
+`deleteCodespace`
