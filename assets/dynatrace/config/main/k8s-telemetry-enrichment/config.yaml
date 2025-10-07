@@ -1,0 +1,9 @@
+configs:
+  - id: k8s_telemetry_enrichment
+    config:
+      template: k8s_telemetry_enrichment.json
+      skip: false
+    type:
+      settings:
+        schema: builtin:kubernetes.generic.metadata.enrichment
+        scope: environment

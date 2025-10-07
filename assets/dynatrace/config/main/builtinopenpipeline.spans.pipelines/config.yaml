@@ -1,0 +1,27 @@
+configs:
+- id: routingOpenPipelineAdminControlled
+  config:
+    parameters:
+      displayName:
+        type: value
+        value: routingOpenPipelineAdminControlled
+      storageProcessors:
+        type: value
+        value:
+          - description: "Routing for AIDE_0075921"
+            matcher: 'matchesValue(dt.host_group.id,"AIDE_0075921.stage.azu") 
+                   or matchesValue(dt.host_group.id,"AIDE_0075921.uat.azu")'
+            bucketName: "main_test_bucket_monaco"
+            enabled: true
+          - description: "Routing for other askId"
+            matcher: 'true'
+            bucketName: "main_test_bucket_monaco"
+            enabled: false
+    template: routingOpenPipelineAdminControlled.json
+    skip: false
+  type:
+    settings:
+      schema: builtin:openpipeline.spans.pipelines
+      scope: environment
+      permissions:
+        allUsers: none

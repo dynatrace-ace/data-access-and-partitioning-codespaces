@@ -1,0 +1,23 @@
+{
+    "name": "environment",
+    "rules": [
+      {
+        "enabled": true,
+        "valueFormat": "{HostGroup:Name/([^_]*+)$}",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "KUBERNETES_CLUSTER_NAME",
+              "operator": "EXISTS"
+            }
+          ],
+          "pgToHostPropagation": true,
+          "pgToServicePropagation": true
+        }
+      }
+    ]
+  }
+

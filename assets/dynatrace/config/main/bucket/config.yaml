@@ -1,0 +1,10 @@
+configs:
+- id: test_bucket_monaco
+  config:
+    parameters:
+      displayName: test_bucket_monaco
+      retentionDays: 365
+      table: spans
+    template: bucket.json
+    skip: false
+  type: bucket

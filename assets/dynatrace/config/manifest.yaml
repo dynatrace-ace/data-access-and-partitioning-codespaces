@@ -1,7 +1,7 @@
 manifestVersion: 1.0
 projects:
-  - name: workshop
-    path: ./workshop
+  - name: main
+    path: ./main
 environmentGroups:
   - name: workshop-environment-group
     environments:

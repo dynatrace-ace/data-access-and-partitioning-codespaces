@@ -1,0 +1,6 @@
+{
+  "displayName": "{{.displayName}}",
+  "includedQueryLimitDays": 0,
+  "retentionDays": "{{.retentionDays}}",
+  "table": "{{.table}}"
+}

@@ -1,0 +1,26 @@
+{
+  "customId": "routingOpenPipelineAdminControlled",
+  "displayName": "{{ .displayName }}",
+  "processing": { "processors": [] },
+  "securityContext": { "processors": [] },
+  "costAllocation": { "processors": [] },
+  "productAllocation": { "processors": [] },
+  "storage": {
+    "processors": [
+      {{- range $i, $proc := .storageProcessors -}}
+      {{- if gt $i 0 }},{{ end }}
+      {
+        "id": "{{ printf "%s-storage-%d" $.displayName $i }}",
+        "type": "bucketAssignment",
+        "matcher": {{ printf "%q" $proc.matcher }},
+        "description": "{{ $proc.description }}",
+        "enabled": {{ $proc.enabled }},
+        "bucketAssignment": { "bucketName": "{{ $proc.bucketName }}" }
+      }
+      {{- end }}
+    ]
+  },
+  "metricExtraction": { "processors": [] },
+  "davis": { "processors": [] },
+  "dataExtraction": { "processors": [] }
+}

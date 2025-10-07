@@ -1,0 +1,566 @@
+{
+    "name": "component",
+    "rules": [
+      {
+        "enabled": true,
+        "valueFormat": "brokerservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "CLOUD_APPLICATION_NAME",
+              "operator": "EQUALS",
+              "stringValue": "broker-service",
+              "caseSensitive": true
+            }
+          ],
+          "pgToHostPropagation": false,
+          "pgToServicePropagation": true
+        }
+      },
+      {
+        "enabled": true,
+        "valueFormat": "brokerservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CLOUD_APPLICATION\"),entityName.equals(\"broker-service\")"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "brokerservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CONTAINER_GROUP_INSTANCE\"),fromRelationships.isCgiOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"broker-service\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "brokerservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"KUBERNETES_SERVICE\"),fromRelationships.isKubernetesSvcOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"broker-service\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "calcualationservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "CLOUD_APPLICATION_NAME",
+              "operator": "EQUALS",
+              "stringValue": "calcualationservice",
+              "caseSensitive": true
+            }
+          ],
+          "pgToHostPropagation": false,
+          "pgToServicePropagation": true
+        }
+      },
+      {
+        "enabled": true,
+        "valueFormat": "calcualationservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CLOUD_APPLICATION\"),entityName.equals(\"calcualationservice\")"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "calcualationservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CONTAINER_GROUP_INSTANCE\"),fromRelationships.isCgiOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"calcualationservice\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "calcualationservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"KUBERNETES_SERVICE\"),fromRelationships.isKubernetesSvcOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"calcualationservice\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "contentcreator",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "CLOUD_APPLICATION_NAME",
+              "operator": "EQUALS",
+              "stringValue": "contentcreator",
+              "caseSensitive": true
+            }
+          ],
+          "pgToHostPropagation": false,
+          "pgToServicePropagation": true
+        }
+      },
+      {
+        "enabled": true,
+        "valueFormat": "contentcreator",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CLOUD_APPLICATION\"),entityName.equals(\"contentcreator\")"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "contentcreator",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CONTAINER_GROUP_INSTANCE\"),fromRelationships.isCgiOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"contentcreator\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "contentcreator",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"KUBERNETES_SERVICE\"),fromRelationships.isKubernetesSvcOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"contentcreator\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "creditcardorderservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "CLOUD_APPLICATION_NAME",
+              "operator": "EQUALS",
+              "stringValue": "credit-card-order-service",
+              "caseSensitive": true
+            }
+          ],
+          "pgToHostPropagation": false,
+          "pgToServicePropagation": true
+        }
+      },
+      {
+        "enabled": true,
+        "valueFormat": "creditcardorderservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CLOUD_APPLICATION\"),entityName.equals(\"credit-card-order-service\")"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "creditcardorderservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CONTAINER_GROUP_INSTANCE\"),fromRelationships.isCgiOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"credit-card-order-service\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "creditcardorderservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"KUBERNETES_SERVICE\"),fromRelationships.isKubernetesSvcOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"credit-card-order-service\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "dbengine",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "CLOUD_APPLICATION_NAME",
+              "operator": "EQUALS",
+              "stringValue": "dbengine",
+              "caseSensitive": true
+            }
+          ],
+          "pgToHostPropagation": false,
+          "pgToServicePropagation": true
+        }
+      },
+      {
+        "enabled": true,
+        "valueFormat": "dbengine",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CLOUD_APPLICATION\"),entityName.equals(\"dbengine\")"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "dbengine",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CONTAINER_GROUP_INSTANCE\"),fromRelationships.isCgiOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"dbengine\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "dbengine",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"KUBERNETES_SERVICE\"),fromRelationships.isKubernetesSvcOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"dbengine\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "featureflagservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "CLOUD_APPLICATION_NAME",
+              "operator": "EQUALS",
+              "stringValue": "feature-flag-service",
+              "caseSensitive": true
+            }
+          ],
+          "pgToHostPropagation": false,
+          "pgToServicePropagation": true
+        }
+      },
+      {
+        "enabled": true,
+        "valueFormat": "featureflagservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CLOUD_APPLICATION\"),entityName.equals(\"feature-flag-service\")"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "featureflagservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CONTAINER_GROUP_INSTANCE\"),fromRelationships.isCgiOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"feature-flag-service\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "featureflagservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"KUBERNETES_SERVICE\"),fromRelationships.isKubernetesSvcOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"feature-flag-service\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "frontend",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "CLOUD_APPLICATION_NAME",
+              "operator": "EQUALS",
+              "stringValue": "frontend",
+              "caseSensitive": true
+            }
+          ],
+          "pgToHostPropagation": false,
+          "pgToServicePropagation": true
+        }
+      },
+      {
+        "enabled": true,
+        "valueFormat": "frontend",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CLOUD_APPLICATION\"),entityName.equals(\"frontend\")"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "frontend",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CONTAINER_GROUP_INSTANCE\"),fromRelationships.isCgiOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"frontend\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "frontend",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"KUBERNETES_SERVICE\"),fromRelationships.isKubernetesSvcOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"frontend\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "frontendreverseproxy",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "CLOUD_APPLICATION_NAME",
+              "operator": "EQUALS",
+              "stringValue": "frontendreverseproxy",
+              "caseSensitive": true
+            }
+          ],
+          "pgToHostPropagation": false,
+          "pgToServicePropagation": true
+        }
+      },
+      {
+        "enabled": true,
+        "valueFormat": "frontendreverseproxy",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CLOUD_APPLICATION\"),entityName.equals(\"frontendreverseproxy\")"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "frontendreverseproxy",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CONTAINER_GROUP_INSTANCE\"),fromRelationships.isCgiOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"frontendreverseproxy\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "frontendreverseproxy",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"KUBERNETES_SERVICE\"),fromRelationships.isKubernetesSvcOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"frontendreverseproxy\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "loadgenmanager",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "CLOUD_APPLICATION_NAME",
+              "operator": "EQUALS",
+              "stringValue": "loadgenmanager",
+              "caseSensitive": true
+            }
+          ],
+          "pgToHostPropagation": false,
+          "pgToServicePropagation": true
+        }
+      },
+      {
+        "enabled": true,
+        "valueFormat": "loadgenmanager",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CLOUD_APPLICATION\"),entityName.equals(\"loadgenmanager\")"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "loadgenmanager",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CONTAINER_GROUP_INSTANCE\"),fromRelationships.isCgiOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"loadgenmanager\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "loadgenmanager",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"KUBERNETES_SERVICE\"),fromRelationships.isKubernetesSvcOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"loadgenmanager\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "offerservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "CLOUD_APPLICATION_NAME",
+              "operator": "EQUALS",
+              "stringValue": "offerservice",
+              "caseSensitive": true
+            }
+          ],
+          "pgToHostPropagation": false,
+          "pgToServicePropagation": true
+        }
+      },
+      {
+        "enabled": true,
+        "valueFormat": "offerservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CLOUD_APPLICATION\"),entityName.equals(\"offerservice\")"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "offerservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CONTAINER_GROUP_INSTANCE\"),fromRelationships.isCgiOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"offerservice\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "offerservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"KUBERNETES_SERVICE\"),fromRelationships.isKubernetesSvcOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"offerservice\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "pricingservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "CLOUD_APPLICATION_NAME",
+              "operator": "EQUALS",
+              "stringValue": "pricing-service",
+              "caseSensitive": true
+            }
+          ],
+          "pgToHostPropagation": false,
+          "pgToServicePropagation": true
+        }
+      },
+      {
+        "enabled": true,
+        "valueFormat": "pricingservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CLOUD_APPLICATION\"),entityName.equals(\"pricing-service\")"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "pricingservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CONTAINER_GROUP_INSTANCE\"),fromRelationships.isCgiOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"pricing-service\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "pricingservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"KUBERNETES_SERVICE\"),fromRelationships.isKubernetesSvcOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"pricing-service\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "problemoperator",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "CLOUD_APPLICATION_NAME",
+              "operator": "EQUALS",
+              "stringValue": "problem-operator",
+              "caseSensitive": true
+            }
+          ],
+          "pgToHostPropagation": false,
+          "pgToServicePropagation": true
+        }
+      },
+      {
+        "enabled": true,
+        "valueFormat": "problemoperator",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CLOUD_APPLICATION\"),entityName.equals(\"problem-operator\")"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "problemoperator",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CONTAINER_GROUP_INSTANCE\"),fromRelationships.isCgiOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"problem-operator\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "problemoperator",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"KUBERNETES_SERVICE\"),fromRelationships.isKubernetesSvcOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"problem-operator\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "rabbitmq",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "CLOUD_APPLICATION_NAME",
+              "operator": "EQUALS",
+              "stringValue": "rabbitmq",
+              "caseSensitive": true
+            }
+          ],
+          "pgToHostPropagation": false,
+          "pgToServicePropagation": true
+        }
+      },
+      {
+        "enabled": true,
+        "valueFormat": "rabbitmq",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CLOUD_APPLICATION\"),entityName.equals(\"rabbitmq\")"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "rabbitmq",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CONTAINER_GROUP_INSTANCE\"),fromRelationships.isCgiOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"rabbitmq\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "rabbitmq",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"KUBERNETES_SERVICE\"),fromRelationships.isKubernetesSvcOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"rabbitmq\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "thirdpartyservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "ME",
+        "attributeRule": {
+          "entityType": "PROCESS_GROUP",
+          "conditions": [
+            {
+              "key": "CLOUD_APPLICATION_NAME",
+              "operator": "EQUALS",
+              "stringValue": "third-party-service",
+              "caseSensitive": true
+            }
+          ],
+          "pgToHostPropagation": false,
+          "pgToServicePropagation": true
+        }
+      },
+      {
+        "enabled": true,
+        "valueFormat": "thirdpartyservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CLOUD_APPLICATION\"),entityName.equals(\"third-party-service\")"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "thirdpartyservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"CONTAINER_GROUP_INSTANCE\"),fromRelationships.isCgiOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"third-party-service\"))"
+      },
+      {
+        "enabled": true,
+        "valueFormat": "thirdpartyservice",
+        "valueNormalization": "Leave text as-is",
+        "type": "SELECTOR",
+        "entitySelector": "type(\"KUBERNETES_SERVICE\"),fromRelationships.isKubernetesSvcOfCa(type(\"CLOUD_APPLICATION\"),entityName.equals(\"third-party-service\"))"
+      }
+    ]
+  }
+

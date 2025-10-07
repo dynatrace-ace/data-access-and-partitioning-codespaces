@@ -1,0 +1,10 @@
+{
+  "rules": [
+    {
+      "type": "LABEL",
+      "source": "kubernetes.io/metadata.name",
+      "primaryGrailTag": false,
+      "target": "dt.security_context"
+    }
+  ]
+}
