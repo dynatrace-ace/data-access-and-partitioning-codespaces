@@ -5,7 +5,34 @@
 #  needed.                                                             #
 # ======================================================================
 
+# transform dynatrace URL to apps URL
+# Usage: transformToAppsUrl "https://san35248.sprint.dynatracelabs.com"
+# Output: "https://san35248.sprint.apps.dynatracelabs.com"
+# Sets environment variable: APPS_URL
+transformToAppsUrl() {
+  local url="$1"
+  
+  if [[ -z "$url" ]]; then
+    printError "❌ URL parameter is required"
+    return 1
+  fi
+  
+  # Check if URL contains dynatracelabs.com
+  if [[ "$url" != *"dynatrace"* ]]; then
+    printWarn "⚠️  URL does not contain 'dynatracelabs.com', returning original URL"
+    echo "$url"
+    return 0
+  fi
+  
+  # Transform the URL by adding 'apps.' before 'dynatracelabs.com'
+  local transformed_url="${url//dynatrace/apps.dynatrace}"
+  
+  # Store the result as an environment variable
+  export DT_TENANT_3GEN="$transformed_url"
+  
+  printInfo "✅ APPS_URL environment variable set to: $DT_TENANT_3GEN"
 
+}
 
 # deploy dynatrace configurations (monaco)
 deployDynatraceConfig() {
@@ -108,3 +135,4 @@ _check_env_var() {
     return 0
   fi
 }
+

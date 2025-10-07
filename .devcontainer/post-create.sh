@@ -5,6 +5,8 @@ source .devcontainer/util/source_framework.sh
 
 setUpTerminal
 
+transformToAppsUrl $DT_TENANT
+
 startKindCluster
 
 installK9s

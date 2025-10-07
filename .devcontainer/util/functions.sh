@@ -655,7 +655,7 @@ deployCloudNative() {
     
     # we wait for the AG to be scheduled
     #TODO: Fix this part once active gate is working again
-    #waitForPod dynatrace activegate
+    waitForPod dynatrace activegate
     
     waitForAllReadyPods dynatrace
   else

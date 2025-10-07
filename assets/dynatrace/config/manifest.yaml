@@ -8,7 +8,7 @@ environmentGroups:
       - name: workshop-environment
         url:
           type: environment
-          value: TENANT_URL
+          value: DT_TENANT_3GEN
         auth:
           token:
             type: environment
@@ -21,4 +21,5 @@ environmentGroups:
               type: environment
               name: CLIENT_SECRET
             tokenEndpoint:
+              type: environment
               value: SSO_ENDPOINT
