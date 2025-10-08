@@ -1,10 +1,12 @@
---8<-- "snippets/index.js"
+## Introduction
 
---8<-- "snippets/disclaimer.md"
+Imagine you're stepping into a real world engagement with a customer using Dynatrace Classic. The customer is interested in starting to setup the foundations of the 3rd-Gen Platform. 
 
-## Introduction hola
+### Where should I start?
 
-Imagine you're stepping into a real world engagement with a customer who is preparing to migrate from gen 2 to the gen 3 platform. The main question is **"what do I need to do"?**
+
+
+
 
 The customer has a Kubernetes cluster running two applications:
 

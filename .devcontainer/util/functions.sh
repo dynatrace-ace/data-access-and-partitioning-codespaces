@@ -1094,12 +1094,8 @@ deployEasyTrade() {
   # Create easytrade namespace
   printInfo "Creating 'easytrade' namespace"
 
-  kubectl create namespace easytrade && \
-  kubectl label namespace easytrade \
-    team=alpha \
-    stage=prod \
-    app.kubernetes.io/part-of=easytrade \
-    app.kubernetes.io/version=1.0.2
+  kubectl create namespace easytrade
+  kubectl label namespace easytrade team=alpha stage=prod app.kubernetes.io/part-of=easytrade app.kubernetes.io/version=1.0.2
 
   # Deploy easytrade manifests
   printInfo "Deploying easytrade manifests"
