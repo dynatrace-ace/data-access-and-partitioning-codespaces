@@ -149,6 +149,12 @@ docker ps
 
 > Note: to deploy again, remember step "Reopen in container"
 
+13. Force full deletion with
+
+kind delete cluster
+docker volume rm $(docker volume ls -q | grep kind)
+
+
 ### Local Mac (not recommended)
 
 **Due to the resources needed for the lab to run, it is recommended to use codespaces or a separate VM**
