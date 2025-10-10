@@ -60,7 +60,13 @@ The lab has been tested end-to-end using a **sprint** tenant. While we recommend
 9. Within your Dynatrace tenant, go to `Access Tokens`, and generate a new one with the following permissions. You can give the token any name. Create the token and save it temporarely with you
 
 ```bash
-ReadConfig, WriteConfig, InstallerDownload
+ReadConfig
+WriteConfig
+InstallerDownload
+activeGateTokenManagement.create
+metrics.ingest
+logs.ingest
+openTelemetryTrace.ingest
 ```
 
 10. Go to Account Management, time to create an OAuth Token, with the following scopes:
@@ -75,6 +81,9 @@ storage:bucket-definitions:read
 storage:bucket-definitions:write
 openpipeline:configurations:read
 openpipeline:configurations:write
+settings:objects:read
+settings:objects:write
+settings:schemas:read
 ```
 
 !!! warning
