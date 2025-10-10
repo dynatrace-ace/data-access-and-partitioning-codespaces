@@ -1,3 +1,6 @@
+
+## Delete Codespace Environment
+
 --8<-- "snippets/cleanup.js"
 
 
@@ -12,3 +15,11 @@ You may also want to deactivate or delete the API token needed for this lab.
 <div class="grid cards" markdown>
 - [Ressources:octicons-arrow-right-24:](resources.md)
 </div>
+
+## Delete Dynatrace Tenant
+
+You can delete your tenant previously generated if you don't need it anymore. Or keep it if you will use it in the future for more labs ❤️
+
+![](img/lifecycle.png)
+
+

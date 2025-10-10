@@ -2,15 +2,21 @@
 
 # <img src="https://cdn.bfldr.com/B686QPH3/at/w5hnjzb32k5wcrcxnwcx4ckg/Dynatrace_signet_RGB_HTML.svg?auto=webp&format=pngg" alt="DT logo" width="30"> Data Access & Partitioning - Dynatrace Lab
 
-The goal of this lab is to show you the best practices for configuring data access & partitioning in Dynatrace.
+The goal of this lab is for you to learn best practices for configuring data access & partitioning in Dynatrace.
 
 ## [🧳 Start your journey here!](https://dynatrace-ace.github.io/data-access-and-partitioning-codespaces/)
 
 ## Get Started
 
-### Requirements
-- 4 cores
-- 16 GB RAM
+1. Dynatrace sprint tenant, with Account Management access
+- (optional) personal 2nd email. For you to invite to the tenant as a "read user"
+- Dynatrace token (explained below how to generate it)
+
+
+
+"DataExport", "InstallerDownload", "activeGateTokenManagement.create", "entities.read", "settings.read", "settings.write", "ReadConfig", "WriteConfig"]
+
+
 
 You can run the lab in different ways:
 1. [Codespaces](#codespaces)
