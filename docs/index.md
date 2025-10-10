@@ -1,6 +1,6 @@
-## Pre-requisites (estimated time 15min)
+## Pre-requisites (5-15 minutes)
 
-### Dynatrace Tenant
+### 🏠 Dynatrace Tenant
 
 !!! note
     If you already have your own tenant, you can jump to [generate tokens](#generate-tokens)
@@ -55,7 +55,7 @@ The lab has been tested end-to-end using a **sprint** tenant. While we recommend
     <img src="img/dpssoon.png" width="80%">
     </p>
 
-### Generate Tokens
+### 🔑 Generate Tokens
 
 9. Within your Dynatrace tenant, go to `Access Tokens`, and generate a new one with the following permissions. You can give the token any name. Create the token and save it temporarely with you
 

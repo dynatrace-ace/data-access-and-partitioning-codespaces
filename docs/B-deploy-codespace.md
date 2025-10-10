@@ -12,18 +12,31 @@ CLIENT_SECRET=<dt-secret-acc-mgmt>
 SSO_ENDPOINT=https://sso-sprint.dynatracelabs.com/sso/oauth2/token
 ```
 
-## 🚀 Deploy
+## 🚀 Deploy (8 minutes)
 
 1. Click here to start configuring your codespace 
   
     [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dynatrace-ace/data-access-and-partitioning-codespaces?quickstart=1&machine=basicLinux32gb){target="\_blank"}
 
+    
 ## ☕️ Wait and Learn
 
-We know your time is very valuable. This codespace takes around 6 minutes to be fully operational. A local Kubernetes ([kind](https://kind.sigs.k8s.io/){target="\_blank"}) cluster monitored by Dynatrace will be configured and in it a sample application. 
+        
+We know your time is very valuable. This codespace takes around 8 minutes to be fully operational. A local Kubernetes [kind]https://kind.sigs.k8s.io/ cluster monitored by Dynatrace will be configured and in it a sample application. 
 
-## 🔎 Explore 
+    
+## ✅ Validate 
 
-Your Codespace has now deployed
+After 8 minutes, your Codespace should be ready
 
-ADD VALIDATION SCREENSHOT
+![](./img/deployment-ready.png)
+
+Check if the monitoring is functional, and that the Management Zone has been created in your environment.
+
+![](./img/host-mz.png)
+
+> Note: A Management Zone is provided intially to simulate an "existing customer" scenario, during the lab we will learn a new mechanism for Access Control & Segmentation
+
+<div class="grid cards" markdown>
+- [Time to Start the Lab :octicons-arrow-right-24:](C-introduction.md)
+</div>

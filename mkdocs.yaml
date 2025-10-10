@@ -4,14 +4,15 @@ repo_url: "https://github.com/dynatrace-ace/data-access-and-partitioning-codespa
 nav:
   - "A. Before You Begin": index.md
   - "B. Deploy Codespace": B-deploy-codespace.md
-  - "C. Lab Introduction": C-instroduction.md
-  - "D. Slice And Dice": D-slice-and-dice.md
+  - "C. Lab Introduction": C-introduction.md
+  - "D. Slice & Dice": D-slice-and-dice.md
   - "E. Metadata Enrichment": E-metadata-enrichment.md
   - "F. Data Access": F-data-access.md
   - "G. Data Segmentation": G-data-segmentation.md
-  - "H. Data Partitioning and Cost Allocation": H-data-partitioning-and-cost-allocation.md
+  - "H. Data Partitioning & Cost Allocation": H-data-partitioning-and-cost-allocation.md
   - "I. Cleanup": I-cleanup.md
   - "J. Learn More": J-learn-more.md
+  - "K. Develop": K-develop.md
 theme:
   name: material
   custom_dir: docs/overrides
