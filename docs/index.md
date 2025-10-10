@@ -84,6 +84,7 @@ openpipeline:configurations:write
 settings:objects:read
 settings:objects:write
 settings:schemas:read
+app-engine:apps:run
 ```
 
 !!! warning
@@ -102,6 +103,7 @@ settings:schemas:read
 
 ```bash
 DT_TENANT=https://abc12345.sprint.dynatracelabs.com
+DT_TENANT_3GEN=https://abc12345.sprint.apps.dynatracelabs.com
 # Dt tenant stuff
 DT_OPERATOR_TOKEN=<dt-access-token>
 DT_INGEST_TOKEN=<dt-access-token>
