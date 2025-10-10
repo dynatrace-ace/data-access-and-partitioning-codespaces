@@ -938,6 +938,11 @@ docker ps</p>
 <blockquote>
 <p>Note: to deploy again, remember step "Reopen in container"</p>
 </blockquote>
+<ol>
+<li>Force full deletion with</li>
+</ol>
+<p>kind delete cluster
+docker volume rm $(docker volume ls -q | grep kind)</p>
 <h3 id="local-mac-not-recommended">Local Mac (not recommended)<a class="headerlink" href="#local-mac-not-recommended" title="Permanent link">#</a></h3>
 <p><strong>Due to the resources needed for the lab to run, it is recommended to use codespaces or a separate VM</strong></p>
 <p>Multipass is a good alternative if you want to run the Codespaces Framework in a lightweight VM instead of using Docker directly on macOS</p>
