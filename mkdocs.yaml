@@ -2,14 +2,14 @@ site_name: "Dynatrace Data Access & Partitioning"
 repo_name: "View Code on GitHub"
 repo_url: "https://github.com/dynatrace-ace/data-access-and-partitioning-codespaces"
 nav:
-  - "A. Get Started": index.md
+  - "A. Before You Begin": index.md
   - "B. Deploy Codespace": B-deploy-codespace.md
-  - "C. Introduction": C-instroduction.md
+  - "C. Lab Introduction": C-instroduction.md
   - "D. Slice And Dice": D-slice-and-dice.md
-  - "E. Metadata enrichment": E-metadata-enrichment.md
+  - "E. Metadata Enrichment": E-metadata-enrichment.md
   - "F. Data Access": F-data-access.md
-  - "G. Data segmentation": G-data-segmentation.md
-  - "H. Data partitioning and Cost allocation": H-data-partitioning-and-cost-allocation.md
+  - "G. Data Segmentation": G-data-segmentation.md
+  - "H. Data Partitioning and Cost Allocation": H-data-partitioning-and-cost-allocation.md
   - "I. Cleanup": I-cleanup.md
   - "J. Learn More": J-learn-more.md
 theme:
