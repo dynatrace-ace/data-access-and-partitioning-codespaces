@@ -1,6 +1,7 @@
 
 
 
+
 ## Introduction
 
 Imagine you're stepping into a real world engagement with a customer using Dynatrace Classic. The customer is interested in starting to setup the foundations of the 3rd-Gen Platform. 

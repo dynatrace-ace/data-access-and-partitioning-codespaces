@@ -16,34 +16,44 @@ The lab has been tested end-to-end using a **sprint** tenant. While we recommend
 2. type _hey_
 
     <p align="left">
-    <img src="img/hey.png" width="60%">
+    <img src="img/hey.png" width="70%">
     </p>
 
 3. type _tenant_, wait a few seconds and select the 1st option
 
     <p align="left">
-    <img src="img/1st-option.png" width="60%">
+    <img src="img/1st-option.png" width="70%">
     </p>
 
 4. Pick sprint, and submit
 
-![](img/pick-sprint.png)
+    <p align="left">
+    <img src="img/pick-sprint.png" width="60%">
+    </p>
 
 5. Wait for 5min, your tenant details will appear. Once that happens type _hey_ again
 
-![](img/hey-again.png)
+    <p align="left">
+    <img src="img/hey-again.png" width="70%">
+    </p>
 
 6. Type dps, and click on the workflow
 
-![](img/type-dps.png)
+    <p align="left">
+    <img src="img/type-dps.png" width="70%">
+    </p>
 
 7. Enter your tenant details and continue
 
-![](img/tenantdetailsandsubmit.png)
+    <p align="left">
+    <img src="img/tenantdetailsandsubmit.png" width="60%">
+    </p>
 
 8. DPS should be available soon
 
-![](img/dpssoon.png)
+    <p align="left">
+    <img src="img/dpssoon.png" width="80%">
+    </p>
 
 ### Generate Tokens
 
@@ -55,19 +65,27 @@ ReadConfig, WriteConfig, InstallerDownload
 
 10. Go to Account Management, time to create an OAuth Token, with the following scopes:
 
+    <p align="left">
+    <img src="img/create-oauth.png" width="70%">
+    </p>
+
 ```bash
-storage:buckets:read, storage:bucket-definitions:read, storage:bucket-definitions:write
-openpipeline:configurations:read, openpipeline:configurations:write
+storage:buckets:read
+storage:bucket-definitions:read
+storage:bucket-definitions:write
+openpipeline:configurations:read
+openpipeline:configurations:write
 ```
 
-!!! note
+!!! warning
     If you've created the tenant following the [previous steps](#dynatrace-tenant), the admin user is not your dynatrace email, but the one provided within the details in the slack conversation with the bot.
 
-    ![](img/hey-again.png)    
+    <p align="left">
+    <img src="img/hey-again.png" width="70%">
+    </p>    
 
     This means that you should be able to access Account Management with the user details provided via slack
 
-![](img/create-oauth.png)
 
 11. Grab client id, secret and account URN, save it temporarely with you
 
@@ -80,22 +98,20 @@ DT_OPERATOR_TOKEN=<dt-access-token>
 DT_INGEST_TOKEN=<dt-access-token>
 MONACO_TOKEN=<dt-access-token>
 ## Acc Mgmt stuff
-CLIENT_ID=<dt0s02.54N2UVVM>
+CLIENT_ID=<client-id-acc-mgmt>
 CLIENT_SECRET=<dt-secret-acc-mgmt>
 SSO_ENDPOINT=https://sso-sprint.dynatracelabs.com/sso/oauth2/token
 ```
 
 
-### All Set!
+## All Set!
 
-Well done! With the tenant, and all the collected variables, you should be ready to start the Data Access & Partitioning lab at any time.
-
-Now just wait until the time of the Hands-on Training
+Well done! With the tenant, and all the collected variables, you should be ready to start the Data Access & Partitioning lab at any time. Now just wait until the time of the Hands-on Training
 
 !!! warning
-    Do not continue creating the Codespace. Codespaces run for a limited amount of time (cores per hour), so we will run the codespace right before the lab start
+    Do not create the Codespace yet. Codespaces run for a limited amount of time (cores per hour), so we will run the codespace right before the lab start.
 
 
-Our lab will run in Codespaces. We need to provide the following variables during the configuration. Get each one and keep them in a notepad temporarely
-
-![](img/variables_codespaces.png)
+<div class="grid cards" markdown>
+- [To Deploy Codespaces (When the time comes :D) :octicons-arrow-right-24:](B-deploy-codespace.md)
+</div>
