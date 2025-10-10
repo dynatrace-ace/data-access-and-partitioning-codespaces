@@ -10,9 +10,9 @@ environmentGroups:
           type: environment
           value: DT_TENANT_3GEN
         auth:
-          token:
-            type: environment
-            name: MONACO_TOKEN
+          # token:
+          #   type: environment
+          #   name: MONACO_TOKEN
           oAuth:
             clientId:
               type: environment
