@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../3-instroduction/">
+        <link rel="prev" href="../G-data-segmentation/">
       
       
-        <link rel="next" href="../5-metadata-enrichment/">
+        <link rel="next" href="../I-cleanup/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>4. Slice And Dice - Dynatrace Data Access & Partitioning</title>
+        <title>H. Data partitioning and Cost allocation - Dynatrace Data Access & Partitioning</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slice-dice" class="md-skip">
+        <a href="#data-partitioning-and-cost-allocation" class="md-skip">
           Skip to content
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4. Slice And Dice
+              H. Data partitioning and Cost allocation
             
           </span>
         </div>
@@ -275,7 +275,7 @@
         
   
   <span class="md-ellipsis">
-    1. Get Started
+    A. Get Started
   </span>
   
 
@@ -291,11 +291,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-deploy-codespace/" class="md-nav__link">
+      <a href="../B-deploy-codespace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    2. Deploy Codespace
+    B. Deploy Codespace
   </span>
   
 
@@ -311,11 +311,91 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-instroduction/" class="md-nav__link">
+      <a href="../C-instroduction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    3. Introduction
+    C. Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../D-slice-and-dice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    D. Slice And Dice
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../E-metadata-enrichment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    E. Metadata enrichment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../F-data-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    F. Data Access
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../G-data-segmentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G. Data segmentation
   </span>
   
 
@@ -342,7 +422,7 @@
           
   
   <span class="md-ellipsis">
-    4. Slice And Dice
+    H. Data partitioning and Cost allocation
   </span>
   
 
@@ -353,7 +433,7 @@
         
   
   <span class="md-ellipsis">
-    4. Slice And Dice
+    H. Data partitioning and Cost allocation
   </span>
   
 
@@ -373,75 +453,81 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#slice-dice" class="md-nav__link">
+  <a href="#data-partitioning-and-cost-allocation" class="md-nav__link">
     <span class="md-ellipsis">
-      Slice &amp; Dice
+      Data Partitioning and Cost Allocation
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Slice & Dice">
+    <nav class="md-nav" aria-label="Data Partitioning and Cost Allocation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#objectives" class="md-nav__link">
+  <a href="#learning-objectives" class="md-nav__link">
     <span class="md-ellipsis">
-      Objectives
+      🎯 Learning Objectives
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-1-understand-the-requirements-interactive-discovery" class="md-nav__link">
+  <a href="#data-partitioning-bucket-strategy-for-logs" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Understand the 📋 Requirements (Interactive Discovery)
+      Data Partitioning – Bucket Strategy for Logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Partitioning – Bucket Strategy for Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#what-now" class="md-nav__link">
+  <a href="#exercise-1-analyze-ingestion-volume" class="md-nav__link">
     <span class="md-ellipsis">
-      WHAT NOW?
+      Exercise 1: Analyze Ingestion Volume
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#discover-dimensions" class="md-nav__link">
+  <a href="#exercise-2-design-bucket-strategy" class="md-nav__link">
     <span class="md-ellipsis">
-      Discover 📐 Dimensions
+      Exercise 2: Design Bucket Strategy
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#technologies" class="md-nav__link">
+  <a href="#exercise-3-connect-buckets-to-access-control" class="md-nav__link">
     <span class="md-ellipsis">
-      🖥️ Technologies
+      Exercise 3: Connect Buckets to Access Control
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#map-requirements-with-dimensions" class="md-nav__link">
+  <a href="#exercise-4-cost-allocation" class="md-nav__link">
     <span class="md-ellipsis">
-      Map requirements with dimensions
+      Exercise 4: Cost Allocation
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -465,91 +551,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-metadata-enrichment/" class="md-nav__link">
+      <a href="../I-cleanup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    5. Metadata enrichment
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../6-data-access/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6. Data Access
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../7-data-segmentation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    7. Data segmentation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../8-data-partitioning-and-cost-allocation.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    8. Data partitioning and Cost allocation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cleanup/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    9. Cleanup
+    I. Cleanup
   </span>
   
 
@@ -583,75 +589,81 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#slice-dice" class="md-nav__link">
+  <a href="#data-partitioning-and-cost-allocation" class="md-nav__link">
     <span class="md-ellipsis">
-      Slice &amp; Dice
+      Data Partitioning and Cost Allocation
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Slice & Dice">
+    <nav class="md-nav" aria-label="Data Partitioning and Cost Allocation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#objectives" class="md-nav__link">
+  <a href="#learning-objectives" class="md-nav__link">
     <span class="md-ellipsis">
-      Objectives
+      🎯 Learning Objectives
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-1-understand-the-requirements-interactive-discovery" class="md-nav__link">
+  <a href="#data-partitioning-bucket-strategy-for-logs" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Understand the 📋 Requirements (Interactive Discovery)
+      Data Partitioning – Bucket Strategy for Logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Partitioning – Bucket Strategy for Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#what-now" class="md-nav__link">
+  <a href="#exercise-1-analyze-ingestion-volume" class="md-nav__link">
     <span class="md-ellipsis">
-      WHAT NOW?
+      Exercise 1: Analyze Ingestion Volume
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#discover-dimensions" class="md-nav__link">
+  <a href="#exercise-2-design-bucket-strategy" class="md-nav__link">
     <span class="md-ellipsis">
-      Discover 📐 Dimensions
+      Exercise 2: Design Bucket Strategy
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#technologies" class="md-nav__link">
+  <a href="#exercise-3-connect-buckets-to-access-control" class="md-nav__link">
     <span class="md-ellipsis">
-      🖥️ Technologies
+      Exercise 3: Connect Buckets to Access Control
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#map-requirements-with-dimensions" class="md-nav__link">
+  <a href="#exercise-4-cost-allocation" class="md-nav__link">
     <span class="md-ellipsis">
-      Map requirements with dimensions
+      Exercise 4: Cost Allocation
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -678,148 +690,94 @@
   
 
 
-  <h1>4. Slice And Dice</h1>
+  <h1>H. Data partitioning and Cost allocation</h1>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  dynatrace.sendBizEvent('page_load', {"page": "4. Slice And Dice"});
-});
-</script>
-
-<h2 id="slice-dice">Slice &amp; Dice<a class="headerlink" href="#slice-dice" title="Permanent link">#</a></h2>
-<h3 id="objectives">Objectives<a class="headerlink" href="#objectives" title="Permanent link">#</a></h3>
+<h2 id="data-partitioning-and-cost-allocation">Data Partitioning and Cost Allocation<a class="headerlink" href="#data-partitioning-and-cost-allocation" title="Permanent link">#</a></h2>
+<p>Since easytrade is growing fast and multiple teams are accessing logs and metrics across environments, performance and cost are becoming critical concerns.
+To stay ahead, Easytrade engineers need to implement a bucket strategy to optimize log storage and query performance. At the same time, they’re introducing cost allocation tagging to track usage across teams and applications.
+This lab will guide you through designing a log bucket strategy and applying cost allocation metadata to a VM — helping Easytrade scale smart, not just fast.</p>
+<h3 id="learning-objectives">🎯 Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">#</a></h3>
 <ul>
-<li>Work with an existing customer scenario presented previously.</li>
-<li>Learn how to extract and map:</li>
-<li>📋 Requirements</li>
-<li>📐 Dimensions</li>
-<li>🖥️ Technologies</li>
+<li>Understand how buckets impact data retention, query performance, and cost.</li>
+<li>Design a log bucket strategy based on ingestion volume and dimensions.</li>
+<li>Learn how to apply cost allocation metadata using <code>dt.security_context</code>, <code>dt.cost.product</code>, and <code>dt.cost.costcenter</code>.</li>
 </ul>
-<h3 id="step-1-understand-the-requirements-interactive-discovery">Step 1: Understand the 📋 Requirements (Interactive Discovery)<a class="headerlink" href="#step-1-understand-the-requirements-interactive-discovery" title="Permanent link">#</a></h3>
-<p>The customer requirements are:</p>
+<h3 id="data-partitioning-bucket-strategy-for-logs">Data Partitioning – Bucket Strategy for Logs<a class="headerlink" href="#data-partitioning-bucket-strategy-for-logs" title="Permanent link">#</a></h3>
+<p>Why do buckets matter?</p>
 <ul>
-<li>Teams should only access their own apps, those apps being easytrade and hipstershop. This includes ALL DATA.</li>
-<li>Both easytrade and hipstershop logs need a separate bucket. Think about routing rules for logs and their respective buckets considering that everything is deployed in a kubernetes environment.</li>
-<li>Customers needs to be able to easily navigate through Dynatrace interface and see their respective apps as well as app signals.</li>
-<li>Costs need to be split by each application to understand how much each team is spending on Observability overall.</li>
+<li>Data Retention: Controls how long logs are stored - main use!</li>
+<li>Query Performance: Targeted buckets reduce scan time.</li>
+<li>Cost Efficiency: Less scan = lower DQL costs.</li>
 </ul>
-<h3 id="what-now">WHAT NOW?<a class="headerlink" href="#what-now" title="Permanent link">#</a></h3>
-<p><strong>What are some questions you would ask yourself before doing the hands on work?</strong></p>
-<details>
-  <summary>Here's how you get there...</summary>
-
-#### 🔐 Access Control
-
-Goal: Understand who should access what data. Think about all questions that you need to ask your customer to uncover this. For example:
-
-- Who should be able to access which data sets?
-- Are there any restrictions based on data sensitivity or compliance?
-- Do different teams need isolated views of their own applications?
-- Do you need to go more granular than just the application view?
-
-#### 🧱 Partitioning (Bucket Strategy)
-
-Goal: Identify how different signals should be stored and if they should be separated.
-
-- Can you think of reasons why logs might need to be stored in separate buckets?
-- What about log retention: should all logs be kept for the same duration? Usually that's not the case.
-- Based on log volume, would query performance be affected?
-- Could separating logs into their respective application buckets help with cost control? Do you think this is best practice?
-
-#### 🎯 Segmentation
-
-Goal: Determine how data should be filtered and grouped for visibility.
-
-- What would be the best way to split your customer's data for visibility?
-- Would you like to filter by app, environment, region, or business unit? What do you think is the best approach?
-- How would this affect your data access?
-
-> Think about the move from Management Zones to IAM + Segments. What can people have access to vs what can they only filter on?
-
-#### 💰 Cost Allocation
-
-Goal: Understand how observability costs should be tracked and distributed.
-
-- How would your customer like to allocate costs?
-- Should costs be split by application, team, or department?
-- Do you need a chargeback or showback model for budgeting?
-
-</details>
-
-<h3 id="discover-dimensions">Discover 📐 Dimensions<a class="headerlink" href="#discover-dimensions" title="Permanent link">#</a></h3>
+<p>You could technically rely on the default buckets, without creating custom ones. The advantage would be a reduced configuration management, but the drawback would be a decreased performance &amp; costs. That’s the trade-off when desiging your bucket strategy.</p>
+<p>Keep that in mind especially for small accounts, you don’t want to overcomplicate the solution. But for Enterprise accounts, a bucket strategy is required.</p>
+<p><img alt="" src="../img/content/ingest-volume-buckets.png" /></p>
+<h4 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h4>
+<p><strong>Small scale customer ( &lt; 2TB/day )</strong></p>
+<p>If your customer has a low ingestion volume (e.g., less than 2 TB/day), they’ll likely operate within the default limit of 80 buckets per environment. In this case:</p>
+<ul>
+<li>Avoid creating too many buckets — especially at the team level.</li>
+<li>Instead, consider using record-level permissions within a few shared buckets.</li>
+<li>Focus on functional separation — split logs based on their purpose (e.g., infrastructure vs. application logs), rather than ownership.</li>
+</ul>
+<p>This approach keeps configuration simple and avoids unnecessary overhead.</p>
+<p><strong>Large scale customer (250-1000 buckets)</strong></p>
+<p>For enterprise customers with higher ingestion volumes and extended bucket limits:</p>
+<ul>
+<li>A multi-bucket strategy becomes essential.</li>
+<li>Buckets should be designed to support:</li>
+<li>Data retention policies</li>
+<li>Query performance optimization</li>
+<li>Cost control</li>
+<li>Access control per team or business unit</li>
+</ul>
+<p>Use meaningful dimensions like <code>app</code>, <code>business_unit</code>, or <code>stage</code> to partition logs.</p>
 <blockquote>
-<p>💡 Dimensions = metadata used to tag and organize observability data.</p>
+<p>💡 Remember: Custom buckets are primarily designed for data retention, but they also play a key role in access control and cost efficiency.</p>
 </blockquote>
-<p>Instructions:</p>
+<h4 id="exercise-1-analyze-ingestion-volume">Exercise 1: Analyze Ingestion Volume<a class="headerlink" href="#exercise-1-analyze-ingestion-volume" title="Permanent link">#</a></h4>
+<p>Use dimensions like app, stage, or team to estimate log volume.</p>
+<p>Review the customer’s log ingestion volume per app. You can do that by fetching all logs for your k8s cluster and then applying any of the created segments that will lower the result size as well as improve the performance.</p>
+<p><strong>Think about how you would approach a customer with this kind of scenario. How would you split the logs? Would your customer want a standardized bucket approach per team? Or do they work more in a "purpose" fashion where logs are stored in different buckets based on their use/purpose? Or even solely based on the amount of data stored?</strong></p>
+<h4 id="exercise-2-design-bucket-strategy">Exercise 2: Design Bucket Strategy<a class="headerlink" href="#exercise-2-design-bucket-strategy" title="Permanent link">#</a></h4>
+<p>Choose the right dimension to partition logs - in this case, we can go with the namespace name.</p>
 <ol>
-<li>Copy the notebook: https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e</li>
-<li>Explore metadata sources:</li>
-<li>Host Groups</li>
-<li>MZ rules</li>
-<li>Tag Rules
-     Look for tags that reveal dimensions like platform, app, stage, team, etc.</li>
+<li>Go to Settings &gt; Storage Management</li>
+<li>Click on "+Bucket"</li>
+<li>Create a new custom bucket for easytrade logs and choose your retention</li>
+<li>Go to Settings &gt; Process and Contextualize &gt; Logs</li>
+<li>Add a new dynamic routing rule with a route = <code>k8s.namespace.name == "easytrade"</code></li>
+<li>Add a new pipeline and in the last stage of the pipeline, add the bucket asignment rule.</li>
+<li>Fetch the logs again and check that your rule works.</li>
 </ol>
-<p>Write down the dimensions you discover:</p>
-<ul>
-<li>
-<hr />
-</li>
-<li>
-<hr />
-</li>
-<li>
-<hr />
-</li>
-</ul>
-<h3 id="technologies">🖥️ Technologies<a class="headerlink" href="#technologies" title="Permanent link">#</a></h3>
-<p>Find out underlying technologies -&gt; in this case, we have K8s.</p>
 <blockquote>
-<p>💡 Understand the infrastructure to enrich observability data.</p>
+<p>Please note - this is not an official recommendation for every customer scenario. Handling large buckets based on a namespace in a customer environment of many k8s clusters is most likely not a good idea if you're trying to accomplish a scalable approach. Think of using k8s cluster level if needed.</p>
 </blockquote>
-<p>🔍 Questions to Ask</p>
+<h4 id="exercise-3-connect-buckets-to-access-control">Exercise 3: Connect Buckets to Access Control<a class="headerlink" href="#exercise-3-connect-buckets-to-access-control" title="Permanent link">#</a></h4>
+<p>Use IAM to restrict log access by bucket.</p>
+<h4 id="exercise-4-cost-allocation">Exercise 4: Cost Allocation<a class="headerlink" href="#exercise-4-cost-allocation" title="Permanent link">#</a></h4>
+<p>Dynatrace provides full-stack observability, which means cost allocation must account for:</p>
 <ul>
-<li>What cloud providers are used? (e.g., AWS, GCP, on-prem)</li>
-<li>Is Kubernetes or serverless in use?</li>
-<li>What tagging strategies exist across environments?</li>
-<li>What Dynatrace metadata can be leveraged? (e.g., HOST_GROUPS)</li>
+<li>Host monitoring</li>
+<li>Signals tied to the host (e.g., Kubernetes cluster metrics, Logs etc.)</li>
 </ul>
-<p>Different technologies require different set-ups and depending on whether something is on-prem or serverless, it will rqeuired a different kind of set up for each of these.</p>
-<h3 id="map-requirements-with-dimensions">Map requirements with dimensions<a class="headerlink" href="#map-requirements-with-dimensions" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Requirement</th>
-<th>Dimension</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Data Access</td>
-<td>dt.security_context = easytrade (same for hipstershop)</td>
-</tr>
-<tr>
-<td>Partitioning</td>
-<td>k8s.namespace.name</td>
-</tr>
-<tr>
-<td>Segmentation</td>
-<td>segment for easytrade and hipstershop</td>
-</tr>
-<tr>
-<td>Cost Allocation</td>
-<td>dt.cost.costcenter = easytrade and dt.cost.product = easytrade (same for hipstershop)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">#</a></h3>
-<ul>
-<li><a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice">Slice and Dice</a></li>
-<li><a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1251903308/Slice+Dice+Existing+Customer">Slice and Dice - Existing Customer Scenario</a></li>
-<li><a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1298433988/Slice+Dice+Example+Scenario">Slice and Dice - Example Scenario</a></li>
-</ul>
+<blockquote>
+<p>This exercise focuses on configuring cost allocation for Full-Stack monitoring as well as for new Log Ingest &amp; Process cost allocation feature introduced in Dynatrace SaaS 1.324.</p>
+</blockquote>
+<p><strong>Cost Allocation Overview</strong>
+<img alt="" src="../img/content/lab5-ex4-cost-allocation.png" /></p>
+<p>Step-by-Step Instructions:</p>
+<ol>
+<li>To ensure only relevant entities are included in cost allocation follow the <a href="https://docs.dynatrace.com/docs/license/cost-allocation#cost-allocation-allowlist">official documentation</a> to configure the allow list.</li>
+<li>Tagging hosts is essential for accurate cost attribution. You’ll <a href="https://docs.dynatrace.com/docs/license/cost-allocation#big-steps--auto--1--Configure-Cost-Allocation-on-the-host">configure host properties remotely on OneAgents</a>.</li>
+<li>No manual configuration is needed for logs in this lab. Telemetry enrichment has already been set up and will automatically apply the necessary tagging for log ingest cost allocation for our <code>loginservice</code>.</li>
+<li>There is a difference between something that is possible to be cross-charged and something that is officially available within our Cost Allocation feature. <code>Log Management - Ingest &amp; Process</code> is available as of <code>1.324</code> which means that the Cost Allocation attributes <code>dt.cost.costcenter</code> and <code>dt.cost.product</code> will be on all Log Ingest Billing Usage Events (fetch dt.system.events). Therefore, this is officially supported by our Cost Allocation feature and will show up in Account Management.</li>
+<li><img alt="" src="../img/content/lab5-ex4-cost-allocation-log-ingest.png" /></li>
+<li>To verify your configuration - go to <a href="https://guu84124.apps.dynatrace.com/ui/apps/dynatrace.launcher/">demo.live</a> &gt; Dashboards &gt; All Dashboards &gt; Download the dashboard "DPS Cost Allocation - Usage &amp; Costs v1.3". Upload it to your personal Dynatrace tenant. This dashboard will display cost allocation details based on your tagging and enrichment setup.</li>
+</ol>
 <div class="grid cards">
 <ul>
-<li><a href="../5-metadata-enrichment/">Let's continue<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+<li><a href="cleanup.md">Let's continue<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
 </ul>
 </div>
 
