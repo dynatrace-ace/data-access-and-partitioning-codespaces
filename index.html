@@ -10,7 +10,7 @@
       
       
       
-        <link rel="next" href="2-getting-started/">
+        <link rel="next" href="2-deploy-codespace/">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction" class="md-skip">
+        <a href="#pre-requisites-estimated-time-15min" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1. About
+              1. Get Started
             
           </span>
         </div>
@@ -280,7 +280,7 @@
           
   
   <span class="md-ellipsis">
-    1. About
+    1. Get Started
   </span>
   
 
@@ -291,7 +291,7 @@
         
   
   <span class="md-ellipsis">
-    1. About
+    1. Get Started
   </span>
   
 
@@ -311,28 +311,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#pre-requisites-estimated-time-15min" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      Pre-requisites (estimated time 15min)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Introduction">
+    <nav class="md-nav" aria-label="Pre-requisites (estimated time 15min)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#where-should-i-start" class="md-nav__link">
+  <a href="#dynatrace-tenant" class="md-nav__link">
     <span class="md-ellipsis">
-      Where should I start?
+      Dynatrace Tenant
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#what-to-expect" class="md-nav__link">
+  <a href="#generate-tokens" class="md-nav__link">
     <span class="md-ellipsis">
-      What to Expect?
+      Generate Tokens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      All Set!
     </span>
   </a>
   
@@ -358,11 +367,11 @@
   
   
     <li class="md-nav__item">
-      <a href="2-getting-started/" class="md-nav__link">
+      <a href="2-deploy-codespace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    2. Getting started
+    2. Deploy Codespace
   </span>
   
 
@@ -378,11 +387,11 @@
   
   
     <li class="md-nav__item">
-      <a href="3-codespaces/" class="md-nav__link">
+      <a href="3-instroduction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    3. Codespaces
+    3. Introduction
   </span>
   
 
@@ -478,7 +487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="8-data-partitioning-and-cost-allocation/" class="md-nav__link">
+      <a href="8-data-partitioning-and-cost-allocation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -536,28 +545,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#pre-requisites-estimated-time-15min" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      Pre-requisites (estimated time 15min)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Introduction">
+    <nav class="md-nav" aria-label="Pre-requisites (estimated time 15min)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#where-should-i-start" class="md-nav__link">
+  <a href="#dynatrace-tenant" class="md-nav__link">
     <span class="md-ellipsis">
-      Where should I start?
+      Dynatrace Tenant
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#what-to-expect" class="md-nav__link">
+  <a href="#generate-tokens" class="md-nav__link">
     <span class="md-ellipsis">
-      What to Expect?
+      Generate Tokens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      All Set!
     </span>
   </a>
   
@@ -586,31 +604,101 @@
   
 
 
-  <h1>1. About</h1>
+  <h1>1. Get Started</h1>
 
-<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h2>
-<p>Imagine you're stepping into a real world engagement with a customer using Dynatrace Classic. The customer is interested in starting to setup the foundations of the 3rd-Gen Platform. </p>
-<h3 id="where-should-i-start">Where should I start?<a class="headerlink" href="#where-should-i-start" title="Permanent link">#</a></h3>
-<p>The customer has a Kubernetes cluster running two applications:</p>
-<ul>
-<li>Easytrade – a trading platform with multiple microservices</li>
-<li>Hipstershop – a demo e-commerce app used for observability testing</li>
-</ul>
-<p>These apps are deployed across different namespaces and environments, and your mission is to help the customer modernize their observability strategy using Dynatrace Gen 3 capabilities.</p>
-<h3 id="what-to-expect">What to Expect?<a class="headerlink" href="#what-to-expect" title="Permanent link">#</a></h3>
-<p>Throughout the labs, you’ll take on the role of a Dynatrace expert working directly with the customer. Each lab represents a critical phase of the migration journey, and by completing them, you’ll gain hands-on experience with:</p>
-<ul>
-<li>Extracting and enriching metadata</li>
-<li>Designing and implementing scalable IAM strategy</li>
-<li>Creating precise data filters using Segments</li>
-<li>Partitioning logs for performance and cost efficiency</li>
-<li>Allocating observability costs across teams and services</li>
-</ul>
-<div class="grid cards">
-<ul>
-<li><a href="2-getting-started/">Yes! let's begin <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
-</ul>
+<h2 id="pre-requisites-estimated-time-15min">Pre-requisites (estimated time 15min)<a class="headerlink" href="#pre-requisites-estimated-time-15min" title="Permanent link">#</a></h2>
+<h3 id="dynatrace-tenant">Dynatrace Tenant<a class="headerlink" href="#dynatrace-tenant" title="Permanent link">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you already have your own tenant, you can jump to <a href="#generate-tokens">generate tokens</a></p>
 </div>
+<p>The lab has been tested end-to-end using a <strong>sprint</strong> tenant. While we recommend using a sprint tenant, a production or development tenant should work as well.</p>
+<ol>
+<li>
+<p>Search pre-prod-sfm bot in slack</p>
+<p><p align="left">
+<img src="img/sfm_bot.png" alt="SFM Bot" width="50%">
+</p></p>
+</li>
+<li>
+<p>type <em>hey</em></p>
+<p><p align="left">
+<img src="img/hey.png" width="60%">
+</p></p>
+</li>
+<li>
+<p>type <em>tenant</em>, wait a few seconds and select the 1st option</p>
+<p><p align="left">
+<img src="img/1st-option.png" width="60%">
+</p></p>
+</li>
+<li>
+<p>Pick sprint, and submit</p>
+</li>
+</ol>
+<p><img alt="" src="img/pick-sprint.png" /></p>
+<ol>
+<li>Wait for 5min, your tenant details will appear. Once that happens type <em>hey</em> again</li>
+</ol>
+<p><img alt="" src="img/hey-again.png" /></p>
+<ol>
+<li>Type dps, and click on the workflow</li>
+</ol>
+<p><img alt="" src="img/type-dps.png" /></p>
+<ol>
+<li>Enter your tenant details and continue</li>
+</ol>
+<p><img alt="" src="img/tenantdetailsandsubmit.png" /></p>
+<ol>
+<li>DPS should be available soon</li>
+</ol>
+<p><img alt="" src="img/dpssoon.png" /></p>
+<h3 id="generate-tokens">Generate Tokens<a class="headerlink" href="#generate-tokens" title="Permanent link">#</a></h3>
+<ol>
+<li>Within your Dynatrace tenant, go to <code>Access Tokens</code>, and generate a new one with the following permissions. You can give the token any name. Create the token and save it temporarely with you</li>
+</ol>
+<div class="highlight"><pre><span></span><code>ReadConfig,<span class="w"> </span>WriteConfig,<span class="w"> </span>InstallerDownload
+</code></pre></div>
+<ol>
+<li>Go to Account Management, time to create an OAuth Token, with the following scopes:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>storage:buckets:read,<span class="w"> </span>storage:bucket-definitions:read,<span class="w"> </span>storage:bucket-definitions:write
+openpipeline:configurations:read,<span class="w"> </span>openpipeline:configurations:write
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you've created the tenant following the <a href="#dynatrace-tenant">previous steps</a>, the admin user is not your dynatrace email, but the one provided within the details in the slack conversation with the bot.</p>
+<p><img alt="" src="img/hey-again.png" />    </p>
+<p>This means that you should be able to access Account Management with the user details provided via slack</p>
+</div>
+<p><img alt="" src="img/create-oauth.png" /></p>
+<ol>
+<li>
+<p>Grab client id, secret and account URN, save it temporarely with you</p>
+</li>
+<li>
+<p>Click finish, and with all the collected data, format them as follows:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nv">DT_TENANT</span><span class="o">=</span>https://abc12345.sprint.dynatracelabs.com
+<span class="c1"># Dt tenant stuff</span>
+<span class="nv">DT_OPERATOR_TOKEN</span><span class="o">=</span>&lt;dt-access-token&gt;
+<span class="nv">DT_INGEST_TOKEN</span><span class="o">=</span>&lt;dt-access-token&gt;
+<span class="nv">MONACO_TOKEN</span><span class="o">=</span>&lt;dt-access-token&gt;
+<span class="c1">## Acc Mgmt stuff</span>
+<span class="nv">CLIENT_ID</span><span class="o">=</span>&lt;dt0s02.54N2UVVM&gt;
+<span class="nv">CLIENT_SECRET</span><span class="o">=</span>&lt;dt-secret-acc-mgmt&gt;
+<span class="nv">SSO_ENDPOINT</span><span class="o">=</span>https://sso-sprint.dynatracelabs.com/sso/oauth2/token
+</code></pre></div>
+<h3 id="all-set">All Set!<a class="headerlink" href="#all-set" title="Permanent link">#</a></h3>
+<p>Well done! With the tenant, and all the collected variables, you should be ready to start the Data Access &amp; Partitioning lab at any time.</p>
+<p>Now just wait until the time of the Hands-on Training</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not continue creating the Codespace. Codespaces run for a limited amount of time (cores per hour), so we will run the codespace right before the lab start</p>
+</div>
+<p>Our lab will run in Codespaces. We need to provide the following variables during the configuration. Get each one and keep them in a notepad temporarely</p>
+<p><img alt="" src="img/variables_codespaces.png" /></p>
 
 
 
