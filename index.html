@@ -687,7 +687,13 @@
 <ol>
 <li>Within your Dynatrace tenant, go to <code>Access Tokens</code>, and generate a new one with the following permissions. You can give the token any name. Create the token and save it temporarely with you</li>
 </ol>
-<div class="highlight"><pre><span></span><code>ReadConfig,<span class="w"> </span>WriteConfig,<span class="w"> </span>InstallerDownload
+<div class="highlight"><pre><span></span><code>ReadConfig
+WriteConfig
+InstallerDownload
+activeGateTokenManagement.create
+metrics.ingest
+logs.ingest
+openTelemetryTrace.ingest
 </code></pre></div>
 <ol>
 <li>
@@ -702,6 +708,9 @@ storage:bucket-definitions:read
 storage:bucket-definitions:write
 openpipeline:configurations:read
 openpipeline:configurations:write
+settings:objects:read
+settings:objects:write
+settings:schemas:read
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
