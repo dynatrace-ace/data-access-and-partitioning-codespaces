@@ -9,21 +9,25 @@
       
       
       
+        <link rel="prev" href="../B-deploy-codespace/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+        <link rel="next" href="../D-slice-and-dice/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>Dt enablement - Dynatrace Data Access & Partitioning</title>
+        <title>C. Lab Introduction - Dynatrace Data Access & Partitioning</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,7 +56,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -77,6 +81,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#objectives" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -89,7 +98,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Dynatrace Data Access &amp; Partitioning" class="md-header__button md-logo" aria-label="Dynatrace Data Access & Partitioning" data-md-component="logo">
+    <a href=".." title="Dynatrace Data Access &amp; Partitioning" class="md-header__button md-logo" aria-label="Dynatrace Data Access & Partitioning" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -109,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dt enablement
+              C. Lab Introduction
             
           </span>
         </div>
@@ -232,7 +241,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Dynatrace Data Access &amp; Partitioning" class="md-nav__button md-logo" aria-label="Dynatrace Data Access & Partitioning" data-md-component="logo">
+    <a href=".." title="Dynatrace Data Access &amp; Partitioning" class="md-nav__button md-logo" aria-label="Dynatrace Data Access & Partitioning" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -262,7 +271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -282,7 +291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../B-deploy-codespace/" class="md-nav__link">
+      <a href="../B-deploy-codespace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -299,10 +308,28 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../C-introduction/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    C. Lab Introduction
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -311,6 +338,33 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectives
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -322,7 +376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../D-slice-and-dice/" class="md-nav__link">
+      <a href="../D-slice-and-dice/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -342,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E-metadata-enrichment/" class="md-nav__link">
+      <a href="../E-metadata-enrichment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -362,7 +416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../F-data-access/" class="md-nav__link">
+      <a href="../F-data-access/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -382,7 +436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../G-data-segmentation/" class="md-nav__link">
+      <a href="../G-data-segmentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -402,7 +456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../H-data-partitioning-and-cost-allocation/" class="md-nav__link">
+      <a href="../H-data-partitioning-and-cost-allocation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -422,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../I-cleanup/" class="md-nav__link">
+      <a href="../I-cleanup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -442,7 +496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../J-learn-more/" class="md-nav__link">
+      <a href="../J-learn-more/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -462,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../K-develop/" class="md-nav__link">
+      <a href="../K-develop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -493,6 +547,23 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectives
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -509,18 +580,32 @@
   
 
 
-  <h1>Dt enablement</h1>
+  <h1>C. Lab Introduction</h1>
 
-<details class="example">
-<summary><a href="https://dynatrace-wwse.github.io/codespaces-synchronizer"><img alt="dt-badge" src="https://img.shields.io/badge/powered_by-DT_enablement-8A2BE2?logo=dynatrace" /></a></summary>
-<p>This codespace is powered by the Dynatrace Enablement Framework, this means that this codespace:</p>
+<p>The following lab simulates a real-world engagement with a Dynatrace customer. The customer already gains significant value from features such as APM &amp; RUM and is now beginning to adopt 3rd-generation capabilities like Explorative Analytics and Logs in Grail.</p>
+<p>Their Classic foundations, auto-tags and Management Zones—are well established, and they are now ready to build solid 3rd-Gen foundations, including Data Access and Segments.</p>
+<p>They recognize the power of the new platform not only in observability but also in performance, security, and administrative efficiency.</p>
 <ul>
-<li>can run in github codespaces, as a remote container or locally as docker container</li>
-<li>is crosscompiled for AMD and ARM architectures</li>
-<li>follows a set of standards and best practices for enhancing the user experience</li>
+<li>Enrichment at the source will significantly improve cluster performance and scalability across their tenant.</li>
+<li>The new Data Access model aligns with their security requirements.</li>
+<li>DSP Cost Allocation enables clear visibility into each team’s spending.</li>
 </ul>
-<p>Want to learn more about it? We invite you to read <a href="https://dynatrace-wwse.github.io/codespaces-synchronizer">this documentation</a></p>
-</details>
+<h2 id="objectives">Objectives<a class="headerlink" href="#objectives" title="Permanent link">#</a></h2>
+<p>You will work with one of the customer’s application teams. Easytrade is one of their key apps. Your goal is to help implement the Dynatrace 3rd-Generation Platform end-to-end for the Easytrade team, enabling the customer to onboard additional teams effectively.</p>
+<p>You will complete a series of critical tasks:</p>
+<ul>
+<li>Slice &amp; Dice: Understand customer requirements, dimensions, and technologies to define the foundational setup.</li>
+<li>Metadata Enrichment: Learn about Primary Grail Fields and explore methods for enriching observability signals.</li>
+<li>Data Access: Configure IAM for the 3rd-Gen platform.</li>
+<li>Data Segmentation: Create meaningful, dynamic, and scalable Segments.</li>
+<li>Data Partitioning: Design an efficient bucket strategy and learn how to apply it.</li>
+<li>Cost Allocation: Distribute observability costs across teams and services transparently.</li>
+</ul>
+<div class="grid cards">
+<ul>
+<li><a href="../D-slice-and-dice/">Ok! Let's begin <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+</ul>
+</div>
 
 
 
@@ -567,10 +652,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>
