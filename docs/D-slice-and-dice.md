@@ -1,4 +1,13 @@
+## Lab Goals
 
+By the end of this lab, you will:
+
+- Understand the customer’s requirements, dimensions, and technologies for 3rd-Gen Data Access & Partitioning.
+- Perform a pre-investigation for an existing customer scenario.
+- Identify key dimensions and technologies to enable: Granular data access using dt.security_context, Cost allocation with dt.cost.costcenter and dt.cost.product
+- Validate findings against customer requirements to guide the next stage: metadata enrichment at source.
+
+## Lab
 
 To execute a solid 3rd-Gen Data Access & Partitioning design, we need a clear understanding of the customer’s:
 
@@ -6,7 +15,7 @@ To execute a solid 3rd-Gen Data Access & Partitioning design, we need a clear un
 - 📐 Dimensions
 - 🖥️ Technologies
 
-## Existing or New Customer?
+### Existing or New Customer?
 
 **New Customer**: Gather requirements directly from them. D1 CoE provides guidance on key questions to ask during these conversations [here](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice).
 
@@ -14,9 +23,9 @@ To execute a solid 3rd-Gen Data Access & Partitioning design, we need a clear un
 
 For this lab, as presented earlier, we’re working with an existing customer, so we’ll proceed with a pre-investigation.
 
-## Existing Customer Pre-investigation
+### Existing Customer Pre-investigation
 
-### Data Access (_reading exercise..._)
+#### Data Access (_reading exercise..._)
 
 Dynatrace Classic Data Access was role-based (RBAC), and permissions looked like this:
 
@@ -43,9 +52,9 @@ Back to the exercise: during pre-investigation, we found the following for our c
 
     Following the investigation with a customer **validation**.
 
-### Dimensions (exercise)
+#### Dimensions (exercise)
 
-#### What do we mean by Dimensions?
+##### What do we mean by Dimensions?
 
 In our customer scenario, app is a dimension, and Easytrade is its value.
 
@@ -53,23 +62,23 @@ Dimensions are key–value pairs that provide context for metrics, logs, or trac
 
 Historically, customers stored dimensions in HOST_GROUP (from the source) or defined them as tags and/or Management Zones.
 
-1. Explore the dimensions within your customer environment. You can use [this](https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e) notebook
+1. Explore the **dimensions** within your customer environment. You can use [this](https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e) Notebook
 
-<!-- Dimensions notebook -->
+<!-- Dimensions Notebook -->
 <div class="notes-widget"
      data-required="app, environment, component, platform"
      data-hint="Write down the key dimensions you discover."></div>
 
 !!! tip
-    Dimensions will give us a clear understanding on how to slice and dice customer's environment
+    Dimensions give us a clear way to slice and dice a customer’s environment:
     
-    - What needs to be added as Metadata Enrichment (at source)
-    - Which one could potentially be used as dt.security_context
-    - Strategy for buckets. I.e. a customer with 18k apps, grouped in 30BU. We cannot have 36k buckets (for logs & spans), but we could group them in BU for those that are light in terms of Tb/day, and give an individual bucket for those apps that have a higher Tb/day of traffic. Multi-dimensional Bucket Strategy
+    - **Metadata Enrichment at Source**: Identify which attributes should be added as metadata during ingestion. Ensure these enrichments align with tagging standards for cloud-native environments.
+    - **Security Context**: Determine which dimensions can be leveraged as dt.security_context
+    - **Bucket Strategy**: Avoid excessive bucket creation (e.g., 18k apps across 30 BUs should not result in 36k buckets). Use a multi-dimensional approach, group lighter apps by Business Unit (BU). Assign dedicated buckets to high-volume apps (those with higher TB/day traffic).
 
-### Technologies (exercise)
+#### Technologies (exercise)
 
-2. Explore the technologies within your customer environment. You can use [this](https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e) notebook
+2. Explore the **technologies** within your customer environment. You can use [this](https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e) notebook
 
 <!-- Technologies notebook -->
 <div class="notes-widget"
@@ -82,17 +91,18 @@ Historically, customers stored dimensions in HOST_GROUP (from the source) or def
 
 !!! tip
 
-    Before the customer used to configure everything as auto-tags, which caused performance issues. With Dynatrace 3rd-Gen we want our customers to rely on enriching at source, but the strategy would be slightly different depending on the technology. We need to find the technologies in order to give the customers the best practice
+    Previously, customers relied heavily on auto-tags, which often led to performance issues due to excessive processing and complexity. With Dynatrace 3rd-Gen, the recommended approach is to enrich metadata at the source, ensuring better scalability and efficiency.
+
+    The enrichment strategy should adapt to the underlying technology. Different platforms (e.g., Kubernetes, AWS, Azure, OpenShift) offer distinct tagging and annotation mechanisms, so best practices must be tailored accordingly.
 
 ## Summary
 
 ### Requirements
 
-With our findings in RBAC, Dimensions & Technologies, plus considering [this](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice) guide provided before, we're ready to work with our customer and validate their requirements, and connect them with some important fields that we will need to setup in the following stage:
+With our findings on RBAC, Dimensions, and Technologies, and leveraging the [Slice & Dice](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice), we are prepared to:
 
-- dt.security_context
-- dt.cost.costcenter
-- dt.cost.product
+- Validate customer requirements
+- Map critical fields for the next stage, including: `dt.security_context`, `dt.cost.costcenter`, `dt.cost.product`
 
 | Area            | Requirement                                                                                       | Dimension                                                                              |
 |-----------------|---------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
@@ -114,9 +124,10 @@ To save in your bookmarks!
 
 - [3rd-Gen setup helper - Notebook](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice) to execute pre-investigation
 - [How to gather requirements from customer - CoE page](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice)
+- [Why Not Management Zones - CoE page](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1291617117/Why+not+Management+Zones), drive better conversations about enrichment at source, motivate your customer to scalable and cluster-friendly approaches.
 
-!!! collab ""
-    We would love to hear your experience, and share it with the rest of D1
+!!! collab
+    We’d love to hear from you! If you have best practices, ideas, or suggestions to improve existing content—whether in Notebooks or CoE pages—please share them with us. Your input helps us make this material more valuable and actionable for everyone.
 
 
 <div class="grid cards" markdown>
