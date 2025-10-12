@@ -60,3 +60,4 @@ extra_javascript:
   - assets/notes.js
 extra_css:
   - assets/notes.css
+  - assets/collab.css

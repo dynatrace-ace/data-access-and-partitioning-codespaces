@@ -1,26 +1,57 @@
 (function () {
-    const KEY_PREFIX = 'mkdocs:notes:';
-    const REQUIRED = ['app', 'environment', 'component', 'platform']; // hidden
+    // ===== generic helpers =====
+    const PREFIX = 'mkdocs:notes:widget:';
 
-    const pageKey = () => KEY_PREFIX + location.pathname.replace(/\/index\.html$/, '/');
-    const loadNotes = () => localStorage.getItem(pageKey()) || '';
-    const saveNotes = txt => localStorage.setItem(pageKey(), txt);
+    const parseCSV = (s) =>
+        (s || '')
+            .split(',')
+            .map(x => x.trim())
+            .filter(Boolean);
 
-    function analyze(text) {
-        const found = [];
-        for (const dim of REQUIRED) {
-            const re = new RegExp(`\\b${dim}\\b`, 'i');
-            if (re.test(text)) found.push(dim);
-        }
-        return { found, total: REQUIRED.length };
+    function safeJSON(s) {
+        try { return JSON.parse(s); } catch { return {}; }
     }
 
+    // Build a regex that matches a term with flexible separators and case-insensitive.
+    // e.g. "google cloud platform" => /\bgoogle[\s_-]*cloud[\s_-]*platform\b/i
+    function termToRegex(term) {
+        const parts = term.trim().replace(/\s+/g, ' ').split(' ');
+        const joined = parts.map(p => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('[\\s_\\-]*');
+        return new RegExp(`\\b${joined}\\b`, 'i');
+    }
+
+    // Compile alias map: { canonical -> [regexes...] }
+    function compileMatchers(required, aliasesMap) {
+        const matchers = {};
+        for (const canon of required) {
+            const alist = [canon, ...(aliasesMap[canon] || [])];
+            matchers[canon] = alist.map(termToRegex);
+        }
+        return matchers;
+    }
+
+    const keyFor = (pagePath, widgetSig, idx) =>
+        PREFIX + pagePath.replace(/\/index\.html$/, '/') + '|' + widgetSig + '|' + idx;
+
+    const load = (k) => localStorage.getItem(k) || '';
+    const save = (k, v) => localStorage.setItem(k, v);
+
+    function analyze(text, matchers) {
+        const found = [];
+        for (const canon in matchers) {
+            const regs = matchers[canon];
+            if (regs.some(re => re.test(text))) found.push(canon.toLowerCase());
+        }
+        return { found, total: Object.keys(matchers).length };
+    }
+
+    // party time 🎉
     function fireConfetti(container, { crazy = false } = {}) {
         const BASE = ['🎉', '✨', '🎊', '💥', '🌟', '💫', '🔥'];
         const EXTRA = ['🚀', '🦄', '🪄', '💎', '🌈', '🍀', '⚡', '🎯', '🧠', '🎈', '🍾', '🥳', '🧩', '🏆', '💜', '💙', '💚', '💛', '🪩', '🌀'];
         const POOL = crazy ? BASE.concat(EXTRA) : BASE;
-
         const count = crazy ? 52 : 24;
+
         const box = document.createElement('div');
         box.className = 'notes__confetti';
         for (let i = 0; i < count; i++) {
@@ -34,15 +65,12 @@
             s.style.setProperty('--drift', (Math.random() * (crazy ? 50 : 30) - (crazy ? 25 : 15)) + 'px');
             box.appendChild(s);
         }
-
-        // occasional center burst
         if (crazy && Math.random() < 0.7) {
             const burst = document.createElement('div');
             burst.className = 'notes__burst';
-            burst.textContent = POOL[Math.floor(Math.random() * POOL.length)];
+            burst.textContent = (POOL[Math.floor(Math.random() * POOL.length)]);
             box.appendChild(burst);
         }
-
         container.appendChild(box);
         setTimeout(() => box.remove(), crazy ? 2200 : 1800);
     }
@@ -73,25 +101,37 @@
         if (variant === 'ok') el.classList.add('notes__status--ok');
     }
 
-    function init() {
-        const container =
-            document.querySelector('#reader-notes') ||
-            document.querySelector('main article, .md-content__inner') ||
-            document.querySelector('main, body');
+    function buildWidget(anchor, idx) {
+        const required = parseCSV(anchor.getAttribute('data-required')).map(s => s.toLowerCase());
+        if (!required.length) return;
+
+        const aliasesRaw = anchor.getAttribute('data-aliases');
+        const aliasesObj = safeJSON(aliasesRaw);
+        // Normalize alias keys to canonical lowercase
+        const normalizedAliases = {};
+        for (const k in aliasesObj) {
+            normalizedAliases[k.toLowerCase()] = (aliasesObj[k] || []).map(v => String(v).toLowerCase());
+        }
+
+        const matchers = compileMatchers(required, normalizedAliases);
+
+        const hintText = anchor.getAttribute('data-hint') || 'Write what you discover, then Save.';
+        const widgetSig = required.join(','); // storage signature
+        const storageKey = keyFor(location.pathname, widgetSig, idx);
 
         const card = document.createElement('section');
         card.className = 'notes__card';
 
         const hint = document.createElement('div');
         hint.className = 'notes__hint';
-        hint.textContent = 'Write down the key dimensions you discover in this exercise.';
+        hint.textContent = hintText;
         card.appendChild(hint);
 
         const textarea = document.createElement('textarea');
         textarea.className = 'notes__textarea';
         textarea.rows = 8;
         textarea.placeholder = 'Type here…';
-        textarea.value = loadNotes();
+        textarea.value = load(storageKey);
         card.appendChild(textarea);
 
         const row = document.createElement('div');
@@ -108,26 +148,23 @@
         row.appendChild(status);
 
         card.appendChild(row);
-        container.appendChild(card);
+        anchor.replaceWith(card);
 
-        let lastFound = new Set(analyze(textarea.value).found);
-
-        // Initial status
-        renderStatus(status, { found: [...lastFound], total: REQUIRED.length });
+        let lastFound = new Set(analyze(textarea.value, matchers).found);
+        renderStatus(status, { found: [...lastFound], total: required.length });
 
         saveBtn.addEventListener('click', (e) => {
             ripple(e);
             const text = textarea.value;
-            saveNotes(text);
+            save(storageKey, text);
 
-            const res = analyze(text);
+            const res = analyze(text, matchers);
             const newFound = new Set(res.found);
             const gained = [...newFound].filter(x => !lastFound.has(x));
 
-            const all = newFound.size === REQUIRED.length;
+            const all = newFound.size === required.length;
             if (all) {
-                // choose randomly to go CRAZY sometimes
-                const crazy = Math.random() < 0.6; // 60% chance bigger party
+                const crazy = Math.random() < 0.6;
                 renderStatus(status, res, 'ok');
                 card.classList.remove('notes__card--shake');
                 void card.offsetWidth;
@@ -146,27 +183,31 @@
                 void card.offsetWidth;
                 card.classList.add('notes__card--shake');
                 setTimeout(() => card.classList.remove('notes__card--shake'), 500);
-                status.textContent = '🤔 No new dimensions found. Keep exploring!';
+                status.textContent = '🤔 No new items found. Keep exploring!';
                 status.classList.add('notes__status--warn');
             }
 
-            // Button saved glow
             saveBtn.classList.add('notes__btn--saved');
             setTimeout(() => saveBtn.classList.remove('notes__btn--saved'), 600);
 
             lastFound = newFound;
         });
 
-        // live feedback
         textarea.addEventListener('input', () => {
-            const res = analyze(textarea.value);
+            const res = analyze(textarea.value, matchers);
             renderStatus(status, res);
         });
     }
 
+    function initAll() {
+        const anchors = Array.from(document.querySelectorAll('.notes-widget'));
+        if (!anchors.length) return;
+        anchors.forEach((a, i) => buildWidget(a, i));
+    }
+
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', initAll);
     } else {
-        init();
+        initAll();
     }
 })();

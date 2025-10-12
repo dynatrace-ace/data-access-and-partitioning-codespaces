@@ -1,0 +1,44 @@
+/* Collab style (keep your border/bg rules) */
+.md-typeset .admonition.collab,
+.md-typeset details.collab {
+    border-color: #00acc1;
+}
+
+.md-typeset .collab>.admonition-title,
+.md-typeset .collab>summary {
+    background-color: rgba(0, 172, 193, .08);
+}
+
+/* Force emoji icon instead of masked SVG */
+.md-typeset .admonition.collab>.admonition-title::before,
+.md-typeset details.collab>summary::before {
+    content: "🤝" !important;
+    /* override theme's empty content */
+    -webkit-mask-image: none !important;
+    /* kill mask */
+    mask-image: none !important;
+    background: none !important;
+    /* no bg color fill */
+    color: inherit;
+    /* let theme color through if needed */
+
+    display: inline-flex;
+    /* make emoji render as glyph */
+    align-items: center;
+    justify-content: center;
+
+    width: 1.25em;
+    /* size similarly to default icon */
+    height: 1.25em;
+    margin-right: .4rem;
+    transform: none !important;
+    /* cancel theme transforms */
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    font-size: 1.1em;
+    /* tweak to taste */
+}
+
+/* Optional: rounder card */
+.md-typeset .admonition.collab {
+    border-radius: 8px;
+}
