@@ -55,3 +55,8 @@ markdown_extensions:
   - attr_list
 plugins:
   - search
+
+extra_javascript:
+  - assets/notes.js
+extra_css:
+  - assets/notes.css
