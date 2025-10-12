@@ -121,7 +121,7 @@ SSO_ENDPOINT=https://sso-sprint.dynatracelabs.com/sso/oauth2/token
 
 ## All Set!
 
-Well done! With the tenant, and all the collected variables, you should be ready to start the Data Access & Partitioning lab at any time. Now just wait until the time of the Hands-on Training
+Well done! With the tenant, and all the collected variables, you should be ready to start the lab at any time. Now just wait until the time of the Hands-on Training
 
 !!! warning
     Do not create the Codespace yet. Codespaces run for a limited amount of time (cores per hour), so we will run the codespace right before the lab start.

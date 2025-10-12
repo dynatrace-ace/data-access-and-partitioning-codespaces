@@ -1,4 +1,4 @@
-If you followed the Get Started instructions, you should have at this point a Dynatrace tenant, plus the required environment variables to configure your Codespace
+If you’ve completed the _Get Started_ steps, you should now have a Dynatrace tenant set up and the necessary environment variables to configure for your Codespace.
 
 ```bash
 DT_TENANT=https://abc12345.sprint.dynatracelabs.com
@@ -21,9 +21,7 @@ SSO_ENDPOINT=https://sso-sprint.dynatracelabs.com/sso/oauth2/token
     
 ## ☕️ Wait and Learn
 
-        
-We know your time is very valuable. This codespace takes around 8 minutes to be fully operational. A local Kubernetes [kind]https://kind.sigs.k8s.io/ cluster monitored by Dynatrace will be configured and in it a sample application. 
-
+We know your time is valuable. This codespace takes around 8 minutes to be fully operational. A local Kubernetes [kind](https://kind.sigs.k8s.io/) cluster monitored by Dynatrace will be configured and in it a sample application. 
     
 ## ✅ Validate 
 
@@ -35,7 +33,7 @@ Check if the monitoring is functional, and that the Management Zone has been cre
 
 ![](./img/host-mz.png)
 
-> Note: A Management Zone is provided intially to simulate an "existing customer" scenario, during the lab we will learn a new mechanism for Access Control & Segmentation
+> Note: A Management Zone is provided intially to simulate an _existing customer_ scenario, during the lab we will learn new mechanism for Access Control & Segmentation
 
 <div class="grid cards" markdown>
 - [Time to Start the Lab :octicons-arrow-right-24:](C-introduction.md)
