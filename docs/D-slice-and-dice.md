@@ -1,111 +1,107 @@
---8<-- "snippets/4-slice-and-dice.js"
+In order to execute a solid 3rd-Gen Data Access & Partitioning Design, we need have a clear understanding of our customer's:
 
-## Slice & Dice
+- 📋 Requirements
+- 📐 Dimensions
+- 🖥️ Technologies
 
-### Objectives
+## Existing or New Customer?
 
-- Work with an existing customer scenario presented previously.
-- Learn how to extract and map:
-  - 📋 Requirements
-  - 📐 Dimensions
-  - 🖥️ Technologies
+For a new customer, it is important to gather those requirements directly from them. For that, D1 CoE is providing guidance on some of the key questions you may want to raise during that conversation [here](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice).
 
-### Step 1: Understand the 📋 Requirements (Interactive Discovery)
+For an existing customer, they were already doing it in a certain way. Customers used to rely on Management Zones to configure their Data Access (and Segmentation). For an existing customer, it is useful to conduct a pre-investigation (if possible) to gather information beforehand.
 
-The customer requirements are:
+## Existing customer Pre-investigation
 
-- Teams should only access their own apps, those apps being easytrade and hipstershop. This includes ALL DATA.
-- Both easytrade and hipstershop logs need a separate bucket. Think about routing rules for logs and their respective buckets considering that everything is deployed in a kubernetes environment.
+### 1. Data Access (_reading exercise..._)
+
+Dynatrace Classic Data Access was role based (RBAC), and the permissions used to look like this
+
+![](./img/RBAC.png)
+
+For our exercise, we will provide you screenshots on how Access Control looks like for Easytrade, as we can't create RBAC as for today in Dynatrace, but you should check the following too during a customer engagement
+
+![](./img/group-rbac.png){ width="50%" }
+
+![](./img/policy-rbac-mz.png)
+
+The customer was creating groups for individual MZ, for users to be linked with those groups, and being able to see everything that lives inside of it
+
+!!! tip
+    This approach was convenient/easy, but not ideal. Imagine a shared infrastrucuture. How would you have been able to give access to each team to their own logs, if the permission was connected to the entity itself?
+
+    With Dynatrace 3rd-Generation Platform, every single datapoint (i.e. entity, logs, spans) are treated independently, meaning that you could give each team access to their own stuff
+
+Back to the exercise... what we noticed during this pre-investigation, is that for our customer scenario...
+
+!!! success
+    Congratulations, we found the Data Access requirement for our customer in Classic
+    - Teams should only access their own apps  
+    - The customer uses Management Zones in Dynatrace Classic
+
+    It rest to validate with the customer
+
+### Dimensions & Technologies (exercise)
+
+#### What do we mean with Dimensions?
+
+For our customer scenario, _app_ is a dimension, and Easytrade the value. 
+
+Dimensions are key–value pairs that describe context for a metric, log, or trace. They turn raw data into actionable information by allowing you to slice, filter, and aggregate.
+
+Customers use to store these dimensions within HOST_GROUP coming directly from the source, define them as tags and/or Management Zones
+
+1. Explore the dimensions within your customer environment. You can use [this](https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e) notebook
+
+<div id="reader-notes"></div>
+
+## Exercise
+
+Explain dimensions 
+💡 Dimensions = metadata used to tag and organize observability data.
+How customer segregates data
+
+
+1. find dimensions (host group, MZ, tags), use notebook 
+
+
+
+2. find technologies. Explain that it is important for the enrichment part
+
+Briefly explain importance of knowing the technology, if it is a regular VM, compared to K8s, and Cloud, all different Enrichment mechanism, point to Confluence
+
+## Requirements
+
+Data Access
+- Teams should only access their own apps
+- The customer uses Management Zones in Dynatrace Classic
+
+Data Segmentation
 - Customers needs to be able to easily navigate through Dynatrace interface and see their respective apps as well as app signals.
-- Costs need to be split by each application to understand how much each team is spending on Observability overall.
+- Using also Management Zones, as other dimensions. We may have to find out!
 
-### WHAT NOW?
+Data Partitioning
+- They didn't have such thing in Classic, we'll implement a bucket strategy to meet their requirements and improve performance & costs
 
-**What are some questions you would ask yourself before doing the hands on work?**
+Cost Allocation
+- they want to track the spending for each app
 
-<details>
-  <summary>Here's how you get there...</summary>
 
-#### 🔐 Access Control
+3. Map with metadata
 
-Goal: Understand who should access what data. Think about all questions that you need to ask your customer to uncover this. For example:
+??? example "Solution"
 
-- Who should be able to access which data sets?
-- Are there any restrictions based on data sensitivity or compliance?
-- Do different teams need isolated views of their own applications?
-- Do you need to go more granular than just the application view?
+    ### Solution
 
-#### 🧱 Partitioning (Bucket Strategy)
+    | Requirement     | Dimension                                                                             |
+    | --------------- | ------------------------------------------------------------------------------------- |
+    | Data Access     | `dt.security_context = easytrade` (same for hipstershop)                              |
+    | Partitioning    | `k8s.namespace.name`                                                                  |
+    | Segmentation    | Segment for Easytrade and Hipstershop                                                 |
+    | Cost Allocation | `dt.cost.costcenter = easytrade` and `dt.cost.product = easytrade` (same for hipstershop) |
 
-Goal: Identify how different signals should be stored and if they should be separated.
-
-- Can you think of reasons why logs might need to be stored in separate buckets?
-- What about log retention: should all logs be kept for the same duration? Usually that's not the case.
-- Based on log volume, would query performance be affected?
-- Could separating logs into their respective application buckets help with cost control? Do you think this is best practice?
-
-#### 🎯 Segmentation
-
-Goal: Determine how data should be filtered and grouped for visibility.
-
-- What would be the best way to split your customer's data for visibility?
-- Would you like to filter by app, environment, region, or business unit? What do you think is the best approach?
-- How would this affect your data access?
-
-> Think about the move from Management Zones to IAM + Segments. What can people have access to vs what can they only filter on?
-
-#### 💰 Cost Allocation
-
-Goal: Understand how observability costs should be tracked and distributed.
-
-- How would your customer like to allocate costs?
-- Should costs be split by application, team, or department?
-- Do you need a chargeback or showback model for budgeting?
-
-</details>
-
-### Discover 📐 Dimensions
-
-> 💡 Dimensions = metadata used to tag and organize observability data.
-
-Instructions:
-
-1. Copy the notebook: https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e
-2. Explore metadata sources:
-   - Host Groups
-   - MZ rules
-   - Tag Rules
-     Look for tags that reveal dimensions like platform, app, stage, team, etc.
-
-Write down the dimensions you discover:
-
-- ***
-- ***
-- ***
-
-### 🖥️ Technologies
-
-Find out underlying technologies -> in this case, we have K8s.
-
-> 💡 Understand the infrastructure to enrich observability data.
-
-🔍 Questions to Ask
-
-- What cloud providers are used? (e.g., AWS, GCP, on-prem)
-- Is Kubernetes or serverless in use?
-- What tagging strategies exist across environments?
-- What Dynatrace metadata can be leveraged? (e.g., HOST_GROUPS)
-
-Different technologies require different set-ups and depending on whether something is on-prem or serverless, it will rqeuired a different kind of set up for each of these.
-
-### Map requirements with dimensions
-
-| Requirement     | Dimension                                                                             |
-| --------------- | ------------------------------------------------------------------------------------- |
-| Data Access     | dt.security_context = easytrade (same for hipstershop)                                |
-| Partitioning    | k8s.namespace.name                                                                    |
-| Segmentation    | segment for easytrade and hipstershop                                                 |
-| Cost Allocation | dt.cost.costcenter = easytrade and dt.cost.product = easytrade (same for hipstershop) |
+    
+  
+4. What you just did is just a pre-investigation, validate the results with the customer. We simulate that customer is ok with that, we continue the exercise to the enrichment!
 
 ### Resources
 
