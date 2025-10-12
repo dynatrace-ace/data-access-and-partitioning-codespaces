@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#existing-or-new-customer" class="md-skip">
+        <a href="#lab-goals" class="md-skip">
           Skip to content
         </a>
       
@@ -377,6 +377,25 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#lab-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab Goals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#existing-or-new-customer" class="md-nav__link">
     <span class="md-ellipsis">
       Existing or New Customer?
@@ -384,8 +403,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#existing-customer-pre-investigation" class="md-nav__link">
     <span class="md-ellipsis">
       Existing Customer Pre-investigation
@@ -434,6 +453,11 @@
       Technologies (exercise)
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -657,6 +681,25 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#lab-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab Goals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#existing-or-new-customer" class="md-nav__link">
     <span class="md-ellipsis">
       Existing or New Customer?
@@ -664,8 +707,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#existing-customer-pre-investigation" class="md-nav__link">
     <span class="md-ellipsis">
       Existing Customer Pre-investigation
@@ -714,6 +757,11 @@
       Technologies (exercise)
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -784,18 +832,27 @@
 
   <h1>D. Slice & Dice</h1>
 
+<h2 id="lab-goals">Lab Goals<a class="headerlink" href="#lab-goals" title="Permanent link">#</a></h2>
+<p>By the end of this lab, you will:</p>
+<ul>
+<li>Understand the customer’s requirements, dimensions, and technologies for 3rd-Gen Data Access &amp; Partitioning.</li>
+<li>Perform a pre-investigation for an existing customer scenario.</li>
+<li>Identify key dimensions and technologies to enable: Granular data access using dt.security_context, Cost allocation with dt.cost.costcenter and dt.cost.product</li>
+<li>Validate findings against customer requirements to guide the next stage: metadata enrichment at source.</li>
+</ul>
+<h2 id="lab">Lab<a class="headerlink" href="#lab" title="Permanent link">#</a></h2>
 <p>To execute a solid 3rd-Gen Data Access &amp; Partitioning design, we need a clear understanding of the customer’s:</p>
 <ul>
 <li>📋 Requirements</li>
 <li>📐 Dimensions</li>
 <li>🖥️ Technologies</li>
 </ul>
-<h2 id="existing-or-new-customer">Existing or New Customer?<a class="headerlink" href="#existing-or-new-customer" title="Permanent link">#</a></h2>
+<h3 id="existing-or-new-customer">Existing or New Customer?<a class="headerlink" href="#existing-or-new-customer" title="Permanent link">#</a></h3>
 <p><strong>New Customer</strong>: Gather requirements directly from them. D1 CoE provides guidance on key questions to ask during these conversations <a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice">here</a>.</p>
 <p><strong>Existing Customer</strong>: They already have an approach in place. Historically, customers relied on Management Zones for Data Access and Segmentation. For these cases, conduct a pre-investigation (if possible) to collect relevant information beforehand.</p>
 <p>For this lab, as presented earlier, we’re working with an existing customer, so we’ll proceed with a pre-investigation.</p>
-<h2 id="existing-customer-pre-investigation">Existing Customer Pre-investigation<a class="headerlink" href="#existing-customer-pre-investigation" title="Permanent link">#</a></h2>
-<h3 id="data-access-reading-exercise">Data Access (<em>reading exercise...</em>)<a class="headerlink" href="#data-access-reading-exercise" title="Permanent link">#</a></h3>
+<h3 id="existing-customer-pre-investigation">Existing Customer Pre-investigation<a class="headerlink" href="#existing-customer-pre-investigation" title="Permanent link">#</a></h3>
+<h4 id="data-access-reading-exercise">Data Access (<em>reading exercise...</em>)<a class="headerlink" href="#data-access-reading-exercise" title="Permanent link">#</a></h4>
 <p>Dynatrace Classic Data Access was role-based (RBAC), and permissions looked like this:</p>
 <p><img alt="" src="../img/RBAC.png" /></p>
 <p>For this exercise, we’ll provide screenshots of Easytrade’s Access Control since RBAC cannot be created in Dynatrace sprint today. During a real customer engagement, you should also review:</p>
@@ -816,31 +873,31 @@
 </ul>
 <p>Following the investigation with a customer <strong>validation</strong>.</p>
 </div>
-<h3 id="dimensions-exercise">Dimensions (exercise)<a class="headerlink" href="#dimensions-exercise" title="Permanent link">#</a></h3>
-<h4 id="what-do-we-mean-by-dimensions">What do we mean by Dimensions?<a class="headerlink" href="#what-do-we-mean-by-dimensions" title="Permanent link">#</a></h4>
+<h4 id="dimensions-exercise">Dimensions (exercise)<a class="headerlink" href="#dimensions-exercise" title="Permanent link">#</a></h4>
+<h5 id="what-do-we-mean-by-dimensions">What do we mean by Dimensions?<a class="headerlink" href="#what-do-we-mean-by-dimensions" title="Permanent link">#</a></h5>
 <p>In our customer scenario, app is a dimension, and Easytrade is its value.</p>
 <p>Dimensions are key–value pairs that provide context for metrics, logs, or traces. They transform raw data into actionable insights by enabling slicing, filtering, and aggregation.</p>
 <p>Historically, customers stored dimensions in HOST_GROUP (from the source) or defined them as tags and/or Management Zones.</p>
 <ol>
-<li>Explore the dimensions within your customer environment. You can use <a href="https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e">this</a> notebook</li>
+<li>Explore the <strong>dimensions</strong> within your customer environment. You can use <a href="https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e">this</a> Notebook</li>
 </ol>
-<!-- Dimensions notebook -->
+<!-- Dimensions Notebook -->
 <div class="notes-widget"
      data-required="app, environment, component, platform"
      data-hint="Write down the key dimensions you discover."></div>
 
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Dimensions will give us a clear understanding on how to slice and dice customer's environment</p>
+<p>Dimensions give us a clear way to slice and dice a customer’s environment:</p>
 <ul>
-<li>What needs to be added as Metadata Enrichment (at source)</li>
-<li>Which one could potentially be used as dt.security_context</li>
-<li>Strategy for buckets. I.e. a customer with 18k apps, grouped in 30BU. We cannot have 36k buckets (for logs &amp; spans), but we could group them in BU for those that are light in terms of Tb/day, and give an individual bucket for those apps that have a higher Tb/day of traffic. Multi-dimensional Bucket Strategy</li>
+<li><strong>Metadata Enrichment at Source</strong>: Identify which attributes should be added as metadata during ingestion. Ensure these enrichments align with tagging standards for cloud-native environments.</li>
+<li><strong>Security Context</strong>: Determine which dimensions can be leveraged as dt.security_context</li>
+<li><strong>Bucket Strategy</strong>: Avoid excessive bucket creation (e.g., 18k apps across 30 BUs should not result in 36k buckets). Use a multi-dimensional approach, group lighter apps by Business Unit (BU). Assign dedicated buckets to high-volume apps (those with higher TB/day traffic).</li>
 </ul>
 </div>
-<h3 id="technologies-exercise">Technologies (exercise)<a class="headerlink" href="#technologies-exercise" title="Permanent link">#</a></h3>
+<h4 id="technologies-exercise">Technologies (exercise)<a class="headerlink" href="#technologies-exercise" title="Permanent link">#</a></h4>
 <ol>
-<li>Explore the technologies within your customer environment. You can use <a href="https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e">this</a> notebook</li>
+<li>Explore the <strong>technologies</strong> within your customer environment. You can use <a href="https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e">this</a> notebook</li>
 </ol>
 <!-- Technologies notebook -->
 <div class="notes-widget"
@@ -853,15 +910,15 @@
 
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Before the customer used to configure everything as auto-tags, which caused performance issues. With Dynatrace 3rd-Gen we want our customers to rely on enriching at source, but the strategy would be slightly different depending on the technology. We need to find the technologies in order to give the customers the best practice</p>
+<p>Previously, customers relied heavily on auto-tags, which often led to performance issues due to excessive processing and complexity. With Dynatrace 3rd-Gen, the recommended approach is to enrich metadata at the source, ensuring better scalability and efficiency.</p>
+<p>The enrichment strategy should adapt to the underlying technology. Different platforms (e.g., Kubernetes, AWS, Azure, OpenShift) offer distinct tagging and annotation mechanisms, so best practices must be tailored accordingly.</p>
 </div>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">#</a></h2>
 <h3 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h3>
-<p>With our findings in RBAC, Dimensions &amp; Technologies, plus considering <a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice">this</a> guide provided before, we're ready to work with our customer and validate their requirements, and connect them with some important fields that we will need to setup in the following stage:</p>
+<p>With our findings on RBAC, Dimensions, and Technologies, and leveraging the <a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice">Slice &amp; Dice</a>, we are prepared to:</p>
 <ul>
-<li>dt.security_context</li>
-<li>dt.cost.costcenter</li>
-<li>dt.cost.product</li>
+<li>Validate customer requirements</li>
+<li>Map critical fields for the next stage, including: <code>dt.security_context</code>, <code>dt.cost.costcenter</code>, <code>dt.cost.product</code></li>
 </ul>
 <table>
 <thead>
@@ -904,9 +961,11 @@
 <ul>
 <li><a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice">3rd-Gen setup helper - Notebook</a> to execute pre-investigation</li>
 <li><a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice">How to gather requirements from customer - CoE page</a></li>
+<li><a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1291617117/Why+not+Management+Zones">Why Not Management Zones - CoE page</a>, drive better conversations about enrichment at source, motivate your customer to scalable and cluster-friendly approaches.</li>
 </ul>
 <div class="admonition collab">
-<p>We would love to hear your experience, and share it with the rest of D1</p>
+<p class="admonition-title">Collab</p>
+<p>We’d love to hear from you! If you have best practices, ideas, or suggestions to improve existing content—whether in Notebooks or CoE pages—please share them with us. Your input helps us make this material more valuable and actionable for everyone.</p>
 </div>
 <div class="grid cards">
 <ul>
