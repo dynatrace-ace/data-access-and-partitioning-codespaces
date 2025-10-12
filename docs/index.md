@@ -60,13 +60,17 @@ The lab has been tested end-to-end using a **sprint** tenant. While we recommend
 9. Within your Dynatrace tenant, go to `Access Tokens`, and generate a new one with the following permissions. You can give the token any name. Create the token and save it temporarely with you
 
 ```bash
-ReadConfig
-WriteConfig
-InstallerDownload
-activeGateTokenManagement.create
-metrics.ingest
-logs.ingest
-openTelemetryTrace.ingest
+Create ActiveGate tokens
+Read entities
+Ingest logs
+Ingest metrics
+Ingest OpenTelemetry traces
+Read settings
+Write settings
+Access problem and event feed, metrics, and topology
+Read configuration
+Write configuration
+PaaS integration - Installer download
 ```
 
 10. Go to Account Management, time to create an OAuth Token, with the following scopes:
@@ -97,7 +101,7 @@ app-engine:apps:run
     This means that you should be able to access Account Management with the user details provided via slack
 
 
-11. Grab client id, secret and account URN, save it temporarely with you
+11. Grab client id, secret and account URN, save the values temporarely with you
 
 12. Click finish, and with all the collected data, format them as follows:
 
