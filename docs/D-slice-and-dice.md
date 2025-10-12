@@ -7,7 +7,7 @@ By the end of this lab, you will:
 - Identify key dimensions and technologies to enable: Granular data access using dt.security_context, Cost allocation with dt.cost.costcenter and dt.cost.product
 - Validate findings against customer requirements to guide the next stage: metadata enrichment at source.
 
-## Lab
+## Exercises
 
 To execute a solid 3rd-Gen Data Access & Partitioning design, we need a clear understanding of the customer’s:
 
@@ -104,6 +104,8 @@ With our findings on RBAC, Dimensions, and Technologies, and leveraging the [Sli
 - Validate customer requirements
 - Map critical fields for the next stage, including: `dt.security_context`, `dt.cost.costcenter`, `dt.cost.product`
 
+Resulting in the following:
+
 | Area            | Requirement                                                                                       | Dimension                                                                              |
 |-----------------|---------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
 | Data Access     | <ul><li>Teams should only access their own apps</li><li>The customer uses Management Zones in Dynatrace Classic</li></ul> | `dt.security_context = <app>` (easytrade)                               |
@@ -113,10 +115,11 @@ With our findings on RBAC, Dimensions, and Technologies, and leveraging the [Sli
 
 ### Technologies
 
-- K8s running on GCP, important to understand the most convenient enrichment mechanims for the customer
+K8s running on GCP, important to understand the most convenient enrichment mechanims for the customer
 
+!!! note
 
-This table will be quite useful for the next steps. Keep it in a separate tab to help yourself set things up accordingly
+    This table will be quite useful for the next steps. Keep it in a separate tab to help yourself set things up accordingly
 
 ### Resources
 
@@ -127,7 +130,7 @@ To save in your bookmarks!
 - [Why Not Management Zones - CoE page](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1291617117/Why+not+Management+Zones), drive better conversations about enrichment at source, motivate your customer to scalable and cluster-friendly approaches.
 
 !!! collab
-    We’d love to hear from you! If you have best practices, ideas, or suggestions to improve existing content—whether in Notebooks or CoE pages—please share them with us. Your input helps us make this material more valuable and actionable for everyone.
+    We’d love to hear from you! If you have best practices, ideas, or suggestions to improve existing content—whether in Notebooks or CoE pages, please share them with us. Your input helps us make this material more valuable and actionable for everyone.
 
 
 <div class="grid cards" markdown>
