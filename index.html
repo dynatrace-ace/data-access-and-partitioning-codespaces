@@ -707,13 +707,17 @@
 <ol>
 <li>Within your Dynatrace tenant, go to <code>Access Tokens</code>, and generate a new one with the following permissions. You can give the token any name. Create the token and save it temporarely with you</li>
 </ol>
-<div class="highlight"><pre><span></span><code>ReadConfig
-WriteConfig
-InstallerDownload
-activeGateTokenManagement.create
-metrics.ingest
-logs.ingest
-openTelemetryTrace.ingest
+<div class="highlight"><pre><span></span><code>Create<span class="w"> </span>ActiveGate<span class="w"> </span>tokens
+Read<span class="w"> </span>entities
+Ingest<span class="w"> </span>logs
+Ingest<span class="w"> </span>metrics
+Ingest<span class="w"> </span>OpenTelemetry<span class="w"> </span>traces
+Read<span class="w"> </span>settings
+Write<span class="w"> </span>settings
+Access<span class="w"> </span>problem<span class="w"> </span>and<span class="w"> </span>event<span class="w"> </span>feed,<span class="w"> </span>metrics,<span class="w"> </span>and<span class="w"> </span>topology
+Read<span class="w"> </span>configuration
+Write<span class="w"> </span>configuration
+PaaS<span class="w"> </span>integration<span class="w"> </span>-<span class="w"> </span>Installer<span class="w"> </span>download
 </code></pre></div>
 <ol>
 <li>
@@ -743,7 +747,7 @@ app-engine:apps:run
 </div>
 <ol>
 <li>
-<p>Grab client id, secret and account URN, save it temporarely with you</p>
+<p>Grab client id, secret and account URN, save the values temporarely with you</p>
 </li>
 <li>
 <p>Click finish, and with all the collected data, format them as follows:</p>
