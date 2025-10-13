@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#data-access" class="md-skip">
+        <a href="#lab-goals" class="md-skip">
           Skip to content
         </a>
       
@@ -417,13 +417,31 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#data-access" class="md-nav__link">
+  <a href="#lab-goals" class="md-nav__link">
     <span class="md-ellipsis">
-      Data Access
+      🎯 Lab Goals
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Data Access">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercises
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closing-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Closing Up
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Closing Up">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -436,26 +454,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#objectives" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎯 Objectives
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🎯 Objectives">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#approches" class="md-nav__link">
     <span class="md-ellipsis">
       Approches:
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -657,13 +660,31 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#data-access" class="md-nav__link">
+  <a href="#lab-goals" class="md-nav__link">
     <span class="md-ellipsis">
-      Data Access
+      🎯 Lab Goals
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Data Access">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercises
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closing-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Closing Up
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Closing Up">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -676,26 +697,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#objectives" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎯 Objectives
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🎯 Objectives">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#approches" class="md-nav__link">
     <span class="md-ellipsis">
       Approches:
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -784,25 +790,23 @@
 
   <h1>F. Data Access</h1>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  dynatrace.sendBizEvent('page_load', {"page": "6. Data Access"});
-});
-</script>
-
-<h2 id="data-access">Data Access<a class="headerlink" href="#data-access" title="Permanent link">#</a></h2>
-<h4 id="the-easytrade-scenario">The Easytrade scenario<a class="headerlink" href="#the-easytrade-scenario" title="Permanent link">#</a></h4>
-<p>Easytrade, a fast-growing fintech platform, has just expanded its operations across multiple regions and teams. With 13 microservices powering everything from login to trading, the platform is now managed by several specialized teams: infrastructure, observability, and application owners.</p>
-<p>As the company scales, so does the complexity of managing access to observability data. The infrastructure team needs full control over configurations, while application teams only need read access to their own services. Meanwhile, everyone should be able to view SLOs and dashboards.</p>
-<p>To avoid chaos and manual permission management, Easytrade decides to implement a scalable IAM strategy in Dynatrace, one that uses custom roles, policy boundaries, and group-based access control.</p>
-<p>Your main goal in this lab is to help Easytrade build this strategy from the ground up.</p>
-<h3 id="objectives">🎯 Objectives<a class="headerlink" href="#objectives" title="Permanent link">#</a></h3>
+<h2 id="lab-goals">🎯 Lab Goals<a class="headerlink" href="#lab-goals" title="Permanent link">#</a></h2>
 <ul>
 <li>Understand how Dynatrace IAM works.</li>
 <li>Learn how to create and manage roles, policies, boundaries, and groups.</li>
 <li>Apply scoped access using <code>dt.security_context</code> and a management zone.</li>
 <li>Minimize maintenance effort by decoupling permissions from scopes.</li>
 </ul>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">#</a></h2>
+<p>We've already 
+- assess customer requirements when it comes to Data Access
+- defined dt.security_context for easytrade datapoints (spans, logs, metrics, etc...)</p>
+<h2 id="closing-up">Closing Up<a class="headerlink" href="#closing-up" title="Permanent link">#</a></h2>
+<h4 id="the-easytrade-scenario">The Easytrade scenario<a class="headerlink" href="#the-easytrade-scenario" title="Permanent link">#</a></h4>
+<p>Easytrade, a fast-growing fintech platform, has just expanded its operations across multiple regions and teams. With 13 microservices powering everything from login to trading, the platform is now managed by several specialized teams: infrastructure, observability, and application owners.</p>
+<p>As the company scales, so does the complexity of managing access to observability data. The infrastructure team needs full control over configurations, while application teams only need read access to their own services. Meanwhile, everyone should be able to view SLOs and dashboards.</p>
+<p>To avoid chaos and manual permission management, Easytrade decides to implement a scalable IAM strategy in Dynatrace, one that uses custom roles, policy boundaries, and group-based access control.</p>
+<p>Your main goal in this lab is to help Easytrade build this strategy from the ground up.</p>
 <h4 id="approches">Approches:<a class="headerlink" href="#approches" title="Permanent link">#</a></h4>
 <table>
 <thead>
