@@ -2,7 +2,7 @@
 
 ## Exercises
 
-Let's start by understanding some concepts with the following [read](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1246757730/2.+Metadata+Enrichment)
+Let's start by understanding some concepts with the following [read](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1246757730/2.+Metadata+Enrichment) (_5 minutes_)
 
 ### Understanding Primary Grail Fields
 
@@ -20,6 +20,10 @@ Let's start by understanding some concepts with the following [read](https://dt-
 
 ![](./img/span-name-results.png)
 
+!!! success
+
+  See how a Primary Grail Field is propagated across every signal, compared with other attributes. Those are good fits to be used for tenant-wise configurations such as Data Access, Partitioning, Segmentation & Cost Control
+
 ### Why?
 
 As explained in the D1 CoE page...
@@ -36,13 +40,13 @@ Once we've enriched all signal with those values, we can start creating the foll
 
 ## How?
 
-Enrichment works different depending the technology. For us we found that it is a K8s running on GCP. The D1 CoE is also providing a detailed [guide](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities) for each technology.
+Enrichment works different depending the technology. For us we found that it is a K8s running on GCP. The D1 CoE is also providing a detailed [guide for each technology](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities) (_1 minute_)
 
-During this lab, we will focus on [K8s Enrichment](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes)
+During this lab, we will focus on [K8s Enrichment](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes) (_5 minutes_)
 
 ### Enriching our K8s Cluster
 
-#### First steps
+#### Overview
 
 4. Copy the [Enrichment Overview Notebook](https://guu84124.apps.dynatrace.com/ui/apps/dynatrace.notebooks/notebook/8e41313b-48fa-473b-a351-be9b3462c4f4) in your tenant, re-run the queries and understand the status for your customer
 
@@ -53,6 +57,8 @@ Notice how our existing customer is providing the HOST_GROUP, as being used to C
 As explained for the K8s scenario, there are different appraches
 
 ![](./img/K8s-approach.png)
+
+#### Primary Grail Fields approach (Namespace)
 
 5. Open a segment and use the namespace to retrieve all datapoints
 
@@ -76,8 +82,74 @@ Based on the 2nd approach, could we Rely on Namespace Annotations & Labels? Thin
 
 > Note: in a real customer scenario, you need to validate the values with them. It is important aling with company standards
 
-7. 
+7. Use `kubernetes.io/metadata.name` for the dt.security_context value
 
+![](./img/label-sc.png)
+
+!!! warning
+
+    Make sure you select label, not annotation
+
+##### What should we expect?
+
+The Dynatrace Operator will start mutating pods within that namespace adding the dt.security_context
+
+8. Run `kubectl get pods -n easytrade` within your cluster, check existing pods and copy the accountservice one
+
+![](./img/getpods.png)
+
+9. Describe the accountservice pod with `kubectl describe pods <accountservice-pod-name> -n easytrade`
+
+![](./img/annotation-accountservice.png)
+
+As you may see, no dt.security_context. The pod is running, we need a pod restart for the Operator to mutate the definition and the dt.security_context to reflects in the definition
+
+10. Restart the accountservice deployment with
+
+```bash
+kubectl -n easytrade rollout restart deployment/accountservice
+```
+
+11. Check once again the new pod, repeat steps `8` & `9`. Now we should see dt.security_context within the pod definition
+
+![](./img/accountservice-sc.png)
+
+!!! warning
+  After creating or modifying rules, allow up to 45 minutes for the changes to take effect. It usually doesn't take that long, repeat steps 8 & 9 until you see dt.security_context within your pod definition
+
+12. Go back to your Enrichment Overview Notebook, and check the current status. Grab a span.id, paste it below and check for the workload name
+
+![](./img/1st-sc-in-notebook.png)
+
+13. Configure dt.cost.costcenter & dt.cost.product, and other useful attributes that the Easytrade Team was looking forward to use in Dynatrace
+
+![](./img/rest-of-attributes.png)
+
+14. Restart all deployments from easytrade namespace
+
+```bash
+for d in $(kubectl -n easytrade get deploy -o name); do
+  kubectl -n easytrade rollout restart "$d"
+done
+```
+
+15. Check your Enrichment Overview Notebook once again
+
+![](./img/spans-well-done.png)
+
+> Check logs. Why not all logs? Cluster-level spans, but there are cluster-level logs, that an infra team may be interested in?
+
+
+#### Primary Grail Tags
+
+As you may have seen, we've also added other attributes that could be extremely useful for the customer, such as the version.
+
+16. The customer could create visualization of metrics, or exception maps comparing different version of their apps
+
+![](./img/versions-in-segments.png)
+
+!!! tip
+    Consider also Primary Grail Tags, apart from the default enrichment of dt.security.context, dt.cost.costcenter and dt.cost.product. Think of the dimesions defined previously, or any relevant metadata that the customer could use in Dynatrace
 
 #### Need more granularity?
 
