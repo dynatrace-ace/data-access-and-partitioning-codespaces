@@ -1,6 +1,65 @@
---8<-- "snippets/4-content.js"
+## Lab Goals
 
-## Metadata Enrichment
+## Exercises
+
+Let's start by understanding some concepts with the following [read](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1246757730/2.+Metadata+Enrichment)
+
+### Understanding the value of Primary Grail Fields
+
+1. Go to Segments, create a segment with the `dt.host_group.id`, and see how the Primary Grail Field gets propagated across every datapoint (metric, log, trace, event). You don't need
+
+![](./img/host-group-pgf.png)
+
+> Note: for entities we're waiting for Smartscape 2.0, customers can still rely/use Management Zones for that. It will work starting from January 2026
+
+2. Without leaving the Segment, copy any attribute related to spans specifically. In the read we're using java.jar.file, but you can test it with any attribute, let's do for example span.name
+
+![](./img/span-name.png)
+
+3. Run the Segment once again but for span.name equals to the value you've selected
+
+![](./img/span-name-results.png)
+
+### Why?
+
+As explained in the D1 CoE page...
+
+_In 3rd-Gen, each datapoint is treated independently, offering much greater flexibility in how data is: Grouped (via Buckets), Filtered (Segments), Secured (Access Control / IAM), Allocated (for cost tracking, DPS). Every signal, such as logs, spans, traces & metrics, should be enriched with the correspondant metadata. Entities are treated in a similar way to any other signal type._
+
+So in order to fulfill the respective requirements from the table generated during the Slice & Dice exercise, we need to enrich every signal with:
+
+- dt.security_context = easytrade
+- dt.cost.costcenter = easytrade
+- dt.cost.product = easytrade
+
+Once we've enriched all signal with those values, we can start creating the following configuration for IAM, Cost Allocation, Buckets, Segmnetation!
+
+## How?
+
+Enrichment works different depending the technology. For us we found that it is a K8s running on GCP. The D1 CoE is also providing a detailed [guide](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities) for each technology.
+
+During this lab, we will focus on [K8s Enrichment](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes)
+
+
+
+## Summary
+
+
+
+
+
+- metadata enrichment
+	- importance of enrichment, present CoE page, explains difference between HOST_GROUP & java.jar.file
+	- start presenting with what we finish, 
+		we need the tech
+		we have the values we want to add
+	- show dashboard with no enrichment
+		how many logs have host group
+		how many spans have host group
+		how many logs have dt.security_context...
+	- do enrichment for K8s, all levels
+	- share Enrichment OA
+
 
 ### 🎯 Objectives
 
