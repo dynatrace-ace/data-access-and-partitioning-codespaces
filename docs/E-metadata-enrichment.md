@@ -4,7 +4,7 @@
 
 Let's start by understanding some concepts with the following [read](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1246757730/2.+Metadata+Enrichment)
 
-### Understanding the value of Primary Grail Fields
+### Understanding Primary Grail Fields
 
 1. Go to Segments, create a segment with the `dt.host_group.id`, and see how the Primary Grail Field gets propagated across every datapoint (metric, log, trace, event). You don't need
 
@@ -40,19 +40,66 @@ Enrichment works different depending the technology. For us we found that it is 
 
 During this lab, we will focus on [K8s Enrichment](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes)
 
+### Enriching our K8s Cluster
 
+#### First steps
+
+4. Copy the [Enrichment Overview Notebook](https://guu84124.apps.dynatrace.com/ui/apps/dynatrace.notebooks/notebook/8e41313b-48fa-473b-a351-be9b3462c4f4) in your tenant, re-run the queries and understand the status for your customer
+
+![](./img/enrichment-initial-status.png)
+
+Notice how our existing customer is providing the HOST_GROUP, as being used to Classic Dynatrace but there is no dt.security_context, dt.cost.costcenter & dt.cost.product
+
+As explained for the K8s scenario, there are different appraches
+
+![](./img/K8s-approach.png)
+
+5. Open a segment and use the namespace to retrieve all datapoints
+
+![](./img/namespace-primary.png)
+
+For customers that are willing to are willing to get value fast, they could use directly the namespace as their Primary Grail Field
+
+You can even use the k8s.namespace.name in the IAM boundary configuration
+
+![](./img/namespace-permission.png)
+
+#### Scalable approach - relying on Cloud-native tagging
+
+But the customer is willing to propagate the required attributes across their environment (dt.security_context, dt.cost.costcenter, dt.cost.product)
+
+Based on the 2nd approach, could we Rely on Namespace Annotations & Labels? Think that this is the way the customers usually organize their could-native environments
+
+6. Go to the K8s app in Dynatrace, and check for customer's standards in defining labels & annotations
+
+![](./img/k8s-annotations.png)
+
+> Note: in a real customer scenario, you need to validate the values with them. It is important aling with company standards
+
+7. 
+
+
+#### Need more granularity?
+
+### Note about standard OA & Cloud
 
 ## Summary
 
+Recap & next steps
+
+### Resources
+
+
+- [D1 CoE | What a Primary Grail Fields is?](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1246757730/2.+Metadata+Enrichment)
+- [D1 CoE | Enriching by Technology](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities)
+- [K8s Enrichment](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes)
+- [DT Doc | Global Field Reference](https://docs.dynatrace.com/docs/discover-dynatrace/references/semantic-dictionary/fields)
+- [DT Doc | K8s Enrichment](https://docs.dynatrace.com/docs/ingest-from/setup-on-k8s/guides/metadata-automation/k8s-metadata-telemetry-enrichment)
 
 
 
 
 - metadata enrichment
-	- importance of enrichment, present CoE page, explains difference between HOST_GROUP & java.jar.file
-	- start presenting with what we finish, 
-		we need the tech
-		we have the values we want to add
 	- show dashboard with no enrichment
 		how many logs have host group
 		how many spans have host group
