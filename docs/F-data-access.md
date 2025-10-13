@@ -1,6 +1,20 @@
---8<-- "snippets/6-data-access.js"
+## 🎯 Lab Goals
 
-## Data Access
+- Understand how Dynatrace IAM works.
+- Learn how to create and manage roles, policies, boundaries, and groups.
+- Apply scoped access using `dt.security_context` and a management zone.
+- Minimize maintenance effort by decoupling permissions from scopes.
+
+## Exercises
+
+We've already 
+- assess customer requirements when it comes to Data Access
+- defined dt.security_context for easytrade datapoints (spans, logs, metrics, etc...)
+
+## Closing Up
+
+
+
 
 #### The Easytrade scenario
 
@@ -12,12 +26,7 @@ To avoid chaos and manual permission management, Easytrade decides to implement 
 
 Your main goal in this lab is to help Easytrade build this strategy from the ground up.
 
-### 🎯 Objectives
 
-- Understand how Dynatrace IAM works.
-- Learn how to create and manage roles, policies, boundaries, and groups.
-- Apply scoped access using `dt.security_context` and a management zone.
-- Minimize maintenance effort by decoupling permissions from scopes.
 
 #### Approches:
 

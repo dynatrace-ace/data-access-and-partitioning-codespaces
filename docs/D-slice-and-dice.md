@@ -1,4 +1,4 @@
-## Lab Goals
+## 🎯 Lab Goals
 
 By the end of this lab, you will:
 
@@ -7,7 +7,9 @@ By the end of this lab, you will:
 - Identify key dimensions and technologies to enable: Granular data access using dt.security_context, Cost allocation with dt.cost.costcenter and dt.cost.product
 - Validate findings against customer requirements to guide the next stage: metadata enrichment at source.
 
-## Exercises
+---
+
+## 🧪 Exercises
 
 To execute a solid 3rd-Gen Data Access & Partitioning design, we need a clear understanding of the customer’s:
 
@@ -95,7 +97,9 @@ Historically, customers stored dimensions in HOST_GROUP (from the source) or def
 
     The enrichment strategy should adapt to the underlying technology. Different platforms (e.g., Kubernetes, AWS, Azure, OpenShift) offer distinct tagging and annotation mechanisms, so best practices must be tailored accordingly.
 
-## Summary
+---
+
+## 🌱 Closing Up
 
 ### Requirements
 
@@ -125,9 +129,10 @@ K8s running on GCP, important to understand the most convenient enrichment mecha
 
 To save in your bookmarks!
 
-- [3rd-Gen setup helper - Notebook](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice) to execute pre-investigation
-- [How to gather requirements from customer - CoE page](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice)
-- [Why Not Management Zones - CoE page](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1291617117/Why+not+Management+Zones), drive better conversations about enrichment at source, motivate your customer to scalable and cluster-friendly approaches.
+D1 CoE:
+- [D1 CoE | 3rd-Gen setup helper - Notebook](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice) to execute pre-investigation
+- [D1 CoE | How to gather requirements from customer](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice)
+- [D1 CoE | Why Not Management Zones](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1291617117/Why+not+Management+Zones), drive better conversations about enrichment at source, motivate your customer to scalable and cluster-friendly approaches.
 
 !!! collab
     We’d love to hear from you! If you have best practices, ideas, or suggestions to improve existing content—whether in Notebooks or CoE pages, please share them with us. Your input helps us make this material more valuable and actionable for everyone.

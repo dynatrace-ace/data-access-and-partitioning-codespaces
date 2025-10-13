@@ -1,6 +1,15 @@
-## Lab Goals
+## 🎯 Lab Goals
 
-## Exercises
+- Understand Primary Grail Fields (PGFs): what they are and why they’re ideal for tenant-wide controls (IAM, Partitioning, Segmentation, Cost).
+- Assess current metadata coverage: run the Enrichment Overview notebook and a representative sample (dedup by host/PGI/service or iostream) to see presence of dt.security_context, dt.cost.costcenter, dt.cost.product, dt.host_group.id.
+- Configure K8s-based enrichment (namespace level): map existing labels (e.g., kubernetes.io/metadata.name) to PGFs; apply in Dynatrace; understand effect on all signals.
+- Validate by restarting workloads: roll out restarts (single service or all in easytrade) and confirm mutated pods carry new metadata.
+- Propagate cost & access fields: add dt.cost.costcenter and dt.cost.product alongside dt.security_context; re-check notebook KPIs and per-signal examples.
+- Handle exceptions (pod-level granularity): for loginservice, add pod template annotations in its manifest to set PGFs at workload scope; apply and verify.
+
+Are you ready for some fun?
+
+## 🧪 Exercises
 
 Let's start by understanding what a Primary Grail Field is [here](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1246757730/2.+Metadata+Enrichment) (_5 minutes_)
 
@@ -24,7 +33,7 @@ Let's start by understanding what a Primary Grail Field is [here](https://dt-rnd
 
   See how a Primary Grail Field is propagated across every signal, compared with other attributes. Those are good fits to be used for tenant-wise configurations such as Data Access, Partitioning, Segmentation & Cost Control
 
-### Why?
+#### Why?
 
 As explained in the D1 CoE page...
 
@@ -38,7 +47,7 @@ So in order to fulfill the respective requirements from the table generated duri
 
 Once we've enriched all signal with those values, we can start creating the following configuration for IAM, Cost Allocation, Buckets, Segmnetation!
 
-### How?
+#### How?
 
 Enrichment works different depending the technology. For us we found that it is a K8s running on GCP. The D1 CoE is also providing a detailed [guide for each technology](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities) (_1 minute_)
 
@@ -46,7 +55,7 @@ During this lab, we will focus on [K8s Enrichment](https://dt-rnd.atlassian.net/
 
 ### Enriching our K8s Cluster
 
-#### Enriching Notebook
+#### Coverage Notebook
 
 4. Copy the [Enrichment Overview Notebook](https://guu84124.apps.dynatrace.com/ui/apps/dynatrace.notebooks/notebook/8e41313b-48fa-473b-a351-be9b3462c4f4) in your tenant, re-run the queries and understand the status for your customer
 
@@ -70,7 +79,7 @@ You can even use the k8s.namespace.name in the IAM boundary configuration
 
 ![](./img/namespace-permission.png)
 
-#### Scalable approach - relying on Cloud-native tagging
+#### Cloud-native approach
 
 But the customer is willing to propagate the required attributes across their environment (dt.security_context, dt.cost.costcenter, dt.cost.product)
 
@@ -90,7 +99,7 @@ Based on the 2nd approach, could we Rely on Namespace Annotations & Labels? Thin
 
     Make sure you select label, not annotation
 
-##### What should we expect?
+##### Debugging
 
 The Dynatrace Operator will start mutating pods within that namespace adding the dt.security_context
 
@@ -151,7 +160,7 @@ As you may have seen, we've also added other attributes that could be extremely 
 !!! tip
     Consider also Primary Grail Tags, apart from the default enrichment of dt.security.context, dt.cost.costcenter and dt.cost.product. Think of the dimesions defined previously, or any relevant metadata that the customer could use in Dynatrace
 
-#### Need more granularity?
+#### Pod-level granularity
 
 The loginservice is the only microservice from easytrade that is it not managed by the Easytrade team who we are helping with the PoC. There's a request to keep their Data Access separately.
 
@@ -188,21 +197,34 @@ kubectl describe pods <loginservice-pod-name> -n easytrade
 
 ![](./img/loginservicedash.png)
 
-## Summary
+## 🌱 Closing Up
 
-Recap & next steps
+### Lab Recap & Next Steps
 
-### Note about standard OA & Cloud
+- You identified Primary Grail Fields and why they matter for tenant-wide controls.
+- You measured metadata coverage on a representative sample (spans/logs) and tracked % with dt.security_context, dt.cost.costcenter, dt.cost.product, dt.host_group.id.
+- You configured K8s enrichment (namespace labels → PGFs) and restarted workloads so pods were mutated with the new fields.
+- You handled an exception at pod level (loginservice) by adding PGF annotations in its manifest and applying the change.
+- You validated before/after in the Enrichment notebook and noted gaps (e.g., some cluster-level logs).
+
+What this enables...
+- dt.security_context is now your anchor dimension to define groups, policies, and access boundaries for least-privilege access.
+- dt.cost.costcenter & dt.cost.product are ready for cost allocation and reporting.
 
 ### Resources
 
-
-- [D1 CoE | What a Primary Grail Fields is?](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1246757730/2.+Metadata+Enrichment)
-- [D1 CoE | Enriching by Technology](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities)
-- [K8s Enrichment](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes)
+Dynatrace Official Documentation:
 - [DT Doc | Global Field Reference](https://docs.dynatrace.com/docs/discover-dynatrace/references/semantic-dictionary/fields)
 - [DT Doc | K8s Enrichment](https://docs.dynatrace.com/docs/ingest-from/setup-on-k8s/guides/metadata-automation/k8s-metadata-telemetry-enrichment)
 
+D1 CoE:
+- [D1 CoE | What a Primary Grail Fields is?](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1246757730/2.+Metadata+Enrichment)
+- [D1 CoE | Enriching by Technology](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities)
+- [D1 CoE | K8s Enrichment](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes)
+
+We've meet the Enrichment requirements for a K8s environment. How would this work for a Standard OA, or a Cloud environment. Check the following resources in the CoE page:
+- [D1 CoE | Enrichment of Standard OneAgent deployment](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1373569857/Enrichment+OneAgent)
+- [D1 CoE | Enrichment for Cloud](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1273104811/WIP+-+Enrichment+Cloud+Virtualization), WIP... contact the CoE in case further information is needed
 
 <div class="grid cards" markdown>
 - [Let's continue:octicons-arrow-right-24:](6-data-access.md)
