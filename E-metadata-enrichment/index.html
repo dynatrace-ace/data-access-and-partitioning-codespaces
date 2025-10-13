@@ -459,9 +459,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#first-steps" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      First steps
+      Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primary-grail-fields-approach-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primary Grail Fields approach (Namespace)
     </span>
   </a>
   
@@ -471,6 +480,30 @@
   <a href="#scalable-approach-relying-on-cloud-native-tagging" class="md-nav__link">
     <span class="md-ellipsis">
       Scalable approach - relying on Cloud-native tagging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scalable approach - relying on Cloud-native tagging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-should-we-expect" class="md-nav__link">
+    <span class="md-ellipsis">
+      What should we expect?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primary-grail-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primary Grail Tags
     </span>
   </a>
   
@@ -803,9 +836,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#first-steps" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      First steps
+      Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primary-grail-fields-approach-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primary Grail Fields approach (Namespace)
     </span>
   </a>
   
@@ -815,6 +857,30 @@
   <a href="#scalable-approach-relying-on-cloud-native-tagging" class="md-nav__link">
     <span class="md-ellipsis">
       Scalable approach - relying on Cloud-native tagging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scalable approach - relying on Cloud-native tagging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-should-we-expect" class="md-nav__link">
+    <span class="md-ellipsis">
+      What should we expect?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primary-grail-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primary Grail Tags
     </span>
   </a>
   
@@ -954,7 +1020,7 @@
 
 <h2 id="lab-goals">Lab Goals<a class="headerlink" href="#lab-goals" title="Permanent link">#</a></h2>
 <h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">#</a></h2>
-<p>Let's start by understanding some concepts with the following <a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1246757730/2.+Metadata+Enrichment">read</a></p>
+<p>Let's start by understanding some concepts with the following <a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1246757730/2.+Metadata+Enrichment">read</a> (<em>5 minutes</em>)</p>
 <h3 id="understanding-primary-grail-fields">Understanding Primary Grail Fields<a class="headerlink" href="#understanding-primary-grail-fields" title="Permanent link">#</a></h3>
 <ol>
 <li>Go to Segments, create a segment with the <code>dt.host_group.id</code>, and see how the Primary Grail Field gets propagated across every datapoint (metric, log, trace, event). You don't need</li>
@@ -971,6 +1037,10 @@
 <li>Run the Segment once again but for span.name equals to the value you've selected</li>
 </ol>
 <p><img alt="" src="../img/span-name-results.png" /></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+</div>
+<p>See how a Primary Grail Field is propagated across every signal, compared with other attributes. Those are good fits to be used for tenant-wise configurations such as Data Access, Partitioning, Segmentation &amp; Cost Control</p>
 <h3 id="why">Why?<a class="headerlink" href="#why" title="Permanent link">#</a></h3>
 <p>As explained in the D1 CoE page...</p>
 <p><em>In 3rd-Gen, each datapoint is treated independently, offering much greater flexibility in how data is: Grouped (via Buckets), Filtered (Segments), Secured (Access Control / IAM), Allocated (for cost tracking, DPS). Every signal, such as logs, spans, traces &amp; metrics, should be enriched with the correspondant metadata. Entities are treated in a similar way to any other signal type.</em></p>
@@ -982,10 +1052,10 @@
 </ul>
 <p>Once we've enriched all signal with those values, we can start creating the following configuration for IAM, Cost Allocation, Buckets, Segmnetation!</p>
 <h2 id="how">How?<a class="headerlink" href="#how" title="Permanent link">#</a></h2>
-<p>Enrichment works different depending the technology. For us we found that it is a K8s running on GCP. The D1 CoE is also providing a detailed <a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities">guide</a> for each technology.</p>
-<p>During this lab, we will focus on <a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes">K8s Enrichment</a></p>
+<p>Enrichment works different depending the technology. For us we found that it is a K8s running on GCP. The D1 CoE is also providing a detailed <a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities">guide for each technology</a> (<em>1 minute</em>)</p>
+<p>During this lab, we will focus on <a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes">K8s Enrichment</a> (<em>5 minutes</em>)</p>
 <h3 id="enriching-our-k8s-cluster">Enriching our K8s Cluster<a class="headerlink" href="#enriching-our-k8s-cluster" title="Permanent link">#</a></h3>
-<h4 id="first-steps">First steps<a class="headerlink" href="#first-steps" title="Permanent link">#</a></h4>
+<h4 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h4>
 <ol>
 <li>Copy the <a href="https://guu84124.apps.dynatrace.com/ui/apps/dynatrace.notebooks/notebook/8e41313b-48fa-473b-a351-be9b3462c4f4">Enrichment Overview Notebook</a> in your tenant, re-run the queries and understand the status for your customer</li>
 </ol>
@@ -993,6 +1063,7 @@
 <p>Notice how our existing customer is providing the HOST_GROUP, as being used to Classic Dynatrace but there is no dt.security_context, dt.cost.costcenter &amp; dt.cost.product</p>
 <p>As explained for the K8s scenario, there are different appraches</p>
 <p><img alt="" src="../img/K8s-approach.png" /></p>
+<h4 id="primary-grail-fields-approach-namespace">Primary Grail Fields approach (Namespace)<a class="headerlink" href="#primary-grail-fields-approach-namespace" title="Permanent link">#</a></h4>
 <ol>
 <li>Open a segment and use the namespace to retrieve all datapoints</li>
 </ol>
@@ -1011,8 +1082,69 @@
 <p>Note: in a real customer scenario, you need to validate the values with them. It is important aling with company standards</p>
 </blockquote>
 <ol>
-<li></li>
+<li>Use <code>kubernetes.io/metadata.name</code> for the dt.security_context value</li>
 </ol>
+<p><img alt="" src="../img/label-sc.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure you select label, not annotation</p>
+</div>
+<h5 id="what-should-we-expect">What should we expect?<a class="headerlink" href="#what-should-we-expect" title="Permanent link">#</a></h5>
+<p>The Dynatrace Operator will start mutating pods within that namespace adding the dt.security_context</p>
+<ol>
+<li>Run <code>kubectl get pods -n easytrade</code> within your cluster, check existing pods and copy the accountservice one</li>
+</ol>
+<p><img alt="" src="../img/getpods.png" /></p>
+<ol>
+<li>Describe the accountservice pod with <code>kubectl describe pods &lt;accountservice-pod-name&gt; -n easytrade</code></li>
+</ol>
+<p><img alt="" src="../img/annotation-accountservice.png" /></p>
+<p>As you may see, no dt.security_context. The pod is running, we need a pod restart for the Operator to mutate the definition and the dt.security_context to reflects in the definition</p>
+<ol>
+<li>Restart the accountservice deployment with</li>
+</ol>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>easytrade<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>deployment/accountservice
+</code></pre></div>
+<ol>
+<li>Check once again the new pod, repeat steps <code>8</code> &amp; <code>9</code>. Now we should see dt.security_context within the pod definition</li>
+</ol>
+<p><img alt="" src="../img/accountservice-sc.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+</div>
+<p>After creating or modifying rules, allow up to 45 minutes for the changes to take effect. It usually doesn't take that long, repeat steps 8 &amp; 9 until you see dt.security_context within your pod definition</p>
+<ol>
+<li>Go back to your Enrichment Overview Notebook, and check the current status. Grab a span.id, paste it below and check for the workload name</li>
+</ol>
+<p><img alt="" src="../img/1st-sc-in-notebook.png" /></p>
+<ol>
+<li>Configure dt.cost.costcenter &amp; dt.cost.product, and other useful attributes that the Easytrade Team was looking forward to use in Dynatrace</li>
+</ol>
+<p><img alt="" src="../img/rest-of-attributes.png" /></p>
+<ol>
+<li>Restart all deployments from easytrade namespace</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>d<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>-n<span class="w"> </span>easytrade<span class="w"> </span>get<span class="w"> </span>deploy<span class="w"> </span>-o<span class="w"> </span>name<span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>kubectl<span class="w"> </span>-n<span class="w"> </span>easytrade<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+<ol>
+<li>Check your Enrichment Overview Notebook once again</li>
+</ol>
+<p><img alt="" src="../img/spans-well-done.png" /></p>
+<blockquote>
+<p>Check logs. Why not all logs? Cluster-level spans, but there are cluster-level logs, that an infra team may be interested in?</p>
+</blockquote>
+<h4 id="primary-grail-tags">Primary Grail Tags<a class="headerlink" href="#primary-grail-tags" title="Permanent link">#</a></h4>
+<p>As you may have seen, we've also added other attributes that could be extremely useful for the customer, such as the version.</p>
+<ol>
+<li>The customer could create visualization of metrics, or exception maps comparing different version of their apps</li>
+</ol>
+<p><img alt="" src="../img/versions-in-segments.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Consider also Primary Grail Tags, apart from the default enrichment of dt.security.context, dt.cost.costcenter and dt.cost.product. Think of the dimesions defined previously, or any relevant metadata that the customer could use in Dynatrace</p>
+</div>
 <h4 id="need-more-granularity">Need more granularity?<a class="headerlink" href="#need-more-granularity" title="Permanent link">#</a></h4>
 <h3 id="note-about-standard-oa-cloud">Note about standard OA &amp; Cloud<a class="headerlink" href="#note-about-standard-oa-cloud" title="Permanent link">#</a></h3>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">#</a></h2>
