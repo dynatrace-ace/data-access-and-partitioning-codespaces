@@ -900,38 +900,35 @@
 
 <h2 id="lab-goals">🎯 Lab Goals<a class="headerlink" href="#lab-goals" title="Permanent link">#</a></h2>
 <ul>
-<li>Understand Primary Grail Fields (PGFs): what they are and why they’re ideal for tenant-wide controls (IAM, Partitioning, Segmentation, Cost).</li>
-<li>Assess current metadata coverage: run the Enrichment Overview notebook and a representative sample (dedup by host/PGI/service or iostream) to see presence of dt.security_context, dt.cost.costcenter, dt.cost.product, dt.host_group.id.</li>
-<li>Configure K8s-based enrichment (namespace level): map existing labels (e.g., kubernetes.io/metadata.name) to PGFs; apply in Dynatrace; understand effect on all signals.</li>
-<li>Validate by restarting workloads: roll out restarts (single service or all in easytrade) and confirm mutated pods carry new metadata.</li>
-<li>Propagate cost &amp; access fields: add dt.cost.costcenter and dt.cost.product alongside dt.security_context; re-check notebook KPIs and per-signal examples.</li>
-<li>Handle exceptions (pod-level granularity): for loginservice, add pod template annotations in its manifest to set PGFs at workload scope; apply and verify.</li>
+<li>Understand Primary Grail Fields: what they are and why they’re ideal for tenant-wide controls (IAM, Partitioning, Segmentation, Cost Control).</li>
+<li>Assess current metadata coverage: with a provided Enrichment Overview notebook to see presence of <code>dt.security_context</code>, <code>dt.cost.costcenter</code>, <code>dt.cost.product</code>, <code>dt.host_group.id</code>.</li>
+<li>Configure K8s-based enrichment and confirm mutated pods carry new metadata.</li>
+<li>Handle exceptions (pod-level/workload granularity)</li>
 </ul>
 <p>Are you ready for some fun?</p>
 <h2 id="exercises">🧪 Exercises<a class="headerlink" href="#exercises" title="Permanent link">#</a></h2>
-<p>Let's start by understanding what a Primary Grail Field is <a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1246757730/2.+Metadata+Enrichment">here</a> (<em>5 minutes</em>)</p>
 <h3 id="understanding-primary-grail-fields">Understanding Primary Grail Fields<a class="headerlink" href="#understanding-primary-grail-fields" title="Permanent link">#</a></h3>
 <ol>
-<li>Go to Segments, create a segment with the <code>dt.host_group.id</code>, and see how the Primary Grail Field gets propagated across every datapoint (metric, log, trace, event). You don't need</li>
+<li>In <strong>Segments</strong>, create a segment with <code>dt.host_group.id</code>. Observe how the Primary Grail Field propagates across all datapoints (metrics, logs, spans, events).</li>
 </ol>
 <p><img alt="" src="../img/host-group-pgf.png" /></p>
-<blockquote>
-<p>Note: for entities we're waiting for Smartscape 2.0, customers can still rely/use Management Zones for that. It will work starting from January 2026</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Entities will appear in Segments with <strong>Smartscape 2.0</strong> (Planned availability: <strong>January 2026</strong>). Until then, use <strong>Management Zones</strong> for entities.</p>
+</div>
 <ol>
-<li>Without leaving the Segment, copy any attribute related to spans specifically. In the read we're using java.jar.file, but you can test it with any attribute, let's do for example span.name</li>
+<li>Still in the segment, copy a span-specific attribute (e.g., <code>span.name</code>).</li>
 </ol>
 <p><img alt="" src="../img/span-name.png" /></p>
 <ol>
-<li>Run the Segment once again but for span.name equals to the value you've selected</li>
+<li>Run the segment again, filtering where <code>span.name</code> equals the value you copied.</li>
 </ol>
 <p><img alt="" src="../img/span-name-results.png" /></p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
+<p>The Primary Grail Field propagates across every signal, unlike other attributes, making it ideal for tenant-wide configurations (Data Access, Partitioning, Segmentation, Cost Control).</p>
 </div>
-<p>See how a Primary Grail Field is propagated across every signal, compared with other attributes. Those are good fits to be used for tenant-wise configurations such as Data Access, Partitioning, Segmentation &amp; Cost Control</p>
 <h4 id="why">Why?<a class="headerlink" href="#why" title="Permanent link">#</a></h4>
-<p>As explained in the D1 CoE page...</p>
 <p><em>In 3rd-Gen, each datapoint is treated independently, offering much greater flexibility in how data is: Grouped (via Buckets), Filtered (Segments), Secured (Access Control / IAM), Allocated (for cost tracking, DPS). Every signal, such as logs, spans, traces &amp; metrics, should be enriched with the correspondant metadata. Entities are treated in a similar way to any other signal type.</em></p>
 <p>So in order to fulfill the respective requirements from the table generated during the Slice &amp; Dice exercise, we need to enrich every signal with:</p>
 <ul>
