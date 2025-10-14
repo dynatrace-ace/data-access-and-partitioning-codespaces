@@ -20,7 +20,7 @@
     
     
       
-        <title>F. Data Access - Dynatrace Data Access & Partitioning</title>
+        <title>Data Access - Dynatrace Data Access & Partitioning</title>
       
     
     
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              F. Data Access
+              Data Access
             
           </span>
         </div>
@@ -279,7 +279,7 @@
         
   
   <span class="md-ellipsis">
-    A. Before You Begin
+    Before You Begin
   </span>
   
 
@@ -299,7 +299,7 @@
         
   
   <span class="md-ellipsis">
-    B. Deploy Codespace
+    Deploy Codespace
   </span>
   
 
@@ -319,7 +319,7 @@
         
   
   <span class="md-ellipsis">
-    C. Lab Introduction
+    Lab Introduction
   </span>
   
 
@@ -339,7 +339,7 @@
         
   
   <span class="md-ellipsis">
-    D. Slice & Dice
+    Slice & Dice
   </span>
   
 
@@ -359,7 +359,7 @@
         
   
   <span class="md-ellipsis">
-    E. Metadata Enrichment
+    Metadata Enrichment
   </span>
   
 
@@ -386,7 +386,7 @@
           
   
   <span class="md-ellipsis">
-    F. Data Access
+    Data Access
   </span>
   
 
@@ -397,7 +397,7 @@
         
   
   <span class="md-ellipsis">
-    F. Data Access
+    Data Access
   </span>
   
 
@@ -543,7 +543,7 @@
         
   
   <span class="md-ellipsis">
-    G. Data Segmentation
+    Data Segmentation
   </span>
   
 
@@ -563,7 +563,7 @@
         
   
   <span class="md-ellipsis">
-    H. Data Partitioning & Cost Allocation
+    Data Partitioning & Cost Allocation
   </span>
   
 
@@ -583,7 +583,7 @@
         
   
   <span class="md-ellipsis">
-    I. Cleanup
+    Cleanup
   </span>
   
 
@@ -603,7 +603,7 @@
         
   
   <span class="md-ellipsis">
-    J. Learn More
+    Learn More
   </span>
   
 
@@ -623,7 +623,7 @@
         
   
   <span class="md-ellipsis">
-    K. Develop
+    Develop
   </span>
   
 
@@ -782,14 +782,15 @@
   
 
 
-  <h1>F. Data Access</h1>
+  <h1>Data Access</h1>
 
 <h2 id="lab-goals">🎯 Lab Goals<a class="headerlink" href="#lab-goals" title="Permanent link">#</a></h2>
 <ul>
-<li>Understand how Dynatrace IAM works.</li>
-<li>Learn how to create and manage roles, policies, boundaries, and groups.</li>
-<li>Apply scoped access using <code>dt.security_context</code> and a management zone.</li>
-<li>Minimize maintenance effort by decoupling permissions from scopes.</li>
+<li>Review <strong>policy approaches</strong> (Default vs. Custom) and pick what fits the customer.</li>
+<li>Create an <strong>Easytrade boundary</strong> using <code>dt.security_context</code> (with MZ fallback).</li>
+<li>Create groups: <strong>[Readers] Easytrade</strong> and <strong>[Writers] Easytrade</strong>.</li>
+<li>Attach the right <strong>policies</strong> and bind them to the <strong>Easytrade boundary</strong>.</li>
+<li><strong>Invite a test user</strong>, assign groups, and verify <strong>effective policies</strong> and data access.</li>
 </ul>
 <hr />
 <h2 id="exercises">🧪 Exercises<a class="headerlink" href="#exercises" title="Permanent link">#</a></h2>
