@@ -27,27 +27,7 @@ Now we’ll configure **IAM** for the customer using `dt.security_context` as th
   
     Use **Dynatrace default policies** whenever they meet the customer’s needs. If a requirement can’t be met with the defaults, switch to a **custom policy** for that specific case.
  
-#### Exploring Dynatrace Default Policies
-
-Typically there are at minimum 3 domains of access
-
-UI Policy - What am I, as a certain persona, physically able to see and interact with on the user interface of the Dynatrace platform (Think DT Apps)
-
-![](img/uipolicy.png)
-
-UI Policy Example limiting users to certain apps and including basic functionality for seeing and interacting with things in DT
-
-Data Policy - What data should, as a certain persona, be returned to me while using the platform
-
-![](img/datapolicy.png)
-
-Data Policy Example giving access to data in Grail meant to be paired with a boundary
-
-Config Policy - What should I, as a certain persona, be able to change in the platform
-
-![](img/configpolicy.png)
-
-Config Policy Example granting access to change some platform functionality as well as data for built-in schemas meant to be paired with a boundary
+    Let's review customer requrements!
 
 #### Reviewing Requirements
 
@@ -72,7 +52,7 @@ Now that any Dynatrace User can access the default features, we want to allow us
 
 1. Navigate to the `Account Management Portal > Identity & access management > Policy management`, and to the "Boundaries" tab
 
-    ![](img/configpolicy.png)
+    ![](img/createboundary.png)
 
 2. Click on the "+ Create boundary" button
 
@@ -94,51 +74,70 @@ Now that any Dynatrace User can access the default features, we want to allow us
 
 We now want to grant specific users with "Readers" access to Dynatrace. Allowing them to see data in the different apps. We want to create a group for the 'Easytrade' app with read permissions.
 
-1. Navigate to the Policy management
+1. Navigate to the Policy management and explore the different policies of category **Data access** and **Dynatrace access** and try to understand which policy is a good fit for Dynatrace "Readers"
 
-2. Explore the different policies of category "Data access" and "Dynatrace access" and try to understand which policy is a good fit for Dynatrace "Readers"
+<details markdown="1">
+<summary>UI Policy</summary>
 
-    ![](img/explorepolicies.png)
+What you can see and interact with in the Dynatrace UI (apps)
 
-3. Navigate to Group management, click on the "+ Create group" button, call it "[Readers] Easytrade", then click on create
+![ui policy](./img/uipolicy.png){ width="90%" }
+
+Example limiting users to certain apps and including basic functionality for seeing and interacting with things in DT
+
+</details>
+
+<details markdown="1">
+<summary>Data Policy</summary>
+
+What data is returned while using the platform
+
+![data policy](./img/datapolicy.png){ width="40%" }
+
+Example giving access to data in Grail meant to be paired with a boundary
+
+</details>
+
+<details markdown="1">
+<summary>Config Policy</summary>
+
+What you can change in the platform
+
+![config policy](./img/configpolicy.png){ width="80%" }
+
+Example granting access to change some platform functionality as well as data for built-in schemas meant to be paired with a boundary
+
+</details>
+
+![](img/explorepolicies.png)
+
+!!! tip
+    It is important to know every policy and what it does exactly. Be prepared for customers asking and/or troubleshooting
+
+3. Navigate to Group management, click on the "+ Create group" button, call it "[Readers] Easytrade", give it a meaningful description (e.g. Grants reading permissions to Easytrade's observability data), then click on create
 
     ![](img/content/lab3-ex3-task2-create-group.png)
 
-1. On the newly created group edition page
-2. Click on the "+ Permission" button
-3. Fill the form to grant access to Dynatrace:
 
-- Permission name: "Standard user"
-- Scope: tick the "Account (all environments)" box
-- Boundaries: "Easytrade"
+4. On the newly created group edition page, click on the "+ Permission" button, Fill the form to grant access to Dynatrace, Permission name: "Standard user", Scope: select the respective environment, Boundaries: "Easytrade", Click on "Save"
 
-4. Click on "Save"
-5. Add another permission to grant access data, click on "+ Permission" and fill the form:
+    ![](img/easytradereaderdefault.png){ width="60%" }
 
-- Permission name: "All Grail data read access"
-- Scope: tick the "Account (all environments)" box
-- Boundaries: "Easytrade"
+5. Add another permission to grant access data, click on "+ Permission" and fill the form, Permission name: "All Grail data read access", Scope: tick the "Account (all environments)" box, Boundaries: "Easytrade", Click on "Save"
 
-4. Click on "Save"
+    ![](img/content/lab3-ex3-task3-assign-policy-boundary.png)
 
-![](img/content/lab3-ex3-task3-assign-policy-boundary.png)
-![](img/content/lab3-ex3-task3-assign-policy-boundary-2.png)
+Your Easytrade Readers should finally look like this
+
+    ![](img/easytradereadergroup.png){ width="60%" }
 
 ### Group Easytrade Writers
 
 We now want to grant specific users with "Writers" access to Dynatrace. Allowing them to edit monitoring configurations in the different apps.
 💡 We want to create a group for the 'Easytrade' app with writers permissions.
 
-1. Navigate to the Account Management Portal > Identity & access management > Policy management
-2. Click on "+ Create policy"
-3. Fill the form
+1. Navigate to Policy management, Click on "+ Create policy", Fill the form, Name: "Settings Writers", Policy description: "Statements granting write permissions", Policy statement:"
 
-- Name: "[Lab] Writers"
-- Policy description: "Statements granting write permissions"
-- Policy statement:
-
-<details>
-  <summary>Write permissions on settings – Settings</summary>
 
 ```sql
 ALLOW settings:schemas:read;
@@ -146,50 +145,25 @@ ALLOW settings:objects:read, settings:objects:write;
 ALLOW environment:roles:manage-settings;
 ```
 
-</details>
+    ![](img/settingswriterblack.png){ width="60%" }
 
-4. Click on "Save"
 
-![](img/content/lab3-ex4-task1-create-policy.png)
+1. Navigate to Group management, Click on the "+ Create group" button, Fill the form, Name: "[Writters] Easytrade", Description: "Grants writers permissions to observability configurations for the Easytrade team", Click on "Create"
 
-1. Navigate to the Account Management Portal > Identity & access management > Group management
-2. Click on the "+ Create group" button
-3. Fill the form
+    ![](img/writterseasytrade.png)
 
-- Name: "[Writers] Easytrade"
-- Description: "Grants writers permissions to observability configurations for the Easytrade team"
+1. On the newly created group edition page, Click on the "+ Permission" button, Fill the form:, Permission name: "Settings Writers", Scope: select easytrade environment box, Boundaries: "Easytrade", Click on "Save"
 
-4. Click on "Create"
-
-![](img/content/lab3-ex4-task2-create-group.png)
-
-1. On the newly created group edition page
-2. Click on the "+ Permission" button
-3. Fill the form:
-
-- Permission name: "[Lab] Writers"
-- Scope: tick the "Account (all environments)" box
-- Boundaries: "Easytrade"
-
-4. Click on "Save"
-
-![](img/content/lab3-ex4-task3-assign-policy-boundary.png)
+    ![](img/policytogroupwrite.png)
 
 
 ### Exercice 4: Assign User to Group
 
-We now want to test the permissions we created in previous lab exercises.
-💡We will invite a separate email address and verify its access according to the assigned groups.
+We now want to test the permissions we created in previous lab exercises. We will invite a separate email address and verify its access according to the assigned groups. invite your dt email. e.g. ignacio.goldman@dynatrace.com
 
-invite your dt email. e.g. ignacio.goldman@dynatrace.com
+1. Navigate to User management, Click on the "Invite users" button, Fill in the email address and assign the "[Readers] Easytrade" group, Click on "Invite", Authenticate with this new user in a private window, and verify the permissions
 
-1. Navigate to the Account Management Portal > Identity & access management > User management
-2. Click on the "Invite users" button
-3. Fill in the email address and assign the "[Readers] Easytrade" group
-4. Click on "Invite"
-5. Authenticate with this new user in a private window, and verify the permissions
-
-![](img/content/lab3-ex5-task2-reader-user.png)
+SCREENSHOT K8S APP, LOGS, PROBLEMS
 
 > 💡You can also navitage to Account Management Portal > Identity & access management > Effective policies, to verify the policies and boundaries for your user.
 
@@ -197,13 +171,9 @@ invite your dt email. e.g. ignacio.goldman@dynatrace.com
 
 **Task 3: Verify the Writers permissions**
 
-1. Navigate to the Account Management Portal > Identity & access management > User management
-2. Edit your test user
-3. Add both [Readers] Easytrade and [Writers] Easytrade
-4. Click on "Save"
-5. Authenticate with this new user in a private window, and verify the permissions
+1. Navigate to  User management, Edit your test user, Add both [Readers] Easytrade and [Writers] Easytrade, Click on "Save", Authenticate with this new user in a private window, and verify the permissions
 
-![](img/content/lab3-ex5-task3-writer-user.png)
+SCREENSHOT K8S APP, LOGS, PROBLEMS
 
 > 💡You can also navitage to Account Management Portal > Identity & access management > Effective policies, to verify the policies and boundaries for your user.
 
