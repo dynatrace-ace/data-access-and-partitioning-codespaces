@@ -66,36 +66,36 @@ Historically, customers stored dimensions in HOST_GROUP (from the source) or def
 
 1. Explore the **dimensions** within your customer environment. You can use [this](https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e) Notebook
 
-<!-- Dimensions Notebook -->
-<div class="notes-widget"
-     data-required="app, environment, component, platform"
-     data-hint="Write down the key dimensions you discover."></div>
+    <!-- Dimensions Notebook -->
+    <div class="notes-widget"
+        data-required="app, environment, component, platform"
+        data-hint="Write down the key dimensions you discover."></div>
 
-!!! tip
-    Dimensions give us a clear way to slice and dice a customer’s environment:
-    
-    - **Metadata Enrichment at Source**: Identify which attributes should be added as metadata during ingestion. Ensure these enrichments align with tagging standards for cloud-native environments.
-    - **Security Context**: Determine which dimensions can be leveraged as dt.security_context
-    - **Bucket Strategy**: Avoid excessive bucket creation (e.g., 18k apps across 30 BUs should not result in 36k buckets). Use a multi-dimensional approach, group lighter apps by Business Unit (BU). Assign dedicated buckets to high-volume apps (those with higher TB/day traffic).
+    !!! tip
+        Dimensions give us a clear way to slice and dice a customer’s environment:
+        
+        - **Metadata Enrichment at Source**: Identify which attributes should be added as metadata during ingestion. Ensure these enrichments align with tagging standards for cloud-native environments.
+        - **Security Context**: Determine which dimensions can be leveraged as dt.security_context
+        - **Bucket Strategy**: Avoid excessive bucket creation (e.g., 18k apps across 30 BUs should not result in 36k buckets). Use a multi-dimensional approach, group lighter apps by Business Unit (BU). Assign dedicated buckets to high-volume apps (those with higher TB/day traffic).
 
 #### Technologies (exercise)
 
 2. Explore the **technologies** within your customer environment. You can use [this](https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e) notebook
 
-<!-- Technologies notebook -->
-<div class="notes-widget"
-     data-required="gcp, k8s"
-     data-aliases='{
-       "gcp": ["google cloud", "google_cloud_platform", "google cloud platform", "gcloud"],
-       "k8s": ["kubernetes", "kube"]
-     }'
-     data-hint="Write down the customer technologies you discover."></div>
+    <!-- Technologies notebook -->
+    <div class="notes-widget"
+        data-required="gcp, k8s"
+        data-aliases='{
+        "gcp": ["google cloud", "google_cloud_platform", "google cloud platform", "gcloud"],
+        "k8s": ["kubernetes", "kube"]
+        }'
+        data-hint="Write down the customer technologies you discover."></div>
 
-!!! tip
+    !!! tip
 
-    Previously, customers relied heavily on auto-tags, which often led to performance issues due to excessive processing and complexity. With Dynatrace 3rd-Gen, the recommended approach is to enrich metadata at the source, ensuring better scalability and efficiency.
+        Previously, customers relied heavily on auto-tags, which often led to performance issues due to excessive processing and complexity. With Dynatrace 3rd-Gen, the recommended approach is to enrich metadata at the source, ensuring better scalability and efficiency.
 
-    The enrichment strategy should adapt to the underlying technology. Different platforms (e.g., Kubernetes, AWS, Azure, OpenShift) offer distinct tagging and annotation mechanisms, so best practices must be tailored accordingly.
+        The enrichment strategy should adapt to the underlying technology. Different platforms (e.g., Kubernetes, AWS, Azure, OpenShift) offer distinct tagging and annotation mechanisms, so best practices must be tailored accordingly.
 
 ---
 

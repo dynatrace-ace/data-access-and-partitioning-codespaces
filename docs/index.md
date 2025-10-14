@@ -57,42 +57,42 @@ The lab has been tested end-to-end using a **sprint** tenant. While we recommend
 
 ### 🔑 Generate Tokens
 
-9. Within your Dynatrace tenant, go to `Access Tokens`, and generate a new one with the following permissions. You can give the token any name. Create the token and save it temporarely with you
+1. Within your Dynatrace tenant, go to `Access Tokens`, and generate a new one with the following permissions. You can give the token any name. Create the token and save it temporarely with you
 
-```bash
-Create ActiveGate tokens
-Read entities
-Ingest logs
-Ingest metrics
-Ingest OpenTelemetry traces
-Read settings
-Write settings
-Access problem and event feed, metrics, and topology
-Read configuration
-Write configuration
-PaaS integration - Installer download
-```
+    ```bash
+    Create ActiveGate tokens
+    Read entities
+    Ingest logs
+    Ingest metrics
+    Ingest OpenTelemetry traces
+    Read settings
+    Write settings
+    Access problem and event feed, metrics, and topology
+    Read configuration
+    Write configuration
+    PaaS integration - Installer download
+    ```
 
-10. Go to Account Management, time to create an OAuth Token, with the following scopes:
+2. Go to Account Management, time to create an OAuth Token, with the following scopes:
 
     <p align="left">
     <img src="img/create-oauth.png" width="70%">
     </p>
 
-```bash
-storage:buckets:read
-storage:bucket-definitions:read
-storage:bucket-definitions:write
-openpipeline:configurations:read
-openpipeline:configurations:write
-settings:objects:read
-settings:objects:write
-settings:schemas:read
-app-engine:apps:run
-```
+    ```bash
+    storage:buckets:read
+    storage:bucket-definitions:read
+    storage:bucket-definitions:write
+    openpipeline:configurations:read
+    openpipeline:configurations:write
+    settings:objects:read
+    settings:objects:write
+    settings:schemas:read
+    app-engine:apps:run
+    ```
 
-!!! warning
-    If you've created the tenant following the [previous steps](#dynatrace-tenant), the admin user is not your dynatrace email, but the one provided within the details in the slack conversation with the bot.
+    !!! warning
+        If you've created the tenant following the [previous steps](#dynatrace-tenant), the admin user is not your dynatrace email, but the one provided within the details in the slack conversation with the bot.
 
     <p align="left">
     <img src="img/hey-again.png" width="70%">
@@ -105,18 +105,18 @@ app-engine:apps:run
 
 12. Click finish, and with all the collected data, format them as follows:
 
-```bash
-DT_TENANT=https://abc12345.sprint.dynatracelabs.com
-DT_TENANT_3GEN=https://abc12345.sprint.apps.dynatracelabs.com
-# Dt tenant stuff
-DT_OPERATOR_TOKEN=<dt-access-token>
-DT_INGEST_TOKEN=<dt-access-token>
-MONACO_TOKEN=<dt-access-token>
-## Acc Mgmt stuff
-CLIENT_ID=<client-id-acc-mgmt>
-CLIENT_SECRET=<dt-secret-acc-mgmt>
-SSO_ENDPOINT=https://sso-sprint.dynatracelabs.com/sso/oauth2/token
-```
+    ```bash
+    DT_TENANT=https://abc12345.sprint.dynatracelabs.com
+    DT_TENANT_3GEN=https://abc12345.sprint.apps.dynatracelabs.com
+    # Dt tenant stuff
+    DT_OPERATOR_TOKEN=<dt-access-token>
+    DT_INGEST_TOKEN=<dt-access-token>
+    MONACO_TOKEN=<dt-access-token>
+    ## Acc Mgmt stuff
+    CLIENT_ID=<client-id-acc-mgmt>
+    CLIENT_SECRET=<dt-secret-acc-mgmt>
+    SSO_ENDPOINT=https://sso-sprint.dynatracelabs.com/sso/oauth2/token
+    ```
 
 
 ## All Set!

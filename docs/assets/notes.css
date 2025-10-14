@@ -239,3 +239,9 @@
         opacity: 0;
     }
 }
+
+/* docs/assets/notes.css (or your CSS) */
+.md-typeset h3.compact {
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+}

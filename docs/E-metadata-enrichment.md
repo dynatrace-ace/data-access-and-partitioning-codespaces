@@ -13,41 +13,41 @@ Are you ready for some fun?
 
 1. In **Segments**, create a segment with `dt.host_group.id`. Observe how the Primary Grail Field propagates across all datapoints (metrics, logs, spans, events).
 
-![](./img/host-group-pgf.png)
+    ![](./img/host-group-pgf.png)
 
-!!! note
-    Entities will appear in Segments with **Smartscape 2.0** (Planned availability: **January 2026**). Until then, use **Management Zones** for entities.
+    !!! note
+        Entities will appear in Segments with **Smartscape 2.0** (Planned availability: **January 2026**). Until then, use **Management Zones** for entities.
 
 2. Still in the segment, copy a span-specific attribute (e.g., `span.name`).
 
-![](./img/span-name.png)
+    ![](./img/span-name.png)
 
 3. Run the segment again, filtering where `span.name` equals the value you copied.
 
-![](./img/span-name-results.png)
+    ![](./img/span-name-results.png)
 
-!!! success
-    The Primary Grail Field propagates across every signal, unlike other attributes, making it ideal for tenant-wide configurations (Data Access, Partitioning, Segmentation, Cost Control).
+    !!! success
+        The Primary Grail Field propagates across every signal, unlike other attributes, making it ideal for tenant-wide configurations (Data Access, Partitioning, Segmentation, Cost Control).
 
-#### Why?
+    In 3rd-Gen, each datapoint is treated independently, offering much greater flexibility in how data is: Grouped (via Buckets), Filtered (Segments), Secured (Access Control / IAM), Allocated (for cost tracking, DPS). Every signal, such as logs, spans, traces & metrics, should be enriched with the correspondant metadata. Entities are treated in a similar way to any other signal type.
 
-_In 3rd-Gen, each datapoint is treated independently, offering much greater flexibility in how data is: Grouped (via Buckets), Filtered (Segments), Secured (Access Control / IAM), Allocated (for cost tracking, DPS). Every signal, such as logs, spans, traces & metrics, should be enriched with the correspondant metadata. Entities are treated in a similar way to any other signal type._
+To meet the **Slice & Dice** requirements (remember the table), we must enrich **every signal** (spans, logs, metrics, events) with:
 
-So in order to fulfill the respective requirements from the table generated during the Slice & Dice exercise, we need to enrich every signal with:
+- `dt.security_context = easytrade`
+- `dt.cost.costcenter = easytrade`
+- `dt.cost.product = easytrade`
 
-- dt.security_context = easytrade
-- dt.cost.costcenter = easytrade
-- dt.cost.product = easytrade
+This makes the metadata consistent across signals, so you can cleanly apply IAM boundaries, Cost Allocation, Buckets, and Segmentation based on those fields.
 
-Once we've enriched all signal with those values, we can start creating the following configuration for IAM, Cost Allocation, Buckets, Segmnetation!
+### Enriching our K8s Cluster
 
 #### How?
 
-Enrichment works different depending the technology. For us we found that it is a K8s running on GCP. The D1 CoE is also providing a detailed [guide for each technology](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities) (_1 minute_)
+Enrichment varies by technology. For the Easytrade team, the stack is **Kubernetes on GCP**.
 
-During this lab, we will focus on [K8s Enrichment](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes) (_5 minutes_)
+See the D1 CoE **guide per technology**: [Enrichment — Technologies & Entities](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities).
 
-### Enriching our K8s Cluster
+In this lab, we’ll focus on **Kubernetes enrichment**: [Enrichment — Kubernetes](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes) _(~5 minutes)_.
 
 #### Coverage Notebook
 
