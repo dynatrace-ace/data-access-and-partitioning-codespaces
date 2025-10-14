@@ -880,13 +880,12 @@
 <p>Dimensions are key–value pairs that provide context for metrics, logs, or traces. They transform raw data into actionable insights by enabling slicing, filtering, and aggregation.</p>
 <p>Historically, customers stored dimensions in HOST_GROUP (from the source) or defined them as tags and/or Management Zones.</p>
 <ol>
-<li>Explore the <strong>dimensions</strong> within your customer environment. You can use <a href="https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e">this</a> Notebook</li>
-</ol>
-<!-- Dimensions Notebook -->
+<li>
+<p>Explore the <strong>dimensions</strong> within your customer environment. You can use <a href="https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e">this</a> Notebook</p>
+<p><!-- Dimensions Notebook -->
 <div class="notes-widget"
-     data-required="app, environment, component, platform"
-     data-hint="Write down the key dimensions you discover."></div>
-
+    data-required="app, environment, component, platform"
+    data-hint="Write down the key dimensions you discover."></div></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Dimensions give us a clear way to slice and dice a customer’s environment:</p>
@@ -896,24 +895,27 @@
 <li><strong>Bucket Strategy</strong>: Avoid excessive bucket creation (e.g., 18k apps across 30 BUs should not result in 36k buckets). Use a multi-dimensional approach, group lighter apps by Business Unit (BU). Assign dedicated buckets to high-volume apps (those with higher TB/day traffic).</li>
 </ul>
 </div>
+</li>
+</ol>
 <h4 id="technologies-exercise">Technologies (exercise)<a class="headerlink" href="#technologies-exercise" title="Permanent link">#</a></h4>
 <ol>
-<li>Explore the <strong>technologies</strong> within your customer environment. You can use <a href="https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e">this</a> notebook</li>
-</ol>
-<!-- Technologies notebook -->
+<li>
+<p>Explore the <strong>technologies</strong> within your customer environment. You can use <a href="https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e">this</a> notebook</p>
+<p><!-- Technologies notebook -->
 <div class="notes-widget"
-     data-required="gcp, k8s"
-     data-aliases='{
-       "gcp": ["google cloud", "google_cloud_platform", "google cloud platform", "gcloud"],
-       "k8s": ["kubernetes", "kube"]
-     }'
-     data-hint="Write down the customer technologies you discover."></div>
-
+    data-required="gcp, k8s"
+    data-aliases='{
+    "gcp": ["google cloud", "google_cloud_platform", "google cloud platform", "gcloud"],
+    "k8s": ["kubernetes", "kube"]
+    }'
+    data-hint="Write down the customer technologies you discover."></div></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Previously, customers relied heavily on auto-tags, which often led to performance issues due to excessive processing and complexity. With Dynatrace 3rd-Gen, the recommended approach is to enrich metadata at the source, ensuring better scalability and efficiency.</p>
 <p>The enrichment strategy should adapt to the underlying technology. Different platforms (e.g., Kubernetes, AWS, Azure, OpenShift) offer distinct tagging and annotation mechanisms, so best practices must be tailored accordingly.</p>
 </div>
+</li>
+</ol>
 <hr />
 <h2 id="closing-up">🌱 Closing Up<a class="headerlink" href="#closing-up" title="Permanent link">#</a></h2>
 <h3 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h3>
