@@ -446,15 +446,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#exploring-dynatrace-default-policies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exploring Dynatrace Default Policies
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#reviewing-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       Reviewing Requirements
@@ -695,15 +686,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#exploring-dynatrace-default-policies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exploring Dynatrace Default Policies
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#reviewing-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       Reviewing Requirements
@@ -848,18 +830,8 @@
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Use <strong>Dynatrace default policies</strong> whenever they meet the customer’s needs. If a requirement can’t be met with the defaults, switch to a <strong>custom policy</strong> for that specific case.</p>
+<p>Let's review customer requrements!</p>
 </div>
-<h4 id="exploring-dynatrace-default-policies">Exploring Dynatrace Default Policies<a class="headerlink" href="#exploring-dynatrace-default-policies" title="Permanent link">#</a></h4>
-<p>Typically there are at minimum 3 domains of access</p>
-<p>UI Policy - What am I, as a certain persona, physically able to see and interact with on the user interface of the Dynatrace platform (Think DT Apps)</p>
-<p><img alt="" src="../img/uipolicy.png" /></p>
-<p>UI Policy Example limiting users to certain apps and including basic functionality for seeing and interacting with things in DT</p>
-<p>Data Policy - What data should, as a certain persona, be returned to me while using the platform</p>
-<p><img alt="" src="../img/datapolicy.png" /></p>
-<p>Data Policy Example giving access to data in Grail meant to be paired with a boundary</p>
-<p>Config Policy - What should I, as a certain persona, be able to change in the platform</p>
-<p><img alt="" src="../img/configpolicy.png" /></p>
-<p>Config Policy Example granting access to change some platform functionality as well as data for built-in schemas meant to be paired with a boundary</p>
 <h4 id="reviewing-requirements">Reviewing Requirements<a class="headerlink" href="#reviewing-requirements" title="Permanent link">#</a></h4>
 <p>Our initial requirement was that "Teams should only access their own apps". </p>
 <p>By exploring the policies with our customer, they decided to apply it for all those policies mentioned above, meaning that...</p>
@@ -876,7 +848,7 @@
 <ol>
 <li>
 <p>Navigate to the <code>Account Management Portal &gt; Identity &amp; access management &gt; Policy management</code>, and to the "Boundaries" tab</p>
-<p><img alt="" src="../img/configpolicy.png" /></p>
+<p><img alt="" src="../img/createboundary.png" /></p>
 </li>
 <li>
 <p>Click on the "+ Create boundary" button</p>
@@ -897,139 +869,85 @@
 <h3 id="group-easytrade-readers">Group Easytrade Readers<a class="headerlink" href="#group-easytrade-readers" title="Permanent link">#</a></h3>
 <p>We now want to grant specific users with "Readers" access to Dynatrace. Allowing them to see data in the different apps. We want to create a group for the 'Easytrade' app with read permissions.</p>
 <ol>
-<li>
-<p>Navigate to the Policy management</p>
-</li>
-<li>
-<p>Explore the different policies of category "Data access" and "Dynatrace access" and try to understand which policy is a good fit for Dynatrace "Readers"</p>
+<li>Navigate to the Policy management and explore the different policies of category <strong>Data access</strong> and <strong>Dynatrace access</strong> and try to understand which policy is a good fit for Dynatrace "Readers"</li>
+</ol>
+<details>
+<summary>UI Policy</summary>
+<p>What you can see and interact with in the Dynatrace UI (apps)</p>
+<p><img alt="ui policy" src="../img/uipolicy.png" width="90%" /></p>
+<p>Example limiting users to certain apps and including basic functionality for seeing and interacting with things in DT</p>
+</details>
+<details>
+<summary>Data Policy</summary>
+<p>What data is returned while using the platform</p>
+<p><img alt="data policy" src="../img/datapolicy.png" width="40%" /></p>
+<p>Example giving access to data in Grail meant to be paired with a boundary</p>
+</details>
+<details>
+<summary>Config Policy</summary>
+<p>What you can change in the platform</p>
+<p><img alt="config policy" src="../img/configpolicy.png" width="80%" /></p>
+<p>Example granting access to change some platform functionality as well as data for built-in schemas meant to be paired with a boundary</p>
+</details>
 <p><img alt="" src="../img/explorepolicies.png" /></p>
-</li>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is important to know every policy and what it does exactly. Be prepared for customers asking and/or troubleshooting</p>
+</div>
+<ol>
 <li>
-<p>Navigate to Group management, click on the "+ Create group" button, call it "[Readers] Easytrade", then click on create</p>
+<p>Navigate to Group management, click on the "+ Create group" button, call it "[Readers] Easytrade", give it a meaningful description (e.g. Grants reading permissions to Easytrade's observability data), then click on create</p>
 <p><img alt="" src="../img/content/lab3-ex3-task2-create-group.png" /></p>
 </li>
 <li>
-<p>On the newly created group edition page</p>
-</li>
-<li>Click on the "+ Permission" button</li>
-<li>
-<p>Fill the form to grant access to Dynatrace:</p>
+<p>On the newly created group edition page, click on the "+ Permission" button, Fill the form to grant access to Dynatrace, Permission name: "Standard user", Scope: select the respective environment, Boundaries: "Easytrade", Click on "Save"</p>
+<p><img alt="" src="../img/easytradereaderdefault.png" width="60%" /></p>
 </li>
 <li>
-<p>Permission name: "Standard user"</p>
-</li>
-<li>Scope: tick the "Account (all environments)" box</li>
-<li>
-<p>Boundaries: "Easytrade"</p>
-</li>
-<li>
-<p>Click on "Save"</p>
-</li>
-<li>
-<p>Add another permission to grant access data, click on "+ Permission" and fill the form:</p>
-</li>
-<li>
-<p>Permission name: "All Grail data read access"</p>
-</li>
-<li>Scope: tick the "Account (all environments)" box</li>
-<li>
-<p>Boundaries: "Easytrade"</p>
-</li>
-<li>
-<p>Click on "Save"</p>
+<p>Add another permission to grant access data, click on "+ Permission" and fill the form, Permission name: "All Grail data read access", Scope: tick the "Account (all environments)" box, Boundaries: "Easytrade", Click on "Save"</p>
+<p><img alt="" src="../img/content/lab3-ex3-task3-assign-policy-boundary.png" /></p>
 </li>
 </ol>
-<p><img alt="" src="../img/content/lab3-ex3-task3-assign-policy-boundary.png" />
-<img alt="" src="../img/content/lab3-ex3-task3-assign-policy-boundary-2.png" /></p>
+<p>Your Easytrade Readers should finally look like this</p>
+<pre><code>![](img/easytradereadergroup.png){ width="60%" }
+</code></pre>
 <h3 id="group-easytrade-writers">Group Easytrade Writers<a class="headerlink" href="#group-easytrade-writers" title="Permanent link">#</a></h3>
 <p>We now want to grant specific users with "Writers" access to Dynatrace. Allowing them to edit monitoring configurations in the different apps.
 💡 We want to create a group for the 'Easytrade' app with writers permissions.</p>
 <ol>
-<li>Navigate to the Account Management Portal &gt; Identity &amp; access management &gt; Policy management</li>
-<li>Click on "+ Create policy"</li>
-<li>
-<p>Fill the form</p>
-</li>
-<li>
-<p>Name: "[Lab] Writers"</p>
-</li>
-<li>Policy description: "Statements granting write permissions"</li>
-<li>Policy statement:</li>
+<li>Navigate to Policy management, Click on "+ Create policy", Fill the form, Name: "Settings Writers", Policy description: "Statements granting write permissions", Policy statement:"</li>
 </ol>
-<details>
-  <summary>Write permissions on settings – Settings</summary>
-
 <div class="highlight"><pre><span></span><code><span class="n">ALLOW</span><span class="w"> </span><span class="n">settings</span><span class="p">:</span><span class="n">schemas</span><span class="p">:</span><span class="k">read</span><span class="p">;</span>
 <span class="n">ALLOW</span><span class="w"> </span><span class="n">settings</span><span class="p">:</span><span class="n">objects</span><span class="p">:</span><span class="k">read</span><span class="p">,</span><span class="w"> </span><span class="n">settings</span><span class="p">:</span><span class="n">objects</span><span class="p">:</span><span class="k">write</span><span class="p">;</span>
 <span class="n">ALLOW</span><span class="w"> </span><span class="n">environment</span><span class="p">:</span><span class="n">roles</span><span class="p">:</span><span class="n">manage</span><span class="o">-</span><span class="n">settings</span><span class="p">;</span>
 </code></pre></div>
-
-</details>
-
+<pre><code>![](img/settingswriterblack.png){ width="60%" }
+</code></pre>
 <ol>
-<li>Click on "Save"</li>
-</ol>
-<p><img alt="" src="../img/content/lab3-ex4-task1-create-policy.png" /></p>
-<ol>
-<li>Navigate to the Account Management Portal &gt; Identity &amp; access management &gt; Group management</li>
-<li>Click on the "+ Create group" button</li>
 <li>
-<p>Fill the form</p>
+<p>Navigate to Group management, Click on the "+ Create group" button, Fill the form, Name: "[Writters] Easytrade", Description: "Grants writers permissions to observability configurations for the Easytrade team", Click on "Create"</p>
+<p><img alt="" src="../img/writterseasytrade.png" /></p>
 </li>
 <li>
-<p>Name: "[Writers] Easytrade"</p>
-</li>
-<li>
-<p>Description: "Grants writers permissions to observability configurations for the Easytrade team"</p>
-</li>
-<li>
-<p>Click on "Create"</p>
+<p>On the newly created group edition page, Click on the "+ Permission" button, Fill the form:, Permission name: "Settings Writers", Scope: select easytrade environment box, Boundaries: "Easytrade", Click on "Save"</p>
+<p><img alt="" src="../img/policytogroupwrite.png" /></p>
 </li>
 </ol>
-<p><img alt="" src="../img/content/lab3-ex4-task2-create-group.png" /></p>
-<ol>
-<li>On the newly created group edition page</li>
-<li>Click on the "+ Permission" button</li>
-<li>
-<p>Fill the form:</p>
-</li>
-<li>
-<p>Permission name: "[Lab] Writers"</p>
-</li>
-<li>Scope: tick the "Account (all environments)" box</li>
-<li>
-<p>Boundaries: "Easytrade"</p>
-</li>
-<li>
-<p>Click on "Save"</p>
-</li>
-</ol>
-<p><img alt="" src="../img/content/lab3-ex4-task3-assign-policy-boundary.png" /></p>
 <h3 id="exercice-4-assign-user-to-group">Exercice 4: Assign User to Group<a class="headerlink" href="#exercice-4-assign-user-to-group" title="Permanent link">#</a></h3>
-<p>We now want to test the permissions we created in previous lab exercises.
-💡We will invite a separate email address and verify its access according to the assigned groups.</p>
-<p>invite your dt email. e.g. ignacio.goldman@dynatrace.com</p>
+<p>We now want to test the permissions we created in previous lab exercises. We will invite a separate email address and verify its access according to the assigned groups. invite your dt email. e.g. ignacio.goldman@dynatrace.com</p>
 <ol>
-<li>Navigate to the Account Management Portal &gt; Identity &amp; access management &gt; User management</li>
-<li>Click on the "Invite users" button</li>
-<li>Fill in the email address and assign the "[Readers] Easytrade" group</li>
-<li>Click on "Invite"</li>
-<li>Authenticate with this new user in a private window, and verify the permissions</li>
+<li>Navigate to User management, Click on the "Invite users" button, Fill in the email address and assign the "[Readers] Easytrade" group, Click on "Invite", Authenticate with this new user in a private window, and verify the permissions</li>
 </ol>
-<p><img alt="" src="../img/content/lab3-ex5-task2-reader-user.png" /></p>
+<p>SCREENSHOT K8S APP, LOGS, PROBLEMS</p>
 <blockquote>
 <p>💡You can also navitage to Account Management Portal &gt; Identity &amp; access management &gt; Effective policies, to verify the policies and boundaries for your user.</p>
 </blockquote>
 <p><img alt="" src="../img/content/lab3-ex5-task2-effective-permissions.png" /></p>
 <p><strong>Task 3: Verify the Writers permissions</strong></p>
 <ol>
-<li>Navigate to the Account Management Portal &gt; Identity &amp; access management &gt; User management</li>
-<li>Edit your test user</li>
-<li>Add both [Readers] Easytrade and [Writers] Easytrade</li>
-<li>Click on "Save"</li>
-<li>Authenticate with this new user in a private window, and verify the permissions</li>
+<li>Navigate to  User management, Edit your test user, Add both [Readers] Easytrade and [Writers] Easytrade, Click on "Save", Authenticate with this new user in a private window, and verify the permissions</li>
 </ol>
-<p><img alt="" src="../img/content/lab3-ex5-task3-writer-user.png" /></p>
+<p>SCREENSHOT K8S APP, LOGS, PROBLEMS</p>
 <blockquote>
 <p>💡You can also navitage to Account Management Portal &gt; Identity &amp; access management &gt; Effective policies, to verify the policies and boundaries for your user.</p>
 </blockquote>
