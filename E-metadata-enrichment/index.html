@@ -955,55 +955,58 @@
 </li>
 </ol>
 <h5 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">#</a></h5>
-<p>The Dynatrace Operator will start mutating pods within that namespace adding the dt.security_context</p>
+<p>The Dynatrace Operator mutates pods in the namespace, adding <code>dt.security_context</code> in this case.</p>
 <ol>
 <li>
-<p>Run <code>kubectl get pods -n easytrade</code> within your cluster, check existing pods and copy the accountservice one</p>
+<p>Run <code>kubectl get pods -n easytrade</code> in your cluster, find the <strong>accountservice</strong> pod, and copy its name.</p>
 <p><img alt="" src="../img/getpods.png" /></p>
 </li>
 <li>
-<p>Describe the accountservice pod with <code>kubectl describe pods &lt;accountservice-pod-name&gt; -n easytrade</code></p>
+<p>Describe the pod: <code>kubectl describe pod &lt;accountservice-pod-name&gt; -n easytrade</code></p>
 <p><img alt="" src="../img/annotation-accountservice.png" /></p>
-<p>As you may see, no dt.security_context. The pod is running, we need a pod restart for the Operator to mutate the definition and the dt.security_context to reflects in the definition</p>
+<p>If you don’t see <code>dt.security_context</code>, the pod was created before the rule applied. Restart it so the Operator can mutate the spec.</p>
 </li>
 <li>
-<p>Restart the accountservice deployment with</p>
+<p>Restart the <strong>accountservice</strong> deployment:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>easytrade<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>deployment/accountservice
 </code></pre></div>
 </li>
 <li>
-<p>Check once again the new pod, repeat steps <code>8</code> &amp; <code>9</code>. Now we should see dt.security_context within the pod definition</p>
+<p>Check the new pod (repeat steps <strong>8</strong> &amp; <strong>9</strong>). You should now see <code>dt.security_context</code> in the pod definition.</p>
 <p><img alt="" src="../img/accountservice-sc.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
+<p>After creating or modifying rules, allow up to <strong>45 minutes</strong> for changes to take effect (but it’s usually faster). Repeat steps 8 &amp; 9 until <code>dt.security_context</code> appears in the pod definition.</p>
 </div>
-<p>After creating or modifying rules, allow up to 45 minutes for the changes to take effect. It usually doesn't take that long, repeat steps 8 &amp; 9 until you see dt.security_context within your pod definition</p>
 </li>
 <li>
-<p>Go back to your Enrichment Overview Notebook, and check the current status. Grab a span.id, paste it below and check for the workload name</p>
+<p>Return to the <strong>Enrichment Overview Notebook</strong> and re-check the status. Grab a <code>span.id</code>, paste it in the query, and confirm the workload name.</p>
 <p><img alt="" src="../img/1st-sc-in-notebook.png" /></p>
 </li>
 <li>
-<p>Configure dt.cost.costcenter &amp; dt.cost.product, and other useful attributes that the Easytrade Team was looking forward to use in Dynatrace</p>
+<p>Configure <code>dt.cost.costcenter</code> and <code>dt.cost.product</code>, plus any other attributes the Easytrade team needs.</p>
 <p><img alt="" src="../img/rest-of-attributes.png" /></p>
+<p>! note</p>
+<pre><code>For those other attributes (team, stage, app.kubernetes.io/version), as they are not going to be connected to any of the main ones (security context &amp; costs), you can mark them as Primary Grail Tags. We will see this later...
+</code></pre>
 </li>
 <li>
-<p>Restart all deployments from easytrade namespace</p>
+<p>Restart <strong>all deployments</strong> in the <code>easytrade</code> namespace:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>d<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>-n<span class="w"> </span>easytrade<span class="w"> </span>get<span class="w"> </span>deploy<span class="w"> </span>-o<span class="w"> </span>name<span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <span class="w">  </span>kubectl<span class="w"> </span>-n<span class="w"> </span>easytrade<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span>
 <span class="k">done</span>
 </code></pre></div>
 </li>
 <li>
-<p>Check your Enrichment Overview Notebook once again</p>
+<p>Re-check the <strong>Enrichment Overview Notebook</strong>.</p>
 <p><img alt="" src="../img/spans-well-done.png" /></p>
 <blockquote>
-<p>Check logs. Why not all logs? Cluster-level spans, but there are cluster-level logs, that an infra team may be interested in?</p>
+<p>Also check <strong>logs</strong>. Not all logs may be enriched (e.g., cluster-level logs that infra teams care about).</p>
 </blockquote>
 </li>
 </ol>
 <h4 id="primary-grail-tags">Primary Grail Tags<a class="headerlink" href="#primary-grail-tags" title="Permanent link">#</a></h4>
-<p>As you may have seen, we've also added other attributes that could be extremely useful for the customer, such as the version.</p>
+<p>As you may have seen, we've also added other attributes that could be extremely useful for the customer, such as the apps version.</p>
 <ol>
 <li>
 <p>The customer could create visualization of metrics, or exception maps comparing different version of their apps</p>
