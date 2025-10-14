@@ -1,41 +1,35 @@
 ## 🎯 Lab Goals
 
-- Understand Primary Grail Fields (PGFs): what they are and why they’re ideal for tenant-wide controls (IAM, Partitioning, Segmentation, Cost).
-- Assess current metadata coverage: run the Enrichment Overview notebook and a representative sample (dedup by host/PGI/service or iostream) to see presence of dt.security_context, dt.cost.costcenter, dt.cost.product, dt.host_group.id.
-- Configure K8s-based enrichment (namespace level): map existing labels (e.g., kubernetes.io/metadata.name) to PGFs; apply in Dynatrace; understand effect on all signals.
-- Validate by restarting workloads: roll out restarts (single service or all in easytrade) and confirm mutated pods carry new metadata.
-- Propagate cost & access fields: add dt.cost.costcenter and dt.cost.product alongside dt.security_context; re-check notebook KPIs and per-signal examples.
-- Handle exceptions (pod-level granularity): for loginservice, add pod template annotations in its manifest to set PGFs at workload scope; apply and verify.
+- Understand Primary Grail Fields: what they are and why they’re ideal for tenant-wide controls (IAM, Partitioning, Segmentation, Cost Control).
+- Assess current metadata coverage: with a provided Enrichment Overview notebook to see presence of `dt.security_context`, `dt.cost.costcenter`, `dt.cost.product`, `dt.host_group.id`.
+- Configure K8s-based enrichment and confirm mutated pods carry new metadata.
+- Handle exceptions (pod-level/workload granularity)
 
 Are you ready for some fun?
 
 ## 🧪 Exercises
 
-Let's start by understanding what a Primary Grail Field is [here](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1246757730/2.+Metadata+Enrichment) (_5 minutes_)
-
 ### Understanding Primary Grail Fields
 
-1. Go to Segments, create a segment with the `dt.host_group.id`, and see how the Primary Grail Field gets propagated across every datapoint (metric, log, trace, event). You don't need
+1. In **Segments**, create a segment with `dt.host_group.id`. Observe how the Primary Grail Field propagates across all datapoints (metrics, logs, spans, events).
 
 ![](./img/host-group-pgf.png)
 
-> Note: for entities we're waiting for Smartscape 2.0, customers can still rely/use Management Zones for that. It will work starting from January 2026
+!!! note
+    Entities will appear in Segments with **Smartscape 2.0** (Planned availability: **January 2026**). Until then, use **Management Zones** for entities.
 
-2. Without leaving the Segment, copy any attribute related to spans specifically. In the read we're using java.jar.file, but you can test it with any attribute, let's do for example span.name
+2. Still in the segment, copy a span-specific attribute (e.g., `span.name`).
 
 ![](./img/span-name.png)
 
-3. Run the Segment once again but for span.name equals to the value you've selected
+3. Run the segment again, filtering where `span.name` equals the value you copied.
 
 ![](./img/span-name-results.png)
 
 !!! success
-
-  See how a Primary Grail Field is propagated across every signal, compared with other attributes. Those are good fits to be used for tenant-wise configurations such as Data Access, Partitioning, Segmentation & Cost Control
+    The Primary Grail Field propagates across every signal, unlike other attributes, making it ideal for tenant-wide configurations (Data Access, Partitioning, Segmentation, Cost Control).
 
 #### Why?
-
-As explained in the D1 CoE page...
 
 _In 3rd-Gen, each datapoint is treated independently, offering much greater flexibility in how data is: Grouped (via Buckets), Filtered (Segments), Secured (Access Control / IAM), Allocated (for cost tracking, DPS). Every signal, such as logs, spans, traces & metrics, should be enriched with the correspondant metadata. Entities are treated in a similar way to any other signal type._
 
