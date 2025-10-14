@@ -428,12 +428,45 @@
         <li class="md-nav__item">
   <a href="#exercises" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercises
+      🧪 Exercises
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Exercises">
+    <nav class="md-nav" aria-label="🧪 Exercises">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recap-intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap &amp; Intro
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recap & Intro">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exploring-dynatrace-default-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exploring Dynatrace Default Policies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reviewing-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reviewing Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#easytrade-boundary" class="md-nav__link">
@@ -479,11 +512,11 @@
         <li class="md-nav__item">
   <a href="#closing-up" class="md-nav__link">
     <span class="md-ellipsis">
-      Closing Up
+      🌱 Closing Up
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Closing Up">
+    <nav class="md-nav" aria-label="🌱 Closing Up">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -644,12 +677,45 @@
         <li class="md-nav__item">
   <a href="#exercises" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercises
+      🧪 Exercises
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Exercises">
+    <nav class="md-nav" aria-label="🧪 Exercises">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recap-intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap &amp; Intro
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recap & Intro">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exploring-dynatrace-default-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exploring Dynatrace Default Policies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reviewing-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reviewing Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#easytrade-boundary" class="md-nav__link">
@@ -695,11 +761,11 @@
         <li class="md-nav__item">
   <a href="#closing-up" class="md-nav__link">
     <span class="md-ellipsis">
-      Closing Up
+      🌱 Closing Up
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Closing Up">
+    <nav class="md-nav" aria-label="🌱 Closing Up">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -744,13 +810,14 @@
 <li>Minimize maintenance effort by decoupling permissions from scopes.</li>
 </ul>
 <hr />
-<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">#</a></h2>
-<p>We've already </p>
+<h2 id="exercises">🧪 Exercises<a class="headerlink" href="#exercises" title="Permanent link">#</a></h2>
+<h3 id="recap-intro">Recap &amp; Intro<a class="headerlink" href="#recap-intro" title="Permanent link">#</a></h3>
+<p>We’ve already:</p>
 <ul>
-<li>assess customer requirements when it comes to Data Access</li>
-<li>defined dt.security_context for easytrade datapoints (spans, logs, metrics, etc...)</li>
+<li>Assessed customer <strong>Data Access</strong> requirements, during the Slice &amp; Dice lab</li>
+<li>Defined <code>dt.security_context</code> for Easytrade datapoints (spans, logs, metrics, etc.), during the previous lab</li>
 </ul>
-<p>Now it is time to configure IAM for our customer, we can follow two approaches</p>
+<p>Now we’ll configure <strong>IAM</strong> for the customer using <code>dt.security_context</code> as the anchor. Consider 2 approaches:</p>
 <table>
 <thead>
 <tr>
@@ -780,58 +847,70 @@
 </table>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>It is recommended to use Default Dynatrace Policies, as long as they meet our customer requirement. </p>
+<p>Use <strong>Dynatrace default policies</strong> whenever they meet the customer’s needs. If a requirement can’t be met with the defaults, switch to a <strong>custom policy</strong> for that specific case.</p>
 </div>
+<h4 id="exploring-dynatrace-default-policies">Exploring Dynatrace Default Policies<a class="headerlink" href="#exploring-dynatrace-default-policies" title="Permanent link">#</a></h4>
+<p>Typically there are at minimum 3 domains of access</p>
+<p>UI Policy - What am I, as a certain persona, physically able to see and interact with on the user interface of the Dynatrace platform (Think DT Apps)</p>
+<p><img alt="" src="../img/uipolicy.png" /></p>
+<p>UI Policy Example limiting users to certain apps and including basic functionality for seeing and interacting with things in DT</p>
+<p>Data Policy - What data should, as a certain persona, be returned to me while using the platform</p>
+<p><img alt="" src="../img/datapolicy.png" /></p>
+<p>Data Policy Example giving access to data in Grail meant to be paired with a boundary</p>
+<p>Config Policy - What should I, as a certain persona, be able to change in the platform</p>
+<p><img alt="" src="../img/configpolicy.png" /></p>
+<p>Config Policy Example granting access to change some platform functionality as well as data for built-in schemas meant to be paired with a boundary</p>
+<h4 id="reviewing-requirements">Reviewing Requirements<a class="headerlink" href="#reviewing-requirements" title="Permanent link">#</a></h4>
+<p>Our initial requirement was that "Teams should only access their own apps". </p>
+<p>By exploring the policies with our customer, they decided to apply it for all those policies mentioned above, meaning that...</p>
+<p>"Teams should access and config their own stuff in Dynatrace"</p>
+<p>Makes sense right?</p>
+<p>For that, we'll create 2 groups:</p>
+<ul>
+<li>Easytrade Readers: users that should have access to their observability data in read mode</li>
+<li>Easytrade Writers: users that have access to their observability data in read mode, and ability to edit monitoring configurations on their scope</li>
+</ul>
 <hr />
 <h3 id="easytrade-boundary">Easytrade Boundary<a class="headerlink" href="#easytrade-boundary" title="Permanent link">#</a></h3>
 <p>Now that any Dynatrace User can access the default features, we want to allow users to access specific observability data. We want to create a boundary for the 'Easytrade' app that will be attachable to any permission.</p>
 <ol>
-<li>Navigate to the Account Management Portal &gt; Identity &amp; access management &gt; Policy management, and to the "Boundaries" tab</li>
-<li>Click on the "+ Create boundary" button</li>
 <li>
-<p>Fill the form:</p>
+<p>Navigate to the <code>Account Management Portal &gt; Identity &amp; access management &gt; Policy management</code>, and to the "Boundaries" tab</p>
+<p><img alt="" src="../img/configpolicy.png" /></p>
 </li>
 <li>
-<p>Boundary name: "Easytrade"</p>
+<p>Click on the "+ Create boundary" button</p>
 </li>
-<li>Boundary query:</li>
-</ol>
+<li>
+<p>Call the boundary Easytrade, and fill it with the following query, then click save</p>
 <div class="highlight"><pre><span></span><code><span class="k">storage</span><span class="p">:</span><span class="n">dt</span><span class="p">.</span><span class="n">security_context</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;easytrade&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;EasyTrade&quot;</span><span class="p">);</span>
 <span class="o">//</span><span class="w"> </span><span class="ss">&quot;EasyTrade&quot;</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="n">comes</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">MZ</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="p">(</span><span class="n">grail</span><span class="w"> </span><span class="k">security</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">monitored</span><span class="w"> </span><span class="n">entities</span><span class="p">)</span>
 <span class="n">environment</span><span class="p">:</span><span class="n">management</span><span class="o">-</span><span class="k">zone</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;EasyTrade&quot;</span><span class="p">);</span>
 </code></pre></div>
-<ul>
-<li>Click on "Save"</li>
-</ul>
 <p><img alt="" src="../img/content/lab3-ex2-task1-create-boundary.png" /></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>This is how we use dt.security_context to restrict access to certain users, we just need to now bind it with a policy, let's continue</p>
+</div>
+</li>
+</ol>
 <h3 id="group-easytrade-readers">Group Easytrade Readers<a class="headerlink" href="#group-easytrade-readers" title="Permanent link">#</a></h3>
 <p>We now want to grant specific users with "Readers" access to Dynatrace. Allowing them to see data in the different apps. We want to create a group for the 'Easytrade' app with read permissions.</p>
 <ol>
-<li>Navigate to the Account Management Portal &gt; Identity &amp; access management &gt; Policy management</li>
-<li>Explore the different policies of category "Data access" and "Dynatrace access"</li>
 <li>
-<p>Understand which policy is a good fit for Dynatrace "Readers"</p>
+<p>Navigate to the Policy management</p>
 </li>
 <li>
-<p>Navigate to the Account Management Portal &gt; Identity &amp; access management &gt; Group management</p>
-</li>
-<li>Click on the "+ Create group" button</li>
-<li>
-<p>Fill the form</p>
+<p>Explore the different policies of category "Data access" and "Dynatrace access" and try to understand which policy is a good fit for Dynatrace "Readers"</p>
+<p><img alt="" src="../img/explorepolicies.png" /></p>
 </li>
 <li>
-<p>Name: "[Readers] Easytrade"</p>
-</li>
-<li>
-<p>Description: "Grants reading permissions to observability data for the Easytrade team"</p>
-</li>
-<li>
-<p>Click on "Create"</p>
-</li>
-</ol>
+<p>Navigate to Group management, click on the "+ Create group" button, call it "[Readers] Easytrade", then click on create</p>
 <p><img alt="" src="../img/content/lab3-ex3-task2-create-group.png" /></p>
-<ol>
-<li>On the newly created group edition page</li>
+</li>
+<li>
+<p>On the newly created group edition page</p>
+</li>
 <li>Click on the "+ Permission" button</li>
 <li>
 <p>Fill the form to grant access to Dynatrace:</p>
@@ -955,7 +1034,7 @@
 <p>💡You can also navitage to Account Management Portal &gt; Identity &amp; access management &gt; Effective policies, to verify the policies and boundaries for your user.</p>
 </blockquote>
 <p><img alt="" src="../img/content/lab3-ex5-task3-effective-permissions.png" /></p>
-<h2 id="closing-up">Closing Up<a class="headerlink" href="#closing-up" title="Permanent link">#</a></h2>
+<h2 id="closing-up">🌱 Closing Up<a class="headerlink" href="#closing-up" title="Permanent link">#</a></h2>
 <h3 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">#</a></h3>
 <ul>
 <li><a href="https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1356339039/4.+Data+Access">IAM Guide custom</a></li>

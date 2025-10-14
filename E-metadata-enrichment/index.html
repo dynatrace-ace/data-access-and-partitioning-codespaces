@@ -497,7 +497,7 @@
           <li class="md-nav__item">
   <a href="#approach-3-pod-level-granularity" class="md-nav__link">
     <span class="md-ellipsis">
-      [approach 3] Pod-level granularity
+      [Approach 3] Pod-level granularity
     </span>
   </a>
   
@@ -799,7 +799,7 @@
           <li class="md-nav__item">
   <a href="#approach-3-pod-level-granularity" class="md-nav__link">
     <span class="md-ellipsis">
-      [approach 3] Pod-level granularity
+      [Approach 3] Pod-level granularity
     </span>
   </a>
   
@@ -1017,12 +1017,13 @@
 </div>
 </li>
 </ol>
-<h4 id="approach-3-pod-level-granularity">[approach 3] Pod-level granularity<a class="headerlink" href="#approach-3-pod-level-granularity" title="Permanent link">#</a></h4>
-<p>The loginservice is the only microservice from easytrade that is it not managed by the Easytrade team who we are helping with the PoC. There's a request to keep their Data Access separately.</p>
-<p>The enrichment we've seen so far go as far as the namespace in terms of granularity, how can we achieve pod level granularity? How could we define a dt.security_context = loginservice?</p>
+<h4 id="approach-3-pod-level-granularity">[Approach 3] Pod-level granularity<a class="headerlink" href="#approach-3-pod-level-granularity" title="Permanent link">#</a></h4>
+<p><strong>Context:</strong> <code>loginservice</code> is the only Easytrade microservice not managed by the team we’re helping with the PoC. There’s a request to keep its <strong>Data Access</strong> separate.</p>
+<p>Namespace-level enrichment only goes so far. To target a single workload, we’ll set the attributes at the <strong>pod level</strong> (e.g., <code>dt.security_context = loginservice</code>).</p>
 <ol>
 <li>
-<p>Check your IDE, there's the loginservice resource file under .devcontainer/apps/easytrade/k8s-manifests/loginservice.yaml. Add the annotations to the pod definition</p>
+<p>In your IDE, open<br />
+<code>.devcontainer/apps/easytrade/k8s-manifests/loginservice.yaml</code> and add these <strong>pod template annotations</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Custom tags for Dynatrace</span>
 <span class="w">  </span><span class="nt">metadata.dynatrace.com/dt.cost.costcenter</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;loginservice&quot;</span>
@@ -1032,19 +1033,19 @@
 <p><img alt="" src="../img/loginservicefile.png" /></p>
 </li>
 <li>
-<p>Redeploy based on the file</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl -n easytrade apply -f .devcontainer/apps/easytrade/k8s-manifests/loginservice.yaml</span>
+<p>Apply the manifest:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>easytrade<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.devcontainer/apps/easytrade/k8s-manifests/loginservice.yaml
 </code></pre></div>
 </li>
 <li>
-<p>You can check if the new pods of loginservice have the new dt.security_context values with</p>
+<p>Verify new pods have the updated fields:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>easytrade
-kubectl<span class="w"> </span>describe<span class="w"> </span>pods<span class="w"> </span>&lt;loginservice-pod-name&gt;<span class="w"> </span>-n<span class="w"> </span>easytrade
+kubectl<span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span>&lt;loginservice-pod-name&gt;<span class="w"> </span>-n<span class="w"> </span>easytrade
 </code></pre></div>
 <p><img alt="" src="../img/loginservicenewsc.png" /></p>
 </li>
 <li>
-<p>Check your Enrichment dashboard one more time</p>
+<p>Check the <strong>Enrichment</strong> dashboard again.</p>
 <p><img alt="" src="../img/loginservicedash.png" /></p>
 </li>
 </ol>
