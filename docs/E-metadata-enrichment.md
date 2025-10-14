@@ -152,13 +152,14 @@ As you may have seen, we've also added other attributes that could be extremely 
     !!! tip
         Consider also Primary Grail Tags, apart from the default enrichment of dt.security.context, dt.cost.costcenter and dt.cost.product. Think of the dimesions defined previously, or any relevant metadata that the customer could use in Dynatrace
 
-#### [approach 3] Pod-level granularity
+#### [Approach 3] Pod-level granularity
 
-The loginservice is the only microservice from easytrade that is it not managed by the Easytrade team who we are helping with the PoC. There's a request to keep their Data Access separately.
+**Context:** `loginservice` is the only Easytrade microservice not managed by the team we’re helping with the PoC. There’s a request to keep its **Data Access** separate.
 
-The enrichment we've seen so far go as far as the namespace in terms of granularity, how can we achieve pod level granularity? How could we define a dt.security_context = loginservice?
+Namespace-level enrichment only goes so far. To target a single workload, we’ll set the attributes at the **pod level** (e.g., `dt.security_context = loginservice`).
 
-17. Check your IDE, there's the loginservice resource file under .devcontainer/apps/easytrade/k8s-manifests/loginservice.yaml. Add the annotations to the pod definition
+17. In your IDE, open  
+    `.devcontainer/apps/easytrade/k8s-manifests/loginservice.yaml` and add these **pod template annotations**:
 
     ```yaml
     annotations:
@@ -170,22 +171,22 @@ The enrichment we've seen so far go as far as the namespace in terms of granular
 
     ![](./img/loginservicefile.png)
 
-18. Redeploy based on the file
+18. Apply the manifest:
 
-    ```yaml
+    ```bash
     kubectl -n easytrade apply -f .devcontainer/apps/easytrade/k8s-manifests/loginservice.yaml
     ```
 
-19. You can check if the new pods of loginservice have the new dt.security_context values with
+19. Verify new pods have the updated fields:
 
     ```bash
     kubectl get pods -n easytrade
-    kubectl describe pods <loginservice-pod-name> -n easytrade
+    kubectl describe pod <loginservice-pod-name> -n easytrade
     ```
 
     ![](./img/loginservicenewsc.png)
 
-20. Check your Enrichment dashboard one more time
+20. Check the **Enrichment** dashboard again.
 
     ![](./img/loginservicedash.png)
 
