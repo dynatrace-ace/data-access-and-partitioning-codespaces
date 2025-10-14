@@ -5,8 +5,6 @@
 - Configure K8s-based enrichment and confirm mutated pods carry new metadata.
 - Handle exceptions (pod-level/workload granularity)
 
-Are you ready for some fun?
-
 ## 🧪 Exercises
 
 ### Understanding Primary Grail Fields
@@ -27,17 +25,17 @@ Are you ready for some fun?
     ![](./img/span-name-results.png)
 
     !!! success
-        The Primary Grail Field propagates across every signal, unlike other attributes, making it ideal for tenant-wide configurations (Data Access, Partitioning, Segmentation, Cost Control).
+        Primary Grail Field propagates across every signal, unlike other attributes, making it ideal for tenant-wide configurations (Data Access, Partitioning, Segmentation, Cost Control).
 
-    In 3rd-Gen, each datapoint is treated independently, offering much greater flexibility in how data is: Grouped (via Buckets), Filtered (Segments), Secured (Access Control / IAM), Allocated (for cost tracking, DPS). Every signal, such as logs, spans, traces & metrics, should be enriched with the correspondant metadata. Entities are treated in a similar way to any other signal type.
+        In 3rd-Gen, each datapoint is treated independently, offering much greater flexibility in how data is: Grouped (via Buckets), Filtered (Segments), Secured (Access Control / IAM), Allocated (for cost tracking, DPS). Every signal, such as logs, spans, traces & metrics, should be enriched with the correspondant metadata. Entities are treated in a similar way to any other signal type.
 
-To meet the **Slice & Dice** requirements (remember the table), we must enrich **every signal** (spans, logs, metrics, events) with:
+    To meet the **Slice & Dice** requirements (remember the table provided during the previous exercise), we must enrich **every signal** (spans, logs, metrics, events) with:
 
-- `dt.security_context = easytrade`
-- `dt.cost.costcenter = easytrade`
-- `dt.cost.product = easytrade`
+    - `dt.security_context = easytrade`
+    - `dt.cost.costcenter = easytrade`
+    - `dt.cost.product = easytrade`
 
-This makes the metadata consistent across signals, so you can cleanly apply IAM boundaries, Cost Allocation, Buckets, and Segmentation based on those fields.
+    This makes the metadata consistent across signals, so you can cleanly apply IAM boundaries, Cost Allocation, Buckets, and Segmentation based on those fields.
 
 ### Enriching our K8s Cluster
 
@@ -45,53 +43,50 @@ This makes the metadata consistent across signals, so you can cleanly apply IAM 
 
 Enrichment varies by technology. For the Easytrade team, the stack is **Kubernetes on GCP**.
 
-See the D1 CoE **guide per technology**: [Enrichment — Technologies & Entities](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities).
+- See the D1 CoE **guide per technology**: [Enrichment — Technologies & Entities](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities).
+- In this lab, we’ll focus on **Kubernetes enrichment**: [Enrichment — Kubernetes](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes)
 
-In this lab, we’ll focus on **Kubernetes enrichment**: [Enrichment — Kubernetes](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes) _(~5 minutes)_.
+#### Enrichment Coverage Analysis
 
-#### Coverage Notebook
+4. Copy the [Enrichment Overview Notebook](https://guu84124.apps.dynatrace.com/ui/apps/dynatrace.notebooks/notebook/8e41313b-48fa-473b-a351-be9b3462c4f4) to your tenant, re-run the queries, and review your customer’s status.
 
-4. Copy the [Enrichment Overview Notebook](https://guu84124.apps.dynatrace.com/ui/apps/dynatrace.notebooks/notebook/8e41313b-48fa-473b-a351-be9b3462c4f4) in your tenant, re-run the queries and understand the status for your customer
+    ![](./img/enrichment-initial-status.png)
 
-![](./img/enrichment-initial-status.png)
+    This notebook helps you and the customer quickly assess **enrichment coverage** (0–100%). Aim for **100%**, meaning every datapoint is enriched with meaningful metadata for downstream configuration.
 
-Notice how our existing customer is providing the HOST_GROUP, as being used to Classic Dynatrace but there is no dt.security_context, dt.cost.costcenter & dt.cost.product
+    In our current data, `dt.host_group.id` is present (legacy Classic usage), but `dt.security_context`, `dt.cost.costcenter`, and `dt.cost.product` are missing.
 
-As explained for the K8s scenario, there are different appraches
+    As outlined in the [K8s Enrichment](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes) and [K8s Telemetry Enrichment DT Docs](https://docs.dynatrace.com/docs/ingest-from/setup-on-k8s/guides/metadata-automation/k8s-metadata-telemetry-enrichment) best practices here are several approaches you could execute:
 
-![](./img/K8s-approach.png)
+    ![](./img/K8s-approach.png)
 
-#### Primary Grail Fields approach (Namespace)
+#### [approach 1] Primary Grail Fields 
 
-5. Open a segment and use the namespace to retrieve all datapoints
+5. Open a Segment and use the **namespace** to retrieve all datapoints.
 
-![](./img/namespace-primary.png)
+    ![](./img/namespace-primary.png)
 
-For customers that are willing to are willing to get value fast, they could use directly the namespace as their Primary Grail Field
+    For a quick win, you can use the **namespace** directly as the Primary Grail Field. You can also use `k8s.namespace.name` in your **IAM boundary** configuration.
 
-You can even use the k8s.namespace.name in the IAM boundary configuration
+    ![](./img/namespace-permission.png)
 
-![](./img/namespace-permission.png)
+#### [Approach 2] Cloud-native approach
 
-#### Cloud-native approach
+We’ll rely on **namespace labels/annotations**, a common way customers organize cloud-native environments. With this approach, the customer has more flexibility to adjust `dt.security_context`, `dt.cost.costcenter`, `dt.cost.product`, based on their standards
 
-But the customer is willing to propagate the required attributes across their environment (dt.security_context, dt.cost.costcenter, dt.cost.product)
+6. In the **Kubernetes** app in Dynatrace, review the customer’s standards for **labels** and **annotations**.
 
-Based on the 2nd approach, could we Rely on Namespace Annotations & Labels? Think that this is the way the customers usually organize their could-native environments
+    ![](./img/k8s-annotations.png)
 
-6. Go to the K8s app in Dynatrace, and check for customer's standards in defining labels & annotations
+    !!! tip
+        Treat this as a pre-investigation: propose a mapping to Dynatrace values, then **validate and get approval from the customer** before proceeding.
 
-![](./img/k8s-annotations.png)
+7. Use the label **`kubernetes.io/metadata.name`** as the value for `dt.security_context`.
 
-> Note: in a real customer scenario, you need to validate the values with them. It is important aling with company standards
+    ![](./img/label-sc.png)
 
-7. Use `kubernetes.io/metadata.name` for the dt.security_context value
-
-![](./img/label-sc.png)
-
-!!! warning
-
-    Make sure you select label, not annotation
+    !!! warning
+        Select **label**, not annotation.
 
 ##### Debugging
 
@@ -99,49 +94,49 @@ The Dynatrace Operator will start mutating pods within that namespace adding the
 
 8. Run `kubectl get pods -n easytrade` within your cluster, check existing pods and copy the accountservice one
 
-![](./img/getpods.png)
+    ![](./img/getpods.png)
 
 9. Describe the accountservice pod with `kubectl describe pods <accountservice-pod-name> -n easytrade`
 
-![](./img/annotation-accountservice.png)
+    ![](./img/annotation-accountservice.png)
 
-As you may see, no dt.security_context. The pod is running, we need a pod restart for the Operator to mutate the definition and the dt.security_context to reflects in the definition
+    As you may see, no dt.security_context. The pod is running, we need a pod restart for the Operator to mutate the definition and the dt.security_context to reflects in the definition
 
 10. Restart the accountservice deployment with
 
-```bash
-kubectl -n easytrade rollout restart deployment/accountservice
-```
+    ```bash
+    kubectl -n easytrade rollout restart deployment/accountservice
+    ```
 
 11. Check once again the new pod, repeat steps `8` & `9`. Now we should see dt.security_context within the pod definition
 
-![](./img/accountservice-sc.png)
+    ![](./img/accountservice-sc.png)
 
-!!! warning
-  After creating or modifying rules, allow up to 45 minutes for the changes to take effect. It usually doesn't take that long, repeat steps 8 & 9 until you see dt.security_context within your pod definition
+    !!! warning
+      
+      After creating or modifying rules, allow up to 45 minutes for the changes to take effect. It usually doesn't take that long, repeat steps 8 & 9 until you see dt.security_context within your pod definition
 
 12. Go back to your Enrichment Overview Notebook, and check the current status. Grab a span.id, paste it below and check for the workload name
 
-![](./img/1st-sc-in-notebook.png)
+    ![](./img/1st-sc-in-notebook.png)
 
 13. Configure dt.cost.costcenter & dt.cost.product, and other useful attributes that the Easytrade Team was looking forward to use in Dynatrace
 
-![](./img/rest-of-attributes.png)
+    ![](./img/rest-of-attributes.png)
 
 14. Restart all deployments from easytrade namespace
 
-```bash
-for d in $(kubectl -n easytrade get deploy -o name); do
-  kubectl -n easytrade rollout restart "$d"
-done
-```
+    ```bash
+    for d in $(kubectl -n easytrade get deploy -o name); do
+      kubectl -n easytrade rollout restart "$d"
+    done
+    ```
 
 15. Check your Enrichment Overview Notebook once again
 
-![](./img/spans-well-done.png)
+    ![](./img/spans-well-done.png)
 
-> Check logs. Why not all logs? Cluster-level spans, but there are cluster-level logs, that an infra team may be interested in?
-
+    > Check logs. Why not all logs? Cluster-level spans, but there are cluster-level logs, that an infra team may be interested in?
 
 #### Primary Grail Tags
 
@@ -149,12 +144,12 @@ As you may have seen, we've also added other attributes that could be extremely 
 
 16. The customer could create visualization of metrics, or exception maps comparing different version of their apps
 
-![](./img/versions-in-segments.png)
+    ![](./img/versions-in-segments.png)
 
-!!! tip
-    Consider also Primary Grail Tags, apart from the default enrichment of dt.security.context, dt.cost.costcenter and dt.cost.product. Think of the dimesions defined previously, or any relevant metadata that the customer could use in Dynatrace
+    !!! tip
+        Consider also Primary Grail Tags, apart from the default enrichment of dt.security.context, dt.cost.costcenter and dt.cost.product. Think of the dimesions defined previously, or any relevant metadata that the customer could use in Dynatrace
 
-#### Pod-level granularity
+#### [approach 3] Pod-level granularity
 
 The loginservice is the only microservice from easytrade that is it not managed by the Easytrade team who we are helping with the PoC. There's a request to keep their Data Access separately.
 
@@ -162,34 +157,34 @@ The enrichment we've seen so far go as far as the namespace in terms of granular
 
 17. Check your IDE, there's the loginservice resource file under .devcontainer/apps/easytrade/k8s-manifests/loginservice.yaml. Add the annotations to the pod definition
 
-```yaml
-annotations:
-  # Custom tags for Dynatrace
-  metadata.dynatrace.com/dt.cost.costcenter: "loginservice"
-  metadata.dynatrace.com/dt.cost.product: "loginservice"
-  metadata.dynatrace.com/dt.security_context: "loginservice"
-```
+    ```yaml
+    annotations:
+      # Custom tags for Dynatrace
+      metadata.dynatrace.com/dt.cost.costcenter: "loginservice"
+      metadata.dynatrace.com/dt.cost.product: "loginservice"
+      metadata.dynatrace.com/dt.security_context: "loginservice"
+    ```
 
-![](./img/loginservicefile.png)
+    ![](./img/loginservicefile.png)
 
 18. Redeploy based on the file
 
-```yaml
-kubectl -n easytrade apply -f .devcontainer/apps/easytrade/k8s-manifests/loginservice.yaml
-```
+    ```yaml
+    kubectl -n easytrade apply -f .devcontainer/apps/easytrade/k8s-manifests/loginservice.yaml
+    ```
 
 19. You can check if the new pods of loginservice have the new dt.security_context values with
 
-```bash
-kubectl get pods -n easytrade
-kubectl describe pods <loginservice-pod-name> -n easytrade
-```
+    ```bash
+    kubectl get pods -n easytrade
+    kubectl describe pods <loginservice-pod-name> -n easytrade
+    ```
 
-![](./img/loginservicenewsc.png)
+    ![](./img/loginservicenewsc.png)
 
 20. Check your Enrichment dashboard one more time
 
-![](./img/loginservicedash.png)
+    ![](./img/loginservicedash.png)
 
 ## 🌱 Closing Up
 
