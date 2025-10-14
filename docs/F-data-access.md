@@ -7,14 +7,16 @@
 
 ---
 
-## Exercises
+## 🧪 Exercises
 
-We've already 
+### Recap & Intro
 
-- assess customer requirements when it comes to Data Access
-- defined dt.security_context for easytrade datapoints (spans, logs, metrics, etc...)
+We’ve already:
 
-Now it is time to configure IAM for our customer, we can follow two approaches
+- Assessed customer **Data Access** requirements, during the Slice & Dice lab
+- Defined `dt.security_context` for Easytrade datapoints (spans, logs, metrics, etc.), during the previous lab
+
+Now we’ll configure **IAM** for the customer using `dt.security_context` as the anchor. Consider 2 approaches:
 
 | Approach                   | Effort  | Flexibility | Comments                                                                                          | Best For                                                                                                     |
 | -------------------------- | ------- | ----------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
@@ -23,7 +25,44 @@ Now it is time to configure IAM for our customer, we can follow two approaches
 
 !!! tip
   
-    It is recommended to use Default Dynatrace Policies, as long as they meet our customer requirement. 
+    Use **Dynatrace default policies** whenever they meet the customer’s needs. If a requirement can’t be met with the defaults, switch to a **custom policy** for that specific case.
+ 
+#### Exploring Dynatrace Default Policies
+
+Typically there are at minimum 3 domains of access
+
+UI Policy - What am I, as a certain persona, physically able to see and interact with on the user interface of the Dynatrace platform (Think DT Apps)
+
+![](img/uipolicy.png)
+
+UI Policy Example limiting users to certain apps and including basic functionality for seeing and interacting with things in DT
+
+Data Policy - What data should, as a certain persona, be returned to me while using the platform
+
+![](img/datapolicy.png)
+
+Data Policy Example giving access to data in Grail meant to be paired with a boundary
+
+Config Policy - What should I, as a certain persona, be able to change in the platform
+
+![](img/configpolicy.png)
+
+Config Policy Example granting access to change some platform functionality as well as data for built-in schemas meant to be paired with a boundary
+
+#### Reviewing Requirements
+
+Our initial requirement was that "Teams should only access their own apps". 
+
+By exploring the policies with our customer, they decided to apply it for all those policies mentioned above, meaning that...
+
+"Teams should access and config their own stuff in Dynatrace"
+
+Makes sense right?
+
+For that, we'll create 2 groups:
+
+- Easytrade Readers: users that should have access to their observability data in read mode
+- Easytrade Writers: users that have access to their observability data in read mode, and ability to edit monitoring configurations on their scope
 
 ---
 
@@ -31,41 +70,39 @@ Now it is time to configure IAM for our customer, we can follow two approaches
 
 Now that any Dynatrace User can access the default features, we want to allow users to access specific observability data. We want to create a boundary for the 'Easytrade' app that will be attachable to any permission.
 
-1. Navigate to the Account Management Portal > Identity & access management > Policy management, and to the "Boundaries" tab
+1. Navigate to the `Account Management Portal > Identity & access management > Policy management`, and to the "Boundaries" tab
+
+    ![](img/configpolicy.png)
+
 2. Click on the "+ Create boundary" button
-3. Fill the form:
 
-- Boundary name: "Easytrade"
-- Boundary query:
+3. Call the boundary Easytrade, and fill it with the following query, then click save
 
-```sql
-storage:dt.security_context IN ("easytrade", "EasyTrade");
-// "EasyTrade" format comes from MZ format (grail security context for monitored entities)
-environment:management-zone IN ("EasyTrade");
-```
+    ```sql
+    storage:dt.security_context IN ("easytrade", "EasyTrade");
+    // "EasyTrade" format comes from MZ format (grail security context for monitored entities)
+    environment:management-zone IN ("EasyTrade");
+    ```
 
-- Click on "Save"
+    ![](img/content/lab3-ex2-task1-create-boundary.png)
 
-![](img/content/lab3-ex2-task1-create-boundary.png)
+    !!! success
+
+        This is how we use dt.security_context to restrict access to certain users, we just need to now bind it with a policy, let's continue
 
 ### Group Easytrade Readers
 
 We now want to grant specific users with "Readers" access to Dynatrace. Allowing them to see data in the different apps. We want to create a group for the 'Easytrade' app with read permissions.
 
-1. Navigate to the Account Management Portal > Identity & access management > Policy management
-2. Explore the different policies of category "Data access" and "Dynatrace access"
-3. Understand which policy is a good fit for Dynatrace "Readers"
+1. Navigate to the Policy management
 
-1. Navigate to the Account Management Portal > Identity & access management > Group management
-2. Click on the "+ Create group" button
-3. Fill the form
+2. Explore the different policies of category "Data access" and "Dynatrace access" and try to understand which policy is a good fit for Dynatrace "Readers"
 
-- Name: "[Readers] Easytrade"
-- Description: "Grants reading permissions to observability data for the Easytrade team"
+    ![](img/explorepolicies.png)
 
-4. Click on "Create"
+3. Navigate to Group management, click on the "+ Create group" button, call it "[Readers] Easytrade", then click on create
 
-![](img/content/lab3-ex3-task2-create-group.png)
+    ![](img/content/lab3-ex3-task2-create-group.png)
 
 1. On the newly created group edition page
 2. Click on the "+ Permission" button
@@ -173,7 +210,7 @@ invite your dt email. e.g. ignacio.goldman@dynatrace.com
 ![](img/content/lab3-ex5-task3-effective-permissions.png)
 
 
-## Closing Up
+## 🌱 Closing Up
 
 
 ### Resources
