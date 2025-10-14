@@ -27,7 +27,7 @@ For this lab, as presented earlier, we’re working with an existing customer, s
 
 ### Existing Customer Pre-investigation
 
-#### Data Access (_reading exercise..._)
+#### Data Access
 
 Dynatrace Classic Data Access was role-based (RBAC), and permissions looked like this:
 
@@ -54,7 +54,7 @@ Back to the exercise: during pre-investigation, we found the following for our c
 
     Following the investigation with a customer **validation**.
 
-#### Dimensions (exercise)
+#### Dimensions
 
 ##### What do we mean by Dimensions?
 
@@ -78,7 +78,7 @@ Historically, customers stored dimensions in HOST_GROUP (from the source) or def
         - **Security Context**: Determine which dimensions can be leveraged as dt.security_context
         - **Bucket Strategy**: Avoid excessive bucket creation (e.g., 18k apps across 30 BUs should not result in 36k buckets). Use a multi-dimensional approach, group lighter apps by Business Unit (BU). Assign dedicated buckets to high-volume apps (those with higher TB/day traffic).
 
-#### Technologies (exercise)
+#### Technologies
 
 2. Explore the **technologies** within your customer environment. You can use [this](https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e) notebook
 

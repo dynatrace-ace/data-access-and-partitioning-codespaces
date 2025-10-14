@@ -1,9 +1,10 @@
 ## 🎯 Lab Goals
 
-- Understand how Dynatrace IAM works.
-- Learn how to create and manage roles, policies, boundaries, and groups.
-- Apply scoped access using `dt.security_context` and a management zone.
-- Minimize maintenance effort by decoupling permissions from scopes.
+- Review **policy approaches** (Default vs. Custom) and pick what fits the customer.
+- Create an **Easytrade boundary** using `dt.security_context` (with MZ fallback).
+- Create groups: **[Readers] Easytrade** and **[Writers] Easytrade**.
+- Attach the right **policies** and bind them to the **Easytrade boundary**.
+- **Invite a test user**, assign groups, and verify **effective policies** and data access.
 
 ---
 

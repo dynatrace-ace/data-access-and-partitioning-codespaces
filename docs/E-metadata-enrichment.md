@@ -60,7 +60,7 @@ Enrichment varies by technology. For the Easytrade team, the stack is **Kubernet
 
     ![](./img/K8s-approach.png)
 
-#### [approach 1] Primary Grail Fields 
+#### [Approach 1] Primary Grail Fields 
 
 5. Open a Segment and use the **namespace** to retrieve all datapoints.
 
