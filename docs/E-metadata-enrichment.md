@@ -90,41 +90,44 @@ We’ll rely on **namespace labels/annotations**, a common way customers organiz
 
 ##### Debugging
 
-The Dynatrace Operator will start mutating pods within that namespace adding the dt.security_context
+The Dynatrace Operator mutates pods in the namespace, adding `dt.security_context` in this case.
 
-8. Run `kubectl get pods -n easytrade` within your cluster, check existing pods and copy the accountservice one
+8. Run `kubectl get pods -n easytrade` in your cluster, find the **accountservice** pod, and copy its name.
 
     ![](./img/getpods.png)
 
-9. Describe the accountservice pod with `kubectl describe pods <accountservice-pod-name> -n easytrade`
+9. Describe the pod: `kubectl describe pod <accountservice-pod-name> -n easytrade`
 
     ![](./img/annotation-accountservice.png)
 
-    As you may see, no dt.security_context. The pod is running, we need a pod restart for the Operator to mutate the definition and the dt.security_context to reflects in the definition
+    If you don’t see `dt.security_context`, the pod was created before the rule applied. Restart it so the Operator can mutate the spec.
 
-10. Restart the accountservice deployment with
+10. Restart the **accountservice** deployment:
 
     ```bash
     kubectl -n easytrade rollout restart deployment/accountservice
     ```
 
-11. Check once again the new pod, repeat steps `8` & `9`. Now we should see dt.security_context within the pod definition
+11. Check the new pod (repeat steps **8** & **9**). You should now see `dt.security_context` in the pod definition.
 
     ![](./img/accountservice-sc.png)
 
     !!! warning
-      
-      After creating or modifying rules, allow up to 45 minutes for the changes to take effect. It usually doesn't take that long, repeat steps 8 & 9 until you see dt.security_context within your pod definition
+        After creating or modifying rules, allow up to **45 minutes** for changes to take effect (but it’s usually faster). Repeat steps 8 & 9 until `dt.security_context` appears in the pod definition.
 
-12. Go back to your Enrichment Overview Notebook, and check the current status. Grab a span.id, paste it below and check for the workload name
+12. Return to the **Enrichment Overview Notebook** and re-check the status. Grab a `span.id`, paste it in the query, and confirm the workload name.
 
     ![](./img/1st-sc-in-notebook.png)
 
-13. Configure dt.cost.costcenter & dt.cost.product, and other useful attributes that the Easytrade Team was looking forward to use in Dynatrace
+13. Configure `dt.cost.costcenter` and `dt.cost.product`, plus any other attributes the Easytrade team needs.
 
     ![](./img/rest-of-attributes.png)
 
-14. Restart all deployments from easytrade namespace
+    ! note
+
+        For those other attributes (team, stage, app.kubernetes.io/version), as they are not going to be connected to any of the main ones (security context & costs), you can mark them as Primary Grail Tags. We will see this later...
+
+14. Restart **all deployments** in the `easytrade` namespace:
 
     ```bash
     for d in $(kubectl -n easytrade get deploy -o name); do
@@ -132,15 +135,15 @@ The Dynatrace Operator will start mutating pods within that namespace adding the
     done
     ```
 
-15. Check your Enrichment Overview Notebook once again
+15. Re-check the **Enrichment Overview Notebook**.
 
     ![](./img/spans-well-done.png)
 
-    > Check logs. Why not all logs? Cluster-level spans, but there are cluster-level logs, that an infra team may be interested in?
+    > Also check **logs**. Not all logs may be enriched (e.g., cluster-level logs that infra teams care about).
 
 #### Primary Grail Tags
 
-As you may have seen, we've also added other attributes that could be extremely useful for the customer, such as the version.
+As you may have seen, we've also added other attributes that could be extremely useful for the customer, such as the apps version.
 
 16. The customer could create visualization of metrics, or exception maps comparing different version of their apps
 
