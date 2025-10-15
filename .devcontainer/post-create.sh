@@ -1,10 +1,8 @@
 #!/bin/bash
 
 set -euo pipefail
-# --- intentional failure ---
-echo "❌ Pre-validation failed intentionally, exit script with success ("0"), so doesn't trigger failure in Codespaces"
-exit 0
-
+echo "❌ Intentionally failing during Codespaces creation."
+exit 1
 
 #loading functions to script
 export SECONDS=0
