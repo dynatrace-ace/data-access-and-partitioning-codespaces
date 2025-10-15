@@ -12,6 +12,11 @@ CLIENT_SECRET=<dt-secret-acc-mgmt>
 SSO_ENDPOINT=https://sso-sprint.dynatracelabs.com/sso/oauth2/token
 ```
 
+!!! warning
+    DT_TENANT should respect the following format https://abc12345.sprint.dynatracelabs.com, without the "/" at the end
+    
+    DT_TENANT_3GEN should respect the following format https://abc12345.sprint.apps.dynatracelabs.com, without the "/" at the end
+
 ## 🚀 Deploy (8 minutes)
 
 1. Click here to start configuring your codespace 
