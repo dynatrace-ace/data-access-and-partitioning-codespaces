@@ -134,6 +134,10 @@ The lab has been tested end-to-end using a **sprint** tenant. While we recommend
 
     CLIENT_SECRET is the tokens collected in [oauth-token](#oauth-token)
 
+    DT_TENANT should respect the following format https://abc12345.sprint.dynatracelabs.com, without the "/" at the end
+    
+    DT_TENANT_3GEN should respect the following format https://abc12345.sprint.apps.dynatracelabs.com, without the "/" at the end
+
 ## All Set!
 
 Well done! With the tenant, and all the collected variables, you should be ready to start the lab at any time. Now just wait until the time of the Hands-on Training
