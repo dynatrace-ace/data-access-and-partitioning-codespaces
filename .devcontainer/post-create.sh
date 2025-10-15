@@ -1,11 +1,22 @@
 #!/bin/bash
 
-# validate inputs
 set -euo pipefail
 
-echo "❌ Pre-validation failed intentionally."
-echo "This is a test to see how Codespaces handles initializeCommand failure."
+# --- logging setup ---
+LOG_DIR="/workspaces/.codespaces/.persistedshare/logs"
+mkdir -p "$LOG_DIR"
+LOG_FILE="$LOG_DIR/post-create-$(date +%Y%m%d-%H%M%S).log"
+
+# send stdout+stderr to both console and file
+exec > >(tee -a "$LOG_FILE") 2>&1
+
+echo "🔧 Starting postCreate at $(date)"
+echo "Log file: $LOG_FILE"
+
+# --- intentional failure ---
+echo "❌ Pre-validation failed intentionally (postCreate)."
 exit 1
+
 
 #loading functions to script
 export SECONDS=0
