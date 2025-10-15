@@ -460,27 +460,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#easytrade-boundary" class="md-nav__link">
+  <a href="#exercise-1-easytrade-boundary" class="md-nav__link">
     <span class="md-ellipsis">
-      Easytrade Boundary
+      Exercise 1: Easytrade Boundary
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#group-easytrade-readers" class="md-nav__link">
+  <a href="#exercise-2-easytrade-readers" class="md-nav__link">
     <span class="md-ellipsis">
-      Group Easytrade Readers
+      Exercise 2: Easytrade Readers
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#group-easytrade-writers" class="md-nav__link">
+  <a href="#exercise-3-easytrade-writers" class="md-nav__link">
     <span class="md-ellipsis">
-      Group Easytrade Writers
+      Exercise 3: Easytrade Writers
     </span>
   </a>
   
@@ -700,27 +700,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#easytrade-boundary" class="md-nav__link">
+  <a href="#exercise-1-easytrade-boundary" class="md-nav__link">
     <span class="md-ellipsis">
-      Easytrade Boundary
+      Exercise 1: Easytrade Boundary
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#group-easytrade-readers" class="md-nav__link">
+  <a href="#exercise-2-easytrade-readers" class="md-nav__link">
     <span class="md-ellipsis">
-      Group Easytrade Readers
+      Exercise 2: Easytrade Readers
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#group-easytrade-writers" class="md-nav__link">
+  <a href="#exercise-3-easytrade-writers" class="md-nav__link">
     <span class="md-ellipsis">
-      Group Easytrade Writers
+      Exercise 3: Easytrade Writers
     </span>
   </a>
   
@@ -788,9 +788,8 @@
 <ul>
 <li>Review <strong>policy approaches</strong> (Default vs. Custom) and pick what fits the customer.</li>
 <li>Create an <strong>Easytrade boundary</strong> using <code>dt.security_context</code> (with MZ fallback).</li>
-<li>Create groups: <strong>[Readers] Easytrade</strong> and <strong>[Writers] Easytrade</strong>.</li>
-<li>Attach the right <strong>policies</strong> and bind them to the <strong>Easytrade boundary</strong>.</li>
-<li><strong>Invite a test user</strong>, assign groups, and verify <strong>effective policies</strong> and data access.</li>
+<li>Create groups: <strong>[Readers] Easytrade</strong> and <strong>[Writers] Easytrade</strong>, attach the right <strong>policies</strong> and bind them to the <strong>Easytrade boundary</strong>.</li>
+<li><strong>Invite a test user</strong>, assign groups, and verify data access.</li>
 </ul>
 <hr />
 <h2 id="exercises">🧪 Exercises<a class="headerlink" href="#exercises" title="Permanent link">#</a></h2>
@@ -830,101 +829,104 @@
 </table>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Use <strong>Dynatrace default policies</strong> whenever they meet the customer’s needs. If a requirement can’t be met with the defaults, switch to a <strong>custom policy</strong> for that specific case.</p>
-<p>Let's review customer requrements!</p>
+<p>Use <strong>Dynatrace default policies</strong> as your first choice. If a requirement can’t be met with the defaults, switch to a <strong>custom policy</strong> for that specific customer use case.</p>
+<p>Let's review customer requirements!</p>
 </div>
 <h4 id="reviewing-requirements">Reviewing Requirements<a class="headerlink" href="#reviewing-requirements" title="Permanent link">#</a></h4>
-<p>Our initial requirement was that "Teams should only access their own apps". </p>
-<p>By exploring the policies with our customer, they decided to apply it for all those policies mentioned above, meaning that...</p>
-<p>"Teams should access and config their own stuff in Dynatrace"</p>
-<p>Makes sense right?</p>
-<p>For that, we'll create 2 groups:</p>
+<p>Our initial requirement was:</p>
+<div class="admonition abstract">
+<p class="admonition-title">initial</p>
+<p>Teams should only access their own apps.</p>
+</div>
+<p>After exploring policies with the customer, they decided to broaden this requirement to:</p>
+<div class="admonition abstract">
+<p class="admonition-title">post-review</p>
+<p>Teams should access and configure their own apps in Dynatrace.</p>
+</div>
+<p>Makes sense, right? To achieve this, we’ll create two groups:</p>
 <ul>
-<li>Easytrade Readers: users that should have access to their observability data in read mode</li>
-<li>Easytrade Writers: users that have access to their observability data in read mode, and ability to edit monitoring configurations on their scope</li>
+<li><strong>Easytrade Readers</strong>: Users who should have read-only access to their observability data.</li>
+<li><strong>Easytrade Writers</strong>: Users who should have read access plus the ability to edit monitoring configurations within their scope.</li>
 </ul>
+<p>But we will first start with the boundary!</p>
 <hr />
-<h3 id="easytrade-boundary">Easytrade Boundary<a class="headerlink" href="#easytrade-boundary" title="Permanent link">#</a></h3>
+<h3 id="exercise-1-easytrade-boundary">Exercise 1: Easytrade Boundary<a class="headerlink" href="#exercise-1-easytrade-boundary" title="Permanent link">#</a></h3>
 <p>Now that any Dynatrace User can access the default features, we want to allow users to access specific observability data. We want to create a boundary for the 'Easytrade' app that will be attachable to any permission.</p>
 <ol>
 <li>
-<p>Navigate to the <code>Account Management Portal &gt; Identity &amp; access management &gt; Policy management</code>, and to the "Boundaries" tab</p>
+<p>Under the <code>Account Management Portal</code>, go to <code>Policy Management</code>, and to the <code>Boundaries</code> tab, finally click on <code>+ Create boundary</code>:</p>
 <p><img alt="" src="../img/createboundary.png" /></p>
 </li>
 <li>
-<p>Click on the "+ Create boundary" button</p>
-</li>
-<li>
-<p>Call the boundary Easytrade, and fill it with the following query, then click save</p>
+<p>Call the boundary <code>Easytrade</code>, and fill it in with the following query and click save</p>
 <div class="highlight"><pre><span></span><code><span class="k">storage</span><span class="p">:</span><span class="n">dt</span><span class="p">.</span><span class="n">security_context</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;easytrade&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;EasyTrade&quot;</span><span class="p">);</span>
 <span class="o">//</span><span class="w"> </span><span class="ss">&quot;EasyTrade&quot;</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="n">comes</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">MZ</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="p">(</span><span class="n">grail</span><span class="w"> </span><span class="k">security</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">monitored</span><span class="w"> </span><span class="n">entities</span><span class="p">)</span>
 <span class="n">environment</span><span class="p">:</span><span class="n">management</span><span class="o">-</span><span class="k">zone</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;EasyTrade&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p><img alt="" src="../img/content/lab3-ex2-task1-create-boundary.png" /></p>
+<p><img alt="" src="../img/saveboundary.png" /></p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<p>This is how we use dt.security_context to restrict access to certain users, we just need to now bind it with a policy, let's continue</p>
+<p>This is how we use <code>dt.security_context</code> to restrict access to certain users, we just need to now bind it with a policy, let's continue</p>
 </div>
 </li>
 </ol>
-<h3 id="group-easytrade-readers">Group Easytrade Readers<a class="headerlink" href="#group-easytrade-readers" title="Permanent link">#</a></h3>
-<p>We now want to grant specific users with "Readers" access to Dynatrace. Allowing them to see data in the different apps. We want to create a group for the 'Easytrade' app with read permissions.</p>
+<h3 id="exercise-2-easytrade-readers">Exercise 2: Easytrade Readers<a class="headerlink" href="#exercise-2-easytrade-readers" title="Permanent link">#</a></h3>
+<p>We now want to grant specific users with <em>reader</em> access to Dynatrace, Aallowing them to see data in the different apps.</p>
 <ol>
-<li>Navigate to the Policy management and explore the different policies of category <strong>Data access</strong> and <strong>Dynatrace access</strong> and try to understand which policy is a good fit for Dynatrace "Readers"</li>
-</ol>
-<details>
-<summary>UI Policy</summary>
-<p>What you can see and interact with in the Dynatrace UI (apps)</p>
-<p><img alt="ui policy" src="../img/uipolicy.png" width="90%" /></p>
-<p>Example limiting users to certain apps and including basic functionality for seeing and interacting with things in DT</p>
-</details>
-<details>
-<summary>Data Policy</summary>
-<p>What data is returned while using the platform</p>
-<p><img alt="data policy" src="../img/datapolicy.png" width="40%" /></p>
-<p>Example giving access to data in Grail meant to be paired with a boundary</p>
-</details>
-<details>
-<summary>Config Policy</summary>
-<p>What you can change in the platform</p>
-<p><img alt="config policy" src="../img/configpolicy.png" width="80%" /></p>
-<p>Example granting access to change some platform functionality as well as data for built-in schemas meant to be paired with a boundary</p>
-</details>
+<li>
+<p>Under <code>Policy Management</code>, explore the different policies of category <strong>Data access</strong> and <strong>Dynatrace access</strong>. Which one would it fit for Easytrade Readers?</p>
 <p><img alt="" src="../img/explorepolicies.png" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>It is important to know every policy and what it does exactly. Be prepared for customers asking and/or troubleshooting</p>
+<p>The dropdowns below contains a "custom" categorization done by the Dynatrace ACE Services team. It helps to understand what each of those policies actually mean</p>
 </div>
-<ol>
-<li>
-<p>Navigate to Group management, click on the "+ Create group" button, call it "[Readers] Easytrade", give it a meaningful description (e.g. Grants reading permissions to Easytrade's observability data), then click on create</p>
-<p><img alt="" src="../img/content/lab3-ex3-task2-create-group.png" /></p>
+<p><details markdown="1">
+<summary>UI Policy</summary></p>
+<p>What you can see and interact with in the Dynatrace UI (apps)</p>
+<p><img alt="ui policy" src="../img/uipolicy.png" width="90%" /></p>
+<p>Example limiting users to certain apps and including basic functionality for seeing and interacting with things in DT</p>
+</details>
+<p><details markdown="1">
+<summary>Data Policy</summary></p>
+<p>What data is returned while using the platform</p>
+<p><img alt="data policy" src="../img/datapolicy.png" width="40%" /></p>
+<p>Example giving access to data in Grail meant to be paired with a boundary</p>
+</details>
+<p><details markdown="1">
+<summary>Config Policy</summary></p>
+<p>What you can change in the platform</p>
+<p><img alt="config policy" src="../img/configpolicy.png" width="80%" /></p>
+<p>Example granting access to change some platform functionality as well as data for built-in schemas meant to be paired with a boundary</p>
+</details>
 </li>
 <li>
-<p>On the newly created group edition page, click on the "+ Permission" button, Fill the form to grant access to Dynatrace, Permission name: "Standard user", Scope: select the respective environment, Boundaries: "Easytrade", Click on "Save"</p>
+<p>Go to <code>Group Management</code>, click on <code>+ Create group</code>, call it <code>[Readers] Easytrade</code>, plus a description such as <code>Grants reading permissions to Easytrade's observability data</code>, then click on <code>Create</code></p>
+<p><img alt="" src="../img/creategroupreaderseasytradeblack.png" /></p>
+</li>
+<li>
+<p>On the newly created group, click on <code>+ Permission</code>, fill the form by adding the permissions name <code>Standard user</code>, select Easytrade environment for the scope, and <code>Easytrade</code> boundary, finally click on <code>Save</code></p>
 <p><img alt="" src="../img/easytradereaderdefault.png" width="60%" /></p>
 </li>
 <li>
-<p>Add another permission to grant access data, click on "+ Permission" and fill the form, Permission name: "All Grail data read access", Scope: tick the "Account (all environments)" box, Boundaries: "Easytrade", Click on "Save"</p>
-<p><img alt="" src="../img/content/lab3-ex3-task3-assign-policy-boundary.png" /></p>
+<p>Add another permission, click on <code>+ Permission</code>, fill the form by adding the permission name <code>All Grail data read access</code>, select Easytrade environment for the scope, and <code>Easytrade</code> boundary, finally click on <code>Save</code></p>
+<p><img alt="" src="../img/allgraildataaccessreader.png" width="60%" /></p>
 </li>
 </ol>
 <p>Your Easytrade Readers should finally look like this</p>
-<pre><code>![](img/easytradereadergroup.png){ width="60%" }
-</code></pre>
-<h3 id="group-easytrade-writers">Group Easytrade Writers<a class="headerlink" href="#group-easytrade-writers" title="Permanent link">#</a></h3>
+<p><img alt="" src="../img/easytradereadergroup.png" width="60%" /></p>
+<h3 id="exercise-3-easytrade-writers">Exercise 3: Easytrade Writers<a class="headerlink" href="#exercise-3-easytrade-writers" title="Permanent link">#</a></h3>
 <p>We now want to grant specific users with "Writers" access to Dynatrace. Allowing them to edit monitoring configurations in the different apps.
 💡 We want to create a group for the 'Easytrade' app with writers permissions.</p>
 <ol>
-<li>Navigate to Policy management, Click on "+ Create policy", Fill the form, Name: "Settings Writers", Policy description: "Statements granting write permissions", Policy statement:"</li>
-</ol>
+<li>
+<p>Navigate to Policy management, Click on "+ Create policy", Fill the form, Name: "Settings Writers", Policy description: "Statements granting write permissions", Policy statement:"</p>
 <div class="highlight"><pre><span></span><code><span class="n">ALLOW</span><span class="w"> </span><span class="n">settings</span><span class="p">:</span><span class="n">schemas</span><span class="p">:</span><span class="k">read</span><span class="p">;</span>
 <span class="n">ALLOW</span><span class="w"> </span><span class="n">settings</span><span class="p">:</span><span class="n">objects</span><span class="p">:</span><span class="k">read</span><span class="p">,</span><span class="w"> </span><span class="n">settings</span><span class="p">:</span><span class="n">objects</span><span class="p">:</span><span class="k">write</span><span class="p">;</span>
 <span class="n">ALLOW</span><span class="w"> </span><span class="n">environment</span><span class="p">:</span><span class="n">roles</span><span class="p">:</span><span class="n">manage</span><span class="o">-</span><span class="n">settings</span><span class="p">;</span>
 </code></pre></div>
-<pre><code>![](img/settingswriterblack.png){ width="60%" }
-</code></pre>
-<ol>
+<p><img alt="" src="../img/settingswriterblack.png" width="60%" /></p>
+</li>
 <li>
 <p>Navigate to Group management, Click on the "+ Create group" button, Fill the form, Name: "[Writters] Easytrade", Description: "Grants writers permissions to observability configurations for the Easytrade team", Click on "Create"</p>
 <p><img alt="" src="../img/writterseasytrade.png" /></p>

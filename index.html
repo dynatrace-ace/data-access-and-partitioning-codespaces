@@ -340,6 +340,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="🔑 Generate Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dt-access-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      dt-access-token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      oauth-token
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#final-configuration-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗒️ Final configuration variables
+    </span>
+  </a>
+  
 </li>
         
       </ul>
@@ -614,6 +647,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="🔑 Generate Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dt-access-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      dt-access-token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      oauth-token
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#final-configuration-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗒️ Final configuration variables
+    </span>
+  </a>
+  
 </li>
         
       </ul>
@@ -706,8 +772,17 @@
 <img src="img/dpssoon.png" width="80%">
 </p></p>
 </li>
+<li>
+<p>Access your Dynatrace tenant with the credentials provided with the bot. You may want to access in Incognito Mode</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you've created the tenant following the <a href="#dynatrace-tenant">previous steps</a>, the admin user is not your dynatrace email, but the one provided within the details in the slack conversation with the bot.</p>
+<p>You will need to be the admin, in order to access Account Management</p>
+</div>
+</li>
 </ol>
 <h3 id="generate-tokens">🔑 Generate Tokens<a class="headerlink" href="#generate-tokens" title="Permanent link">#</a></h3>
+<h4 id="dt-access-token">dt-access-token<a class="headerlink" href="#dt-access-token" title="Permanent link">#</a></h4>
 <ol>
 <li>
 <p>Within your Dynatrace tenant, go to <code>Access Tokens</code>, and generate a new one with the following permissions. You can give the token any name. Create the token and save it temporarely with you</p>
@@ -724,6 +799,9 @@ Write<span class="w"> </span>configuration
 PaaS<span class="w"> </span>integration<span class="w"> </span>-<span class="w"> </span>Installer<span class="w"> </span>download
 </code></pre></div>
 </li>
+</ol>
+<h4 id="oauth-token">oauth-token<a class="headerlink" href="#oauth-token" title="Permanent link">#</a></h4>
+<ol>
 <li>
 <p>Go to Account Management, time to create an OAuth Token, with the following scopes:</p>
 <p><p align="left">
@@ -739,20 +817,18 @@ settings:objects:write
 settings:schemas:read
 app-engine:apps:run
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>If you've created the tenant following the <a href="#dynatrace-tenant">previous steps</a>, the admin user is not your dynatrace email, but the one provided within the details in the slack conversation with the bot.</p>
-</div>
 <p><p align="left">
 <img src="img/hey-again.png" width="70%">
 </p>    </p>
-<p>This means that you should be able to access Account Management with the user details provided via slack</p>
 </li>
 <li>
 <p>Grab client id, secret and account URN, save the values temporarely with you</p>
 </li>
+</ol>
+<h3 id="final-configuration-variables">🗒️ Final configuration variables<a class="headerlink" href="#final-configuration-variables" title="Permanent link">#</a></h3>
+<ol>
 <li>
-<p>Click finish, and with all the collected data, format them as follows:</p>
+<p>Keep all variables with you to use later on during the lab setup</p>
 <div class="highlight"><pre><span></span><code><span class="nv">DT_TENANT</span><span class="o">=</span>https://abc12345.sprint.dynatracelabs.com
 <span class="nv">DT_TENANT_3GEN</span><span class="o">=</span>https://abc12345.sprint.apps.dynatracelabs.com
 <span class="c1"># Dt tenant stuff</span>
@@ -761,11 +837,16 @@ app-engine:apps:run
 <span class="nv">MONACO_TOKEN</span><span class="o">=</span>&lt;dt-access-token&gt;
 <span class="c1">## Acc Mgmt stuff</span>
 <span class="nv">CLIENT_ID</span><span class="o">=</span>&lt;client-id-acc-mgmt&gt;
-<span class="nv">CLIENT_SECRET</span><span class="o">=</span>&lt;dt-secret-acc-mgmt&gt;
+<span class="nv">CLIENT_SECRET</span><span class="o">=</span>&lt;oauth-token-acc-mgmt&gt;
 <span class="nv">SSO_ENDPOINT</span><span class="o">=</span>https://sso-sprint.dynatracelabs.com/sso/oauth2/token
 </code></pre></div>
 </li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DT_OPERATOR_TOKEN, DT_INGEST_TOKEN, MONACO_TOKEN have all the same value and is the one collected in <a href="#dt-access-token">dt-access-token</a></p>
+<p>CLIENT_SECRET is the tokens collected in <a href="#oauth-token">oauth-token</a></p>
+</div>
 <h2 id="all-set">All Set!<a class="headerlink" href="#all-set" title="Permanent link">#</a></h2>
 <p>Well done! With the tenant, and all the collected variables, you should be ready to start the lab at any time. Now just wait until the time of the Hands-on Training</p>
 <div class="admonition warning">
