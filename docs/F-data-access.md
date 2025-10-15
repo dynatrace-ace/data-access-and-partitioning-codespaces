@@ -2,9 +2,8 @@
 
 - Review **policy approaches** (Default vs. Custom) and pick what fits the customer.
 - Create an **Easytrade boundary** using `dt.security_context` (with MZ fallback).
-- Create groups: **[Readers] Easytrade** and **[Writers] Easytrade**.
-- Attach the right **policies** and bind them to the **Easytrade boundary**.
-- **Invite a test user**, assign groups, and verify **effective policies** and data access.
+- Create groups: **[Readers] Easytrade** and **[Writers] Easytrade**, attach the right **policies** and bind them to the **Easytrade boundary**.
+- **Invite a test user**, assign groups, and verify data access.
 
 ---
 
@@ -26,38 +25,40 @@ Now we’ll configure **IAM** for the customer using `dt.security_context` as th
 
 !!! tip
   
-    Use **Dynatrace default policies** whenever they meet the customer’s needs. If a requirement can’t be met with the defaults, switch to a **custom policy** for that specific case.
+    Use **Dynatrace default policies** as your first choice. If a requirement can’t be met with the defaults, switch to a **custom policy** for that specific customer use case.
  
-    Let's review customer requrements!
+    Let's review customer requirements!
 
 #### Reviewing Requirements
 
-Our initial requirement was that "Teams should only access their own apps". 
+Our initial requirement was:
 
-By exploring the policies with our customer, they decided to apply it for all those policies mentioned above, meaning that...
+!!! abstract "initial"
+    Teams should only access their own apps.
 
-"Teams should access and config their own stuff in Dynatrace"
+After exploring policies with the customer, they decided to broaden this requirement to:
 
-Makes sense right?
+!!! abstract "post-review"
+    Teams should access and configure their own apps in Dynatrace.
 
-For that, we'll create 2 groups:
+Makes sense, right? To achieve this, we’ll create two groups:
 
-- Easytrade Readers: users that should have access to their observability data in read mode
-- Easytrade Writers: users that have access to their observability data in read mode, and ability to edit monitoring configurations on their scope
+- **Easytrade Readers**: Users who should have read-only access to their observability data.
+- **Easytrade Writers**: Users who should have read access plus the ability to edit monitoring configurations within their scope.
+
+But we will first start with the boundary!
 
 ---
 
-### Easytrade Boundary
+### Exercise 1: Easytrade Boundary
 
 Now that any Dynatrace User can access the default features, we want to allow users to access specific observability data. We want to create a boundary for the 'Easytrade' app that will be attachable to any permission.
 
-1. Navigate to the `Account Management Portal > Identity & access management > Policy management`, and to the "Boundaries" tab
+1. Under the `Account Management Portal`, go to `Policy Management`, and to the `Boundaries` tab, finally click on `+ Create boundary`:
 
     ![](img/createboundary.png)
 
-2. Click on the "+ Create boundary" button
-
-3. Call the boundary Easytrade, and fill it with the following query, then click save
+2. Call the boundary `Easytrade`, and fill it in with the following query and click save
 
     ```sql
     storage:dt.security_context IN ("easytrade", "EasyTrade");
@@ -65,74 +66,78 @@ Now that any Dynatrace User can access the default features, we want to allow us
     environment:management-zone IN ("EasyTrade");
     ```
 
-    ![](img/content/lab3-ex2-task1-create-boundary.png)
-
+    ![](img/saveboundary.png)
+    
     !!! success
 
-        This is how we use dt.security_context to restrict access to certain users, we just need to now bind it with a policy, let's continue
+        This is how we use `dt.security_context` to restrict access to certain users, we just need to now bind it with a policy, let's continue
 
-### Group Easytrade Readers
+### Exercise 2: Easytrade Readers
 
-We now want to grant specific users with "Readers" access to Dynatrace. Allowing them to see data in the different apps. We want to create a group for the 'Easytrade' app with read permissions.
+We now want to grant specific users with _reader_ access to Dynatrace, Aallowing them to see data in the different apps.
 
-1. Navigate to the Policy management and explore the different policies of category **Data access** and **Dynatrace access** and try to understand which policy is a good fit for Dynatrace "Readers"
+1. Under `Policy Management`, explore the different policies of category **Data access** and **Dynatrace access**. Which one would it fit for Easytrade Readers?
 
-<details markdown="1">
-<summary>UI Policy</summary>
+    ![](img/explorepolicies.png)
 
-What you can see and interact with in the Dynatrace UI (apps)
+    !!! tip
+        It is important to know every policy and what it does exactly. Be prepared for customers asking and/or troubleshooting
 
-![ui policy](./img/uipolicy.png){ width="90%" }
-
-Example limiting users to certain apps and including basic functionality for seeing and interacting with things in DT
-
-</details>
-
-<details markdown="1">
-<summary>Data Policy</summary>
-
-What data is returned while using the platform
-
-![data policy](./img/datapolicy.png){ width="40%" }
-
-Example giving access to data in Grail meant to be paired with a boundary
-
-</details>
-
-<details markdown="1">
-<summary>Config Policy</summary>
-
-What you can change in the platform
-
-![config policy](./img/configpolicy.png){ width="80%" }
-
-Example granting access to change some platform functionality as well as data for built-in schemas meant to be paired with a boundary
-
-</details>
-
-![](img/explorepolicies.png)
-
-!!! tip
-    It is important to know every policy and what it does exactly. Be prepared for customers asking and/or troubleshooting
-
-3. Navigate to Group management, click on the "+ Create group" button, call it "[Readers] Easytrade", give it a meaningful description (e.g. Grants reading permissions to Easytrade's observability data), then click on create
-
-    ![](img/content/lab3-ex3-task2-create-group.png)
+        The dropdowns below contains a "custom" categorization done by the Dynatrace ACE Services team. It helps to understand what each of those policies actually mean
 
 
-4. On the newly created group edition page, click on the "+ Permission" button, Fill the form to grant access to Dynatrace, Permission name: "Standard user", Scope: select the respective environment, Boundaries: "Easytrade", Click on "Save"
+    <details markdown="1">
+    <summary>UI Policy</summary>
+
+    What you can see and interact with in the Dynatrace UI (apps)
+
+    ![ui policy](./img/uipolicy.png){ width="90%" }
+
+    Example limiting users to certain apps and including basic functionality for seeing and interacting with things in DT
+
+    </details>
+
+    <details markdown="1">
+    <summary>Data Policy</summary>
+
+    What data is returned while using the platform
+
+    ![data policy](./img/datapolicy.png){ width="40%" }
+
+    Example giving access to data in Grail meant to be paired with a boundary
+
+    </details>
+
+    <details markdown="1">
+    <summary>Config Policy</summary>
+
+    What you can change in the platform
+
+    ![config policy](./img/configpolicy.png){ width="80%" }
+
+    Example granting access to change some platform functionality as well as data for built-in schemas meant to be paired with a boundary
+
+    </details>
+
+
+2. Go to `Group Management`, click on `+ Create group`, call it `[Readers] Easytrade`, plus a description such as `Grants reading permissions to Easytrade's observability data`, then click on `Create`
+
+    ![](img/creategroupreaderseasytradeblack.png)
+
+
+3. On the newly created group, click on `+ Permission`, fill the form by adding the permissions name `Standard user`, select Easytrade environment for the scope, and `Easytrade` boundary, finally click on `Save`
 
     ![](img/easytradereaderdefault.png){ width="60%" }
 
-5. Add another permission to grant access data, click on "+ Permission" and fill the form, Permission name: "All Grail data read access", Scope: tick the "Account (all environments)" box, Boundaries: "Easytrade", Click on "Save"
+4. Add another permission, click on `+ Permission`, fill the form by adding the permission name `All Grail data read access`, select Easytrade environment for the scope, and `Easytrade` boundary, finally click on `Save`
 
-    ![](img/content/lab3-ex3-task3-assign-policy-boundary.png)
+    ![](img/allgraildataaccessreader.png){ width="60%" }
 
 Your Easytrade Readers should finally look like this
 
-    ![](img/easytradereadergroup.png){ width="60%" }
+![](img/easytradereadergroup.png){ width="60%" }
 
-### Group Easytrade Writers
+### Exercise 3: Easytrade Writers
 
 We now want to grant specific users with "Writers" access to Dynatrace. Allowing them to edit monitoring configurations in the different apps.
 💡 We want to create a group for the 'Easytrade' app with writers permissions.
@@ -140,11 +145,11 @@ We now want to grant specific users with "Writers" access to Dynatrace. Allowing
 1. Navigate to Policy management, Click on "+ Create policy", Fill the form, Name: "Settings Writers", Policy description: "Statements granting write permissions", Policy statement:"
 
 
-```sql
-ALLOW settings:schemas:read;
-ALLOW settings:objects:read, settings:objects:write;
-ALLOW environment:roles:manage-settings;
-```
+    ```sql
+    ALLOW settings:schemas:read;
+    ALLOW settings:objects:read, settings:objects:write;
+    ALLOW environment:roles:manage-settings;
+    ```
 
     ![](img/settingswriterblack.png){ width="60%" }
 

@@ -55,7 +55,18 @@ The lab has been tested end-to-end using a **sprint** tenant. While we recommend
     <img src="img/dpssoon.png" width="80%">
     </p>
 
+9. Access your Dynatrace tenant with the credentials provided with the bot. You may want to access in Incognito Mode
+
+    !!! warning
+        
+        If you've created the tenant following the [previous steps](#dynatrace-tenant), the admin user is not your dynatrace email, but the one provided within the details in the slack conversation with the bot.
+
+        You will need to be the admin, in order to access Account Management
+
+
 ### 🔑 Generate Tokens
+
+#### dt-access-token
 
 1. Within your Dynatrace tenant, go to `Access Tokens`, and generate a new one with the following permissions. You can give the token any name. Create the token and save it temporarely with you
 
@@ -73,7 +84,9 @@ The lab has been tested end-to-end using a **sprint** tenant. While we recommend
     PaaS integration - Installer download
     ```
 
-2. Go to Account Management, time to create an OAuth Token, with the following scopes:
+#### oauth-token
+
+1. Go to Account Management, time to create an OAuth Token, with the following scopes:
 
     <p align="left">
     <img src="img/create-oauth.png" width="70%">
@@ -91,19 +104,16 @@ The lab has been tested end-to-end using a **sprint** tenant. While we recommend
     app-engine:apps:run
     ```
 
-    !!! warning
-        If you've created the tenant following the [previous steps](#dynatrace-tenant), the admin user is not your dynatrace email, but the one provided within the details in the slack conversation with the bot.
 
     <p align="left">
     <img src="img/hey-again.png" width="70%">
     </p>    
 
-    This means that you should be able to access Account Management with the user details provided via slack
+2. Grab client id, secret and account URN, save the values temporarely with you
 
+### 🗒️ Final configuration variables
 
-11. Grab client id, secret and account URN, save the values temporarely with you
-
-12. Click finish, and with all the collected data, format them as follows:
+12. Keep all variables with you to use later on during the lab setup
 
     ```bash
     DT_TENANT=https://abc12345.sprint.dynatracelabs.com
@@ -114,10 +124,15 @@ The lab has been tested end-to-end using a **sprint** tenant. While we recommend
     MONACO_TOKEN=<dt-access-token>
     ## Acc Mgmt stuff
     CLIENT_ID=<client-id-acc-mgmt>
-    CLIENT_SECRET=<dt-secret-acc-mgmt>
+    CLIENT_SECRET=<oauth-token-acc-mgmt>
     SSO_ENDPOINT=https://sso-sprint.dynatracelabs.com/sso/oauth2/token
     ```
 
+!!! note
+
+    DT_OPERATOR_TOKEN, DT_INGEST_TOKEN, MONACO_TOKEN have all the same value and is the one collected in [dt-access-token](#dt-access-token)
+
+    CLIENT_SECRET is the tokens collected in [oauth-token](#oauth-token)
 
 ## All Set!
 
