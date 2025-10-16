@@ -46,7 +46,7 @@
   },
   // minimal CPU when running DT components and apps.
   "hostRequirements": {
-    "cpus": 4
+    "cpus": 8
   },
   "containerEnv": {
     "DT_TENANT_3RDGEN": "${secrets:DT_TENANT_3RDGEN}",
