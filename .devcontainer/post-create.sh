@@ -10,7 +10,7 @@
 source .devcontainer/util/source_framework.sh
 
 # Validate & prepare env (derives DT_TENANT, creates tokens, sets SSO_ENDPOINT, etc.)
-source ./.devcontainer/util/validate_inputs.sh || exit 1
+source ./.devcontainer/util/validate_inputs.sh "$DT_TENANT_3RDGEN" "$DT_TOKEN" "$CLIENT_SECRET" || exit 1
 
 # Cosmetic terminal setup
 setUpTerminal

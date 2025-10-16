@@ -48,6 +48,11 @@
   "hostRequirements": {
     "cpus": 4
   },
+  "containerEnv": {
+    "DT_TENANT_3RDGEN": "${secrets:DT_TENANT_3RDGEN}",
+    "DT_TOKEN": "${secrets:DT_TOKEN}",
+    "CLIENT_SECRET": "${secrets:CLIENT_SECRET}"
+  },
   //Add recommended secrets 
   "secrets": {
     "DT_TENANT_3RDGEN": {
