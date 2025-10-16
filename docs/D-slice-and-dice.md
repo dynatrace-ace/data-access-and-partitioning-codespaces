@@ -3,9 +3,6 @@
 By the end of this lab, you will:
 
 - Perform a pre-investigation for an existing customer scenario. Can you find all the dimensions & technologies? 
-
-    ![](./img/findboxes.png)
-
 - Understand the customer’s requirements, dimensions, and technologies for 3rd-Gen Data Access & Partitioning. How they connect with dt.security_context, dt.cost.costcenter and dt.cost.product. Keep the table with you for the following labs
 
 ---
