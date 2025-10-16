@@ -8,8 +8,14 @@ setUpTerminal
 
 transformToAppsUrl $DT_TENANT
 
-# Validate inputs
-source ./.devcontainer/util/validate_inputs.sh
+# What this does?
+# - Normalize tenant URLs
+# - Create an API token (MONACO_TOKEN)
+# - Mirror tokens for consumers (DT_INGEST_TOKEN, DT_OPERATOR_TOKEN)
+# - Derive OAuth client ID from secret
+# - Choose SSO endpoint
+# - Export all variables for later use
+source ./.devcontainer/util/validate_inputs.sh || exit 1
 
 startKindCluster
 

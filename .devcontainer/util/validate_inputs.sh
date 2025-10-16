@@ -1,5 +1,36 @@
 #!/bin/bash
 
+# --- Fail fast & helper ---
+set -euo pipefail
+fail() { echo -e "\n[ERROR] $*\n" >&2; return 1 2>/dev/null || exit 1; }
+
+# --- Require the var and https scheme ---
+: "${DT_TENANT_3RDGEN:?}" || fail "DT_TENANT_3RDGEN is not set"
+[[ "$DT_TENANT_3RDGEN" =~ ^https:// ]] || fail "DT_TENANT_3RDGEN must start with https://"
+
+# --- Extract hostname and validate pattern ---
+_host="${DT_TENANT_3RDGEN#*://}"; _host="${_host%%/*}"
+
+# Allowed 3rd-gen host patterns:
+#  *.sprint.apps.dynatracelabs.com   (sprint labs)
+#  *.dev.apps.dynatracelabs.com      (dev labs)
+#  *.apps.dynatrace.com              (prod SaaS 3rd-gen)
+#  *.live.dynatrace.com              (prod SaaS legacy; drop if you don’t want it)
+_allowed_host_regex='^([a-z0-9-]+\.)+(sprint\.apps\.dynatracelabs\.com|dev\.apps\.dynatracelabs\.com|apps\.dynatrace\.com|live\.dynatrace\.com)$'
+
+[[ "$_host" =~ $_allowed_host_regex ]] || fail "$(cat <<EOF
+DT_TENANT_3RDGEN host not recognized as a 3rd-gen Dynatrace tenant.
+  Provided: $_host
+  Expected one of:
+    *.sprint.apps.dynatracelabs.com
+    *.dev.apps.dynatracelabs.com
+    *.apps.dynatrace.com
+    *.live.dynatrace.com
+Hint (sprint example):
+  https://nxk2511h.sprint.apps.dynatracelabs.com
+EOF
+)"
+
 
 ##
 # DT_TENANT NORMALIZATION
