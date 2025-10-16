@@ -128,6 +128,7 @@ K8s running on Azure, important to understand the most convenient enrichment mec
 To save in your bookmarks!
 
 D1 CoE:
+
 - [D1 CoE | 3rd-Gen setup helper - Notebook](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice) to execute pre-investigation
 - [D1 CoE | How to gather requirements from customer](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1247150978/1.+Slice+Dice)
 - [D1 CoE | Why Not Management Zones](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1291617117/Why+not+Management+Zones), drive better conversations about enrichment at source, motivate your customer to scalable and cluster-friendly approaches.
