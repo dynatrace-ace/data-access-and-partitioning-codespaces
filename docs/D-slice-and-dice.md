@@ -2,11 +2,11 @@
 
 By the end of this lab, you will:
 
-- Perform a pre-investigation for an existing customer scenario.
-- 
-- Understand the customer’s requirements, dimensions, and technologies for 3rd-Gen Data Access & Partitioning. Map the
+- Perform a pre-investigation for an existing customer scenario. Can you find all the dimensions & technologies? 
 
-- Identify key dimensions and technologies to enable: Granular data access using dt.security_context, Cost allocation with dt.cost.costcenter and dt.cost.product
+    ![](./img/findboxes.png)
+
+- Understand the customer’s requirements, dimensions, and technologies for 3rd-Gen Data Access & Partitioning. How they connect with dt.security_context, dt.cost.costcenter and dt.cost.product. Keep the table with you for the following labs
 
 ---
 
@@ -65,7 +65,7 @@ Dimensions are key–value pairs that provide context for metrics, logs, or trac
 
 Historically, customers stored dimensions in HOST_GROUP (from the source) or defined them as tags and/or Management Zones.
 
-1. Explore the **dimensions** within your customer environment. You can use [this](https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e) Notebook
+1. Explore the **dimensions** within your customer environment. You can download [this](https://guu84124.apps.dynatrace.com/ui/document/v0/#share=06f00290-72b6-4a03-930d-5a7bf17de35e) Notebook, and upload it into your own environment. Re-run the DQLs to find the dimensions
 
     <!-- Dimensions Notebook -->
     <div class="notes-widget"

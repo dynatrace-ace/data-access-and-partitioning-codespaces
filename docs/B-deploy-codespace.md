@@ -17,7 +17,7 @@ CLIENT_SECRET=<oauth-secret-acc-mgmt>
 
 1. You can check the execution logs here, let us know if the execution stopped with any failures
 
-    ![](./img/deployment-ready.png)
+    ![](./img/execution-logs.png)
 
 2. After 8 minutes, your Codespace should be ready
 
