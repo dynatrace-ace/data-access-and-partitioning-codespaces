@@ -1,11 +1,22 @@
 #!/bin/bash
-#loading functions to script
-export SECONDS=0
+
+# What this does?
+# - Normalize tenant URLs
+# - Create an API token (MONACO_TOKEN)
+# - Mirror tokens for consumers (DT_INGEST_TOKEN, DT_OPERATOR_TOKEN)
+# - Derive OAuth client ID from secret
+# - Choose SSO endpoint
+# - Export all variables for later use
 source .devcontainer/util/source_framework.sh
 
+# Validate & prepare env (derives DT_TENANT, creates tokens, sets SSO_ENDPOINT, etc.)
+source ./.devcontainer/util/validate_inputs.sh "$DT_TENANT_3RDGEN" "$DT_TOKEN" "$CLIENT_SECRET" || exit 1
+
+# Cosmetic terminal setup
 setUpTerminal
 
-transformToAppsUrl $DT_TENANT
+# Now safe to use DT_TENANT; pass 2 args to avoid "$2" being unbound in the function
+transformToAppsUrl "$DT_TENANT" ""   # or whatever the function’s 2nd param is supposed to be
 
 startKindCluster
 

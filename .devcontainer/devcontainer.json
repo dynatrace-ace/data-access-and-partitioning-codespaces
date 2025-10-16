@@ -21,6 +21,7 @@
   "overrideCommand": false,
   // some base images require a specific user name.
   "remoteUser": "vscode",
+  "onCreateCommand": "./.devcontainer/post-create.sh",
   "postCreateCommand": "./.devcontainer/post-create.sh",
   "postStartCommand": "./.devcontainer/post-start.sh",
   "features": {},
@@ -47,31 +48,21 @@
   "hostRequirements": {
     "cpus": 4
   },
+  "containerEnv": {
+    "DT_TENANT_3RDGEN": "${secrets:DT_TENANT_3RDGEN}",
+    "DT_TOKEN": "${secrets:DT_TOKEN}",
+    "CLIENT_SECRET": "${secrets:CLIENT_SECRET}"
+  },
   //Add recommended secrets 
   "secrets": {
-    "DT_TENANT": {
-      "description": "eg. abc123 for live -> https://abc123.live.dynatrace.com or sprint -> https://abc123.sprint.dynatracelabs.com no apps in the URL"
-    },
-    "DT_TENANT_3GEN": {
+    "DT_TENANT_3RDGEN": {
       "description": "eg. abc123 for live -> https://abc123.live.apps.dynatrace.com or sprint -> https://abc123.sprint.apps.dynatracelabs.com"
     },
-    "DT_OPERATOR_TOKEN": {
-      "description": "Dynatrace Operator Token, it will be created automatically when adding a new Cluster over the UI. It contains the following permissions: 'Create ActiveGate tokens' 'Read entities' 'Read settings' 'Write settings' 'Access probrem and event feed, metrics and topology' 'PaaS Integration - installer download'"
-    },
-    "DT_INGEST_TOKEN": {
-      "description": "Dynatrace Ingest Token, it will be created automatically when adding a new Cluster over the UI. It contains the following permissions: 'Ingest logs' 'Ingest metrics' 'Ingest OpenTelemetry traces' "
-    },
-    "MONACO_TOKEN": {
-      "description": "Dynatrace configuration as Code token. See required permission list on https://dynatrace-ace.github.io/data-access-and-partitioning-codespaces/2-getting-started/"
-    },
-    "CLIENT_ID": {
-      "description": "Dynatrace Oauth client ID. See required permission list on https://dynatrace-ace.github.io/data-access-and-partitioning-codespaces/2-getting-started/"
+    "DT_TOKEN": {
+      "description": "Dynatrace access token with Write API tokens scope"
     },
     "CLIENT_SECRET": {
       "description": "Dynatrace Oauth client secret. See required permission list on https://dynatrace-ace.github.io/data-access-and-partitioning-codespaces/2-getting-started/"
-    },
-    "SSO_ENDPOINT": {
-      "description": "Dynatrace Oauth endpoint. For production https://sso.dynatrace.com/sso/oauth2/token or sprint environments https://sso-sprint.dynatracelabs.com/sso/oauth2/token"
     }
   }
 }
