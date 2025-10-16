@@ -207,15 +207,18 @@ What this enables...
 ### Resources
 
 Dynatrace Official Documentation:
+
 - [DT Doc | Global Field Reference](https://docs.dynatrace.com/docs/discover-dynatrace/references/semantic-dictionary/fields)
 - [DT Doc | K8s Enrichment](https://docs.dynatrace.com/docs/ingest-from/setup-on-k8s/guides/metadata-automation/k8s-metadata-telemetry-enrichment)
 
 D1 CoE:
+
 - [D1 CoE | What a Primary Grail Fields is?](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1246757730/2.+Metadata+Enrichment)
 - [D1 CoE | Enriching by Technology](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities)
 - [D1 CoE | K8s Enrichment](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes)
 
 We've meet the Enrichment requirements for a K8s environment. How would this work for a Standard OA, or a Cloud environment. Check the following resources in the CoE page:
+
 - [D1 CoE | Enrichment of Standard OneAgent deployment](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1373569857/Enrichment+OneAgent)
 - [D1 CoE | Enrichment for Cloud](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1273104811/WIP+-+Enrichment+Cloud+Virtualization), WIP... contact the CoE in case further information is needed
 
