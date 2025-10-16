@@ -7,15 +7,16 @@
 # - Derive OAuth client ID from secret
 # - Choose SSO endpoint
 # - Export all variables for later use
-source ./.devcontainer/util/validate_inputs.sh || exit 1
-
-#loading functions to script
-export SECONDS=0
 source .devcontainer/util/source_framework.sh
 
+# Validate & prepare env (derives DT_TENANT, creates tokens, sets SSO_ENDPOINT, etc.)
+source ./.devcontainer/util/validate_inputs.sh || exit 1
+
+# Cosmetic terminal setup
 setUpTerminal
 
-transformToAppsUrl $DT_TENANT
+# Now safe to use DT_TENANT; pass 2 args to avoid "$2" being unbound in the function
+transformToAppsUrl "$DT_TENANT" ""   # or whatever the function’s 2nd param is supposed to be
 
 startKindCluster
 
