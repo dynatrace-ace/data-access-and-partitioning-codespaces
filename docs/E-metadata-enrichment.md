@@ -48,7 +48,7 @@ Enrichment varies by technology. For the Easytrade team, the stack is **Kubernet
 
 #### Enrichment Coverage Analysis
 
-4. Copy the [Enrichment Overview Notebook](https://guu84124.apps.dynatrace.com/ui/apps/dynatrace.notebooks/notebook/8e41313b-48fa-473b-a351-be9b3462c4f4) to your tenant, re-run the queries, and review your customer’s status.
+4. Copy the [Enrichment Overview Notebook](https://guu84124.apps.dynatrace.com/ui/document/v0/#share=cce784b4-98e3-4a2a-97e3-56bc9ad7501e) to your tenant, re-run the queries, and review your customer’s status.
 
     ![](./img/enrichment-initial-status.png)
 
