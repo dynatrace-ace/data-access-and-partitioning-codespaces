@@ -786,17 +786,7 @@
 <ol>
 <li>
 <p>Within your Dynatrace tenant, go to <code>Access Tokens</code>, and generate a new one with the following permissions. You can give the token any name. Create the token and save it temporarely with you</p>
-<div class="highlight"><pre><span></span><code>Create<span class="w"> </span>ActiveGate<span class="w"> </span>tokens
-Read<span class="w"> </span>entities
-Ingest<span class="w"> </span>logs
-Ingest<span class="w"> </span>metrics
-Ingest<span class="w"> </span>OpenTelemetry<span class="w"> </span>traces
-Read<span class="w"> </span>settings
-Write<span class="w"> </span>settings
-Access<span class="w"> </span>problem<span class="w"> </span>and<span class="w"> </span>event<span class="w"> </span>feed,<span class="w"> </span>metrics,<span class="w"> </span>and<span class="w"> </span>topology
-Read<span class="w"> </span>configuration
-Write<span class="w"> </span>configuration
-PaaS<span class="w"> </span>integration<span class="w"> </span>-<span class="w"> </span>Installer<span class="w"> </span>download
+<div class="highlight"><pre><span></span><code>Write<span class="w"> </span>API<span class="w"> </span>tokens
 </code></pre></div>
 </li>
 </ol>
@@ -829,25 +819,15 @@ app-engine:apps:run
 <ol>
 <li>
 <p>Keep all variables with you to use later on during the lab setup</p>
-<div class="highlight"><pre><span></span><code><span class="nv">DT_TENANT</span><span class="o">=</span>https://abc12345.sprint.dynatracelabs.com
-<span class="nv">DT_TENANT_3GEN</span><span class="o">=</span>https://abc12345.sprint.apps.dynatracelabs.com
-<span class="c1"># Dt tenant stuff</span>
-<span class="nv">DT_OPERATOR_TOKEN</span><span class="o">=</span>&lt;dt-access-token&gt;
-<span class="nv">DT_INGEST_TOKEN</span><span class="o">=</span>&lt;dt-access-token&gt;
-<span class="nv">MONACO_TOKEN</span><span class="o">=</span>&lt;dt-access-token&gt;
-<span class="c1">## Acc Mgmt stuff</span>
-<span class="nv">CLIENT_ID</span><span class="o">=</span>&lt;client-id-acc-mgmt&gt;
-<span class="nv">CLIENT_SECRET</span><span class="o">=</span>&lt;oauth-token-acc-mgmt&gt;
-<span class="nv">SSO_ENDPOINT</span><span class="o">=</span>https://sso-sprint.dynatracelabs.com/sso/oauth2/token
+<div class="highlight"><pre><span></span><code><span class="nv">DT_TENANT_3RDGEN</span><span class="o">=</span>https://abc12345.sprint.apps.dynatracelabs.com
+<span class="nv">DT_TOKEN</span><span class="o">=</span>&lt;dt-access-token&gt;
+<span class="nv">CLIENT_SECRET</span><span class="o">=</span>&lt;oauth-secret-acc-mgmt&gt;
 </code></pre></div>
 </li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>DT_OPERATOR_TOKEN, DT_INGEST_TOKEN, MONACO_TOKEN have all the same value and is the one collected in <a href="#dt-access-token">dt-access-token</a></p>
 <p>CLIENT_SECRET is the tokens collected in <a href="#oauth-token">oauth-token</a></p>
-<p>DT_TENANT should respect the following format https://abc12345.sprint.dynatracelabs.com, without the "/" at the end</p>
-<p>DT_TENANT_3GEN should respect the following format https://abc12345.sprint.apps.dynatracelabs.com, without the "/" at the end</p>
 </div>
 <h2 id="all-set">All Set!<a class="headerlink" href="#all-set" title="Permanent link">#</a></h2>
 <p>Well done! With the tenant, and all the collected variables, you should be ready to start the lab at any time. Now just wait until the time of the Hands-on Training</p>

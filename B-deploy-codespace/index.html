@@ -346,18 +346,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#wait-and-learn" class="md-nav__link">
+  <a href="#wait-learn-validate" class="md-nav__link">
     <span class="md-ellipsis">
-      ☕️ Wait and Learn
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#validate" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Validate
+      ☕️ Wait, Learn &amp; Validate
     </span>
   </a>
   
@@ -585,18 +576,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#wait-and-learn" class="md-nav__link">
+  <a href="#wait-learn-validate" class="md-nav__link">
     <span class="md-ellipsis">
-      ☕️ Wait and Learn
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#validate" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Validate
+      ☕️ Wait, Learn &amp; Validate
     </span>
   </a>
   
@@ -623,21 +605,10 @@
   <h1>Deploy Codespace</h1>
 
 <p>If you’ve completed the <em>Get Started</em> steps, you should now have a Dynatrace tenant set up and the necessary environment variables to configure for your Codespace.</p>
-<div class="highlight"><pre><span></span><code><span class="nv">DT_TENANT</span><span class="o">=</span>https://abc12345.sprint.dynatracelabs.com
-<span class="c1"># Dt tenant stuff</span>
-<span class="nv">DT_OPERATOR_TOKEN</span><span class="o">=</span>&lt;dt-access-token&gt;
-<span class="nv">DT_INGEST_TOKEN</span><span class="o">=</span>&lt;dt-access-token&gt;
-<span class="nv">MONACO_TOKEN</span><span class="o">=</span>&lt;dt-access-token&gt;
-<span class="c1">## Acc Mgmt stuff</span>
-<span class="nv">CLIENT_ID</span><span class="o">=</span>&lt;client-id-acc-mgmt&gt;
-<span class="nv">CLIENT_SECRET</span><span class="o">=</span>&lt;dt-secret-acc-mgmt&gt;
-<span class="nv">SSO_ENDPOINT</span><span class="o">=</span>https://sso-sprint.dynatracelabs.com/sso/oauth2/token
+<div class="highlight"><pre><span></span><code><span class="nv">DT_TENANT_3RDGEN</span><span class="o">=</span>https://abc12345.sprint.apps.dynatracelabs.com
+<span class="nv">DT_TOKEN</span><span class="o">=</span>&lt;dt-access-token&gt;
+<span class="nv">CLIENT_SECRET</span><span class="o">=</span>&lt;oauth-secret-acc-mgmt&gt;
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>DT_TENANT should respect the following format https://abc12345.sprint.dynatracelabs.com, without the "/" at the end</p>
-<p>DT_TENANT_3GEN should respect the following format https://abc12345.sprint.apps.dynatracelabs.com, without the "/" at the end</p>
-</div>
 <h2 id="deploy-8-minutes">🚀 Deploy (8 minutes)<a class="headerlink" href="#deploy-8-minutes" title="Permanent link">#</a></h2>
 <ol>
 <li>
@@ -645,13 +616,21 @@
 <p><a href="https://codespaces.new/dynatrace-ace/data-access-and-partitioning-codespaces?quickstart=1&amp;machine=basicLinux32gb" target="_blank"><img alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg" /></a></p>
 </li>
 </ol>
-<h2 id="wait-and-learn">☕️ Wait and Learn<a class="headerlink" href="#wait-and-learn" title="Permanent link">#</a></h2>
-<p>We know your time is valuable. This codespace takes around 8 minutes to be fully operational. A local Kubernetes <a href="https://kind.sigs.k8s.io/">kind</a> cluster monitored by Dynatrace will be configured and in it a sample application. </p>
-<h2 id="validate">✅ Validate<a class="headerlink" href="#validate" title="Permanent link">#</a></h2>
+<h2 id="wait-learn-validate">☕️ Wait, Learn &amp; Validate<a class="headerlink" href="#wait-learn-validate" title="Permanent link">#</a></h2>
+<ol>
+<li>
+<p>You can check the execution logs here, let us know if the execution stopped with any failures</p>
+<p><img alt="" src="../img/deployment-ready.png" /></p>
+</li>
+<li>
 <p>After 8 minutes, your Codespace should be ready</p>
 <p><img alt="" src="../img/deployment-ready.png" /></p>
+</li>
+<li>
 <p>Check if the monitoring is functional, and that the Management Zone has been created in your environment.</p>
 <p><img alt="" src="../img/host-mz.png" /></p>
+</li>
+</ol>
 <blockquote>
 <p>Note: A Management Zone is provided intially to simulate an <em>existing customer</em> scenario, during the lab we will learn new mechanism for Access Control &amp; Segmentation</p>
 </blockquote>
