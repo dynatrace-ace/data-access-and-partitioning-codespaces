@@ -1,9 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
-echo "❌ Intentionally failing during Codespaces creation."
-exit 1
-
 #loading functions to script
 export SECONDS=0
 source .devcontainer/util/source_framework.sh
@@ -11,6 +7,9 @@ source .devcontainer/util/source_framework.sh
 setUpTerminal
 
 transformToAppsUrl $DT_TENANT
+
+# Validate inputs
+source ./.devcontainer/util/validate_inputs.sh
 
 startKindCluster
 
