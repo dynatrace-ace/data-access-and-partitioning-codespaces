@@ -41,7 +41,7 @@
 
 #### How?
 
-Enrichment varies by technology. For the Easytrade team, the stack is **Kubernetes on GCP**.
+Enrichment varies by technology. For the Easytrade team, the stack is **Kubernetes on Azure**.
 
 - See the D1 CoE **guide per technology**: [Enrichment — Technologies & Entities](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1321173398/Enrichment+Technologies+Entities).
 - In this lab, we’ll focus on **Kubernetes enrichment**: [Enrichment — Kubernetes](https://dt-rnd.atlassian.net/wiki/spaces/d1coe/pages/1229849653/Enrichment+Kubernetes)

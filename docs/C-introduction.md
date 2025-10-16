@@ -18,7 +18,7 @@ You will complete a series of critical tasks:
 
 - `Slice & Dice`: Understand customer requirements, dimensions, and technologies to define the foundational setup.
 - `Metadata Enrichment`: Learn about Primary Grail Fields and explore methods for enriching observability signals.
-- `Data Access`: Configure IAM for the 3rd-Gen platform.
+- `Data Access`: Configure IAM for the 3rd-Gen Platform.
 - `Data Segmentation`: Create meaningful, dynamic, and scalable Segments.
 - `Data Partitioning`: Design an efficient bucket strategy and learn how to apply it.
 - `Cost Allocation`: Distribute observability costs across teams and services transparently.

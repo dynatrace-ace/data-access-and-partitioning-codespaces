@@ -2,10 +2,11 @@
 
 By the end of this lab, you will:
 
-- Understand the customer’s requirements, dimensions, and technologies for 3rd-Gen Data Access & Partitioning.
 - Perform a pre-investigation for an existing customer scenario.
+- 
+- Understand the customer’s requirements, dimensions, and technologies for 3rd-Gen Data Access & Partitioning. Map the
+
 - Identify key dimensions and technologies to enable: Granular data access using dt.security_context, Cost allocation with dt.cost.costcenter and dt.cost.product
-- Validate findings against customer requirements to guide the next stage: metadata enrichment at source.
 
 ---
 
@@ -69,7 +70,7 @@ Historically, customers stored dimensions in HOST_GROUP (from the source) or def
     <!-- Dimensions Notebook -->
     <div class="notes-widget"
         data-required="app, environment, component, platform"
-        data-hint="Write down the key dimensions you discover."></div>
+        data-hint="Write down the key dimensions you discover. You must input the dimension's key, not the values"></div>
 
     !!! tip
         Dimensions give us a clear way to slice and dice a customer’s environment:
@@ -84,12 +85,12 @@ Historically, customers stored dimensions in HOST_GROUP (from the source) or def
 
     <!-- Technologies notebook -->
     <div class="notes-widget"
-        data-required="gcp, k8s"
+        data-required="azure, k8s"
         data-aliases='{
-        "gcp": ["google cloud", "google_cloud_platform", "google cloud platform", "gcloud"],
-        "k8s": ["kubernetes", "kube"]
+        "azure": ["azure", "AZURE"],
+        "k8s": ["kubernetes", "kube", "K8s"]
         }'
-        data-hint="Write down the customer technologies you discover."></div>
+        data-hint="Write down the customer technologies you discover. You must input the dimension's key, not the values"></div>
 
     !!! tip
 
@@ -119,7 +120,7 @@ Resulting in the following:
 
 ### Technologies
 
-K8s running on GCP, important to understand the most convenient enrichment mechanims for the customer
+K8s running on Azure, important to understand the most convenient enrichment mechanims for the customer
 
 !!! note
 
