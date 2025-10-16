@@ -37,68 +37,6 @@ Hint (sprint example):
 EOF
 )"
 
-
-
-
-##
-# Validate DT_TOKEN
-##
-# ---- Validate DT_TOKEN has the right permissions/status ----
-: "${DT_TENANT:?DT_TENANT must be set}"
-: "${DT_TOKEN:?DT_TOKEN must be set}"
-
-LOOKUP_BODY=$(jq -nc --arg t "$DT_TOKEN" '{token:$t}')
-
-tmp_lookup="$(mktemp)"
-http_code_lookup=$(
-  curl -sS -o "$tmp_lookup" -w "%{http_code}" -X POST "$DT_TENANT/api/v2/apiTokens/lookup" \
-    -H "Authorization: Api-Token $DT_TOKEN" \
-    -H "Content-Type: application/json" \
-    -d "$LOOKUP_BODY"
-)
-
-if [[ "$http_code_lookup" != "200" ]]; then
-  echo "[ERROR] Token lookup failed (HTTP $http_code_lookup). Response:" >&2
-  jq . < "$tmp_lookup" >&2 || cat "$tmp_lookup" >&2
-  rm -f "$tmp_lookup"
-  return 1 2>/dev/null || exit 1
-fi
-
-# Must be enabled
-enabled=$(jq -r '.enabled' < "$tmp_lookup")
-if [[ "$enabled" != "true" ]]; then
-  echo "[ERROR] DT_TOKEN is disabled." >&2
-  rm -f "$tmp_lookup"
-  return 1 2>/dev/null || exit 1
-fi
-
-# Must not be expired (if expirationDate is set)
-exp=$(jq -r '.expirationDate // empty' < "$tmp_lookup")
-if [[ -n "$exp" ]]; then
-  # ISO8601 → epoch (portable with GNU date; on macOS use gdate)
-  now_epoch=$(date -u +%s)
-  exp_epoch=$(date -u -d "$exp" +%s)
-  if (( now_epoch > exp_epoch )); then
-    echo "[ERROR] DT_TOKEN is expired (expirationDate=$exp)." >&2
-    rm -f "$tmp_lookup"
-    return 1 2>/dev/null || exit 1
-  fi
-fi
-
-# Must include apiTokens.write (needed to POST /api/v2/apiTokens)
-if ! jq -e '.scopes[] | select(.=="apiTokens.write")' < "$tmp_lookup" >/dev/null; then
-  echo "[ERROR] DT_TOKEN lacks required scope: apiTokens.write" >&2
-  echo "       Present scopes:" >&2
-  jq -r '.scopes[]' < "$tmp_lookup" >&2
-  rm -f "$tmp_lookup"
-  return 1 2>/dev/null || exit 1
-fi
-
-rm -f "$tmp_lookup"
-echo "[ok] DT_TOKEN is enabled, not expired, and has apiTokens.write"
-
-
-
 ##
 # DT_TENANT NORMALIZATION
 ##
@@ -163,6 +101,72 @@ fi
 
 DT_INGEST_TOKEN="$MONACO_TOKEN"
 DT_OPERATOR_TOKEN="$MONACO_TOKEN"
+
+
+
+
+##
+# Validate DT_TOKEN
+##
+# ---- Validate DT_TOKEN has the right permissions/status ----
+: "${DT_TENANT:?DT_TENANT must be set}"
+: "${DT_TOKEN:?DT_TOKEN must be set}"
+
+LOOKUP_BODY=$(jq -nc --arg t "$DT_TOKEN" '{token:$t}')
+
+tmp_lookup="$(mktemp)"
+http_code_lookup=$(
+  curl -sS -o "$tmp_lookup" -w "%{http_code}" -X POST "$DT_TENANT/api/v2/apiTokens/lookup" \
+    -H "Authorization: Api-Token $DT_TOKEN" \
+    -H "Content-Type: application/json" \
+    -d "$LOOKUP_BODY"
+)
+
+if [[ "$http_code_lookup" != "200" ]]; then
+  echo "[ERROR] Token lookup failed (HTTP $http_code_lookup). Response:" >&2
+  jq . < "$tmp_lookup" >&2 || cat "$tmp_lookup" >&2
+  rm -f "$tmp_lookup"
+  return 1 2>/dev/null || exit 1
+fi
+
+# Must be enabled
+enabled=$(jq -r '.enabled' < "$tmp_lookup")
+if [[ "$enabled" != "true" ]]; then
+  echo "[ERROR] DT_TOKEN is disabled." >&2
+  rm -f "$tmp_lookup"
+  return 1 2>/dev/null || exit 1
+fi
+
+# Must not be expired (if expirationDate is set)
+exp=$(jq -r '.expirationDate // empty' < "$tmp_lookup")
+if [[ -n "$exp" ]]; then
+  # ISO8601 → epoch (portable with GNU date; on macOS use gdate)
+  now_epoch=$(date -u +%s)
+  exp_epoch=$(date -u -d "$exp" +%s)
+  if (( now_epoch > exp_epoch )); then
+    echo "[ERROR] DT_TOKEN is expired (expirationDate=$exp)." >&2
+    rm -f "$tmp_lookup"
+    return 1 2>/dev/null || exit 1
+  fi
+fi
+
+# Must include apiTokens.write (needed to POST /api/v2/apiTokens)
+if ! jq -e '.scopes[] | select(.=="apiTokens.write")' < "$tmp_lookup" >/dev/null; then
+  echo "[ERROR] DT_TOKEN lacks required scope: apiTokens.write" >&2
+  echo "       Present scopes:" >&2
+  jq -r '.scopes[]' < "$tmp_lookup" >&2
+  rm -f "$tmp_lookup"
+  return 1 2>/dev/null || exit 1
+fi
+
+rm -f "$tmp_lookup"
+echo "[ok] DT_TOKEN is enabled, not expired, and has apiTokens.write"
+
+
+
+
+
+
 
 ##
 # Create Client id
