@@ -71,17 +71,7 @@ The lab has been tested end-to-end using a **sprint** tenant. While we recommend
 1. Within your Dynatrace tenant, go to `Access Tokens`, and generate a new one with the following permissions. You can give the token any name. Create the token and save it temporarely with you
 
     ```bash
-    Create ActiveGate tokens
-    Read entities
-    Ingest logs
-    Ingest metrics
-    Ingest OpenTelemetry traces
-    Read settings
-    Write settings
-    Access problem and event feed, metrics, and topology
-    Read configuration
-    Write configuration
-    PaaS integration - Installer download
+    Write API tokens
     ```
 
 #### oauth-token
@@ -116,27 +106,14 @@ The lab has been tested end-to-end using a **sprint** tenant. While we recommend
 12. Keep all variables with you to use later on during the lab setup
 
     ```bash
-    DT_TENANT=https://abc12345.sprint.dynatracelabs.com
-    DT_TENANT_3GEN=https://abc12345.sprint.apps.dynatracelabs.com
-    # Dt tenant stuff
-    DT_OPERATOR_TOKEN=<dt-access-token>
-    DT_INGEST_TOKEN=<dt-access-token>
-    MONACO_TOKEN=<dt-access-token>
-    ## Acc Mgmt stuff
-    CLIENT_ID=<client-id-acc-mgmt>
-    CLIENT_SECRET=<oauth-token-acc-mgmt>
-    SSO_ENDPOINT=https://sso-sprint.dynatracelabs.com/sso/oauth2/token
+    DT_TENANT_3RDGEN=https://abc12345.sprint.apps.dynatracelabs.com
+    DT_TOKEN=<dt-access-token>
+    CLIENT_SECRET=<oauth-secret-acc-mgmt>
     ```
 
 !!! note
-
-    DT_OPERATOR_TOKEN, DT_INGEST_TOKEN, MONACO_TOKEN have all the same value and is the one collected in [dt-access-token](#dt-access-token)
-
     CLIENT_SECRET is the tokens collected in [oauth-token](#oauth-token)
 
-    DT_TENANT should respect the following format https://abc12345.sprint.dynatracelabs.com, without the "/" at the end
-    
-    DT_TENANT_3GEN should respect the following format https://abc12345.sprint.apps.dynatracelabs.com, without the "/" at the end
 
 ## All Set!
 
