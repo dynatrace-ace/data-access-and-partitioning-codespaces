@@ -1,13 +1,5 @@
 #!/bin/bash
 
-#loading functions to script
-export SECONDS=0
-source .devcontainer/util/source_framework.sh
-
-setUpTerminal
-
-transformToAppsUrl $DT_TENANT
-
 # What this does?
 # - Normalize tenant URLs
 # - Create an API token (MONACO_TOKEN)
@@ -16,6 +8,14 @@ transformToAppsUrl $DT_TENANT
 # - Choose SSO endpoint
 # - Export all variables for later use
 source ./.devcontainer/util/validate_inputs.sh || exit 1
+
+#loading functions to script
+export SECONDS=0
+source .devcontainer/util/source_framework.sh
+
+setUpTerminal
+
+transformToAppsUrl $DT_TENANT
 
 startKindCluster
 
