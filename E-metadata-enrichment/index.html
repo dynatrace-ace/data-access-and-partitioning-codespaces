@@ -972,13 +972,15 @@
 </code></pre></div>
 </li>
 <li>
-<p>Check the new pod (repeat steps <strong>8</strong> &amp; <strong>9</strong>). You should now see <code>dt.security_context</code> in the pod definition.</p>
+<p>Check the new pod, you should now see <code>dt.security_context</code> in the pod definition.</p>
 <p><img alt="" src="../img/accountservice-sc.png" /></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>After creating or modifying rules, allow up to <strong>45 minutes</strong> for changes to take effect (but it’s usually faster). Repeat steps 8 &amp; 9 until <code>dt.security_context</code> appears in the pod definition.</p>
-</div>
 </li>
+</ol>
+<p>(repeat steps <strong>8</strong> &amp; <strong>9</strong>).
+    !!! warning
+        The Dynatrace Operator queries the settings API once every 45 mins. After creating or modifying rules, if you want to ensure inmediate effects, you can restart the it with:
+        <code>kubectl -n dynatrace rollout restart deployment dynatrace-operator</code></p>
+<ol>
 <li>
 <p>Return to the <strong>Enrichment Overview Notebook</strong> and re-check the status. Grab a <code>span.id</code>, paste it in the query, and confirm the workload name.</p>
 <p><img alt="" src="../img/1st-sc-in-notebook.png" /></p>
