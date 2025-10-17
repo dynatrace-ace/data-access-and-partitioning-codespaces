@@ -108,12 +108,14 @@ The Dynatrace Operator mutates pods in the namespace, adding `dt.security_contex
     kubectl -n easytrade rollout restart deployment/accountservice
     ```
 
-11. Check the new pod (repeat steps **8** & **9**). You should now see `dt.security_context` in the pod definition.
+11. Check the new pod, you should now see `dt.security_context` in the pod definition.
 
     ![](./img/accountservice-sc.png)
 
+(repeat steps **8** & **9**).
     !!! warning
-        After creating or modifying rules, allow up to **45 minutes** for changes to take effect (but it’s usually faster). Repeat steps 8 & 9 until `dt.security_context` appears in the pod definition.
+        The Dynatrace Operator queries the settings API once every 45 mins. After creating or modifying rules, if you want to ensure inmediate effects, you can restart the it with:
+        ```kubectl -n dynatrace rollout restart deployment dynatrace-operator```
 
 12. Return to the **Enrichment Overview Notebook** and re-check the status. Grab a `span.id`, paste it in the query, and confirm the workload name.
 
